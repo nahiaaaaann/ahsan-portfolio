@@ -110,8 +110,8 @@ const DEFAULT_DATA = {
   
   // ── Auth helpers ─────────────────────────────────
   // ⚠️  CHANGE THESE before deploying!
-  const ADMIN_USERNAME = "ahsan";         // ← change this!
-  const ADMIN_PASSWORD = "changeme123";   // ← change this!
+  const ADMIN_USERNAME = "nahiah01";         // ← change this!
+  const ADMIN_PASSWORD = "B@ngladesh1971";   // ← change this!
   const SESSION_KEY    = "admin_session";
   const SESSION_EXPIRY = 2 * 60 * 60 * 1000; // 2 hours in ms
   
