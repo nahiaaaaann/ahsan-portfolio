@@ -10,8 +10,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#f7f7f5;--card:#fff;--border:#e8e8e8;--text:#1a1a1a;--muted:#888;--accent:#1a1a1a;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;--danger:#dc2626;--success:#16a34a}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
-
-/* ── LOGIN ── */
 #loginScreen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
 .login-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 8px 40px rgba(0,0,0,.08)}
 .login-logo{font-size:28px;font-weight:700;font-family:'Georgia',serif;margin-bottom:6px}
@@ -20,26 +18,24 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 .login-field label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
 .login-field input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:var(--sans);outline:none;transition:.2s;background:var(--bg)}
 .login-field input:focus{border-color:#999;background:#fff}
-.login-btn{width:100%;background:var(--accent);color:#fff;padding:13px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;font-family:var(--sans);transition:.2s;margin-top:8px}
+.login-btn{width:100%;background:var(--accent);color:#fff;padding:13px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;transition:.2s;margin-top:8px}
 .login-btn:hover{background:#333}
 .login-err{background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:10px 14px;font-size:13px;color:var(--danger);margin-bottom:14px;display:none}
 .login-err.show{display:block}
 .login-back{text-align:center;margin-top:20px;font-size:13px;color:var(--muted)}
-.login-back a{color:var(--text);text-decoration:underline;text-underline-offset:3px}
-
-/* ── ADMIN SHELL ── */
+.login-back a{color:var(--text);text-decoration:underline}
 #adminShell{display:none;min-height:100vh;flex-direction:column}
 #adminShell.visible{display:flex}
 .admin-topbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:50}
 .admin-topbar-brand{font-weight:600;font-size:14px;display:flex;align-items:center;gap:10px}
 .admin-topbar-brand span{font-size:10px;color:var(--muted);font-family:var(--mono);background:var(--bg);border:1px solid var(--border);padding:2px 8px;border-radius:4px}
-.admin-topbar-actions{display:flex;align-items:center;gap:12px}
+.admin-topbar-actions{display:flex;align-items:center;gap:10px}
 .topbar-btn{font-size:12px;padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--card);cursor:pointer;font-family:var(--mono);color:var(--muted);transition:.2s}
 .topbar-btn:hover{color:var(--text);border-color:#aaa}
-.topbar-btn.danger{color:var(--danger);border-color:#fecaca}
-.topbar-btn.danger:hover{background:#fef2f2}
 .topbar-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .topbar-btn.primary:hover{background:#333}
+.topbar-btn.danger{color:var(--danger);border-color:#fecaca}
+.topbar-btn.danger:hover{background:#fef2f2}
 .admin-layout{display:flex;flex:1}
 .admin-sidebar{width:200px;background:var(--card);border-right:1px solid var(--border);padding:16px 0;flex-shrink:0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
 .sidebar-section{padding:8px 16px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);margin-top:8px}
@@ -48,15 +44,11 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 .sidebar-item.active{color:var(--text);font-weight:600;border-left-color:var(--accent);background:#fafafa}
 .sidebar-item .ico{font-size:14px;width:18px;text-align:center}
 .admin-main{flex:1;padding:28px 32px;overflow-y:auto}
-
-/* ── CONTENT PANELS ── */
 .panel{display:none}.panel.active{display:block}
 .panel-header{margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start}
 .panel-title{font-size:20px;font-weight:600;font-family:'Georgia',serif;margin-bottom:4px}
 .panel-sub{font-size:13px;color:var(--muted)}
 .panel-stat{font-size:12px;color:var(--muted);font-family:var(--mono);background:var(--bg);border:1px solid var(--border);padding:4px 10px;border-radius:4px}
-
-/* ── FORM ELEMENTS ── */
 .form-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:20px}
 .form-card h4{font-size:14px;font-weight:600;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 .field{margin-bottom:14px}
@@ -71,64 +63,48 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 .btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}.btn-secondary:hover{background:#eee}
 .btn-danger{background:#fef2f2;color:var(--danger);border:1px solid #fecaca}.btn-danger:hover{background:#fee2e2}
 .btn-sm{padding:6px 12px;font-size:12px}
-
-/* ── LIST ITEMS ── */
-.list-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.list-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;gap:12px;align-items:center}
 .list-item-logo{width:38px;height:38px;border-radius:7px;overflow:hidden;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;color:var(--muted);font-family:var(--mono)}
 .list-item-logo img{width:100%;height:100%;object-fit:cover}
 .list-item-body{flex:1;min-width:0}
 .list-item-title{font-size:14px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .list-item-sub{font-size:11px;color:var(--muted);font-family:var(--mono)}
-.list-item-actions{display:flex;gap:6px;flex-shrink:0;align-items:center}
-.badge{font-size:10px;padding:2px 8px;border-radius:20px;font-family:var(--mono)}
-.badge-green{background:#dcfce7;color:#15803d}
-.badge-blue{background:#dbeafe;color:#1d4ed8}
-
-/* ── IMAGE UPLOAD ── */
+.list-item-actions{display:flex;gap:6px;flex-shrink:0}
 .upload-zone{border:2px dashed var(--border);border-radius:10px;padding:18px;text-align:center;cursor:pointer;transition:.2s;background:#fafafa}
 .upload-zone:hover{border-color:#999;background:#f5f5f5}
 .upload-zone p{font-size:12px;color:var(--muted);margin-top:6px}
-.upload-preview{width:48px;height:48px;border-radius:7px;object-fit:cover;border:1px solid var(--border);margin-top:8px}
-
-/* ── RESPONSES ── */
+.upload-preview{width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid var(--border);margin-top:8px}
 .resp-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px}
-.resp-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.resp-meta{display:flex;justify-content:space-between;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 .resp-form-name{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-family:var(--mono)}
 .resp-date{font-size:11px;color:var(--muted);font-family:var(--mono)}
 .resp-field{font-size:13px;margin-bottom:5px;display:flex;gap:8px}
-.resp-field-key{color:var(--muted);font-size:11px;font-family:var(--mono);min-width:120px;flex-shrink:0;padding-top:1px}
-
-/* ── SUBSCRIBERS ── */
+.resp-field-key{color:var(--muted);font-size:11px;font-family:var(--mono);min-width:120px;flex-shrink:0}
 .sub-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:13px}
 .sub-email{font-family:var(--mono)}
 .sub-date{font-size:11px;color:var(--muted);font-family:var(--mono)}
-
-/* ── FORM BUILDER ── */
 .fb-field-row{display:flex;gap:8px;align-items:center;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:7px;margin-bottom:6px}
 .fb-field-type{font-size:10px;font-family:var(--mono);background:#fff;border:1px solid var(--border);border-radius:4px;padding:3px 8px;color:var(--muted);flex-shrink:0}
 .fb-field-label{flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans);outline:none;background:#fff}
 .fb-add-btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .fb-add-btn{background:#fff;border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:11px;cursor:pointer;font-family:var(--mono);transition:.2s}
-.fb-add-btn:hover{background:var(--bg);border-color:#aaa}
-
-/* ── TOAST ── */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;font-family:var(--mono);opacity:0;transition:.3s;pointer-events:none;z-index:9999;display:flex;align-items:center;gap:8px}
-.toast.show{opacity:1}
-.toast.error{background:var(--danger)}
-
-/* ── STATS GRID ── */
+.fb-add-btn:hover{background:var(--bg)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}
 .stat-val{font-size:26px;font-weight:700;font-family:'Georgia',serif;margin-bottom:3px}
 .stat-lbl{font-size:12px;color:var(--muted)}
-
-/* ── AVAILABILITY ── */
-.avail-row{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:12px}
+.avail-row{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;cursor:pointer;transition:.2s}
+.avail-row:hover{background:#f5f5f5}
+.avail-row.selected{border-color:#1a1a1a;background:#f5f5f5}
 .avail-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .avail-dot.green{background:#22c55e;box-shadow:0 0 0 3px #dcfce7}
 .avail-dot.yellow{background:#eab308;box-shadow:0 0 0 3px #fef9c3}
 .avail-dot.red{background:#ef4444;box-shadow:0 0 0 3px #fee2e2}
-
+.loading{text-align:center;padding:40px;font-size:13px;color:var(--muted);font-family:var(--mono)}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;font-family:var(--mono);opacity:0;transition:.3s;pointer-events:none;z-index:9999}
+.toast.show{opacity:1}
+.toast.error{background:var(--danger)}
+.toast.success{background:var(--success)}
 @media(max-width:768px){
   .admin-sidebar{display:none}
   .stats-grid{grid-template-columns:1fr 1fr}
@@ -138,38 +114,30 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 </head>
 <body>
 
-<!-- ══════════ LOGIN ══════════ -->
+<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-box">
     <div class="login-logo">Ahsan.</div>
     <div class="login-sub">Admin access only. Sign in to continue.</div>
     <div class="login-err" id="loginErr">Incorrect username or password.</div>
-    <div class="login-field"><label>Username</label><input id="loginUser" type="text" placeholder="username" autocomplete="username"/></div>
-    <div class="login-field"><label>Password</label><input id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password"/></div>
+    <div class="login-field"><label>Username</label><input id="loginUser" type="text" autocomplete="username"/></div>
+    <div class="login-field"><label>Password</label><input id="loginPass" type="password" autocomplete="current-password"/></div>
     <button class="login-btn" onclick="doLogin()">Sign In →</button>
     <div class="login-back"><a href="/">← Back to portfolio</a></div>
   </div>
 </div>
 
-<!-- ══════════ ADMIN SHELL ══════════ -->
+<!-- ADMIN SHELL -->
 <div id="adminShell">
-
-  <!-- TOP BAR -->
   <div class="admin-topbar">
-    <div class="admin-topbar-brand">
-      ⚙ Admin Panel
-      <span>ahsannahian.com</span>
-    </div>
+    <div class="admin-topbar-brand">⚙ Admin Panel <span>ahsanfnahian.com</span></div>
     <div class="admin-topbar-actions">
       <button class="topbar-btn primary" onclick="saveAll()">💾 Save All</button>
       <a href="/" target="_blank"><button class="topbar-btn">↗ View Site</button></a>
       <button class="topbar-btn danger" onclick="doLogout()">Sign Out</button>
     </div>
   </div>
-
   <div class="admin-layout">
-
-    <!-- SIDEBAR -->
     <div class="admin-sidebar">
       <div class="sidebar-section">Overview</div>
       <div class="sidebar-item active" onclick="showPanel('dashboard')"><span class="ico">📊</span>Dashboard</div>
@@ -177,7 +145,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
       <div class="sidebar-item" onclick="showPanel('profile')"><span class="ico">👤</span>Profile</div>
       <div class="sidebar-item" onclick="showPanel('photo')"><span class="ico">🖼</span>Photo</div>
       <div class="sidebar-item" onclick="showPanel('blogs')"><span class="ico">✍️</span>Blogs</div>
-      <div class="sidebar-item" onclick="showPanel('cases')"><span class="ico">📋</span>Case Studies</div>
+      <div class="sidebar-item" onclick="showPanel('cases')"><span class="ico">📋</span>Cases</div>
       <div class="sidebar-item" onclick="showPanel('thinking')"><span class="ico">💡</span>Thinking</div>
       <div class="sidebar-item" onclick="showPanel('ventures')"><span class="ico">🚀</span>Ventures</div>
       <div class="sidebar-item" onclick="showPanel('experience')"><span class="ico">💼</span>Experience</div>
@@ -192,18 +160,13 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
       <div class="sidebar-item" onclick="showPanel('availability')"><span class="ico">🟢</span>Availability</div>
       <div class="sidebar-item" onclick="showPanel('security')"><span class="ico">🔒</span>Security</div>
     </div>
-
-    <!-- MAIN -->
     <div class="admin-main">
 
       <!-- DASHBOARD -->
       <div class="panel active" id="panel-dashboard">
-        <div class="panel-header">
-          <div><div class="panel-title">Dashboard</div><div class="panel-sub">Welcome back, Ahsan.</div></div>
-        </div>
-        <div class="stats-grid" id="dashStats"></div>
-        <div class="form-card">
-          <h4>Quick Actions</h4>
+        <div class="panel-header"><div><div class="panel-title">Dashboard</div><div class="panel-sub">Welcome back, Ahsan.</div></div></div>
+        <div class="stats-grid" id="dashStats"><div class="loading">Loading...</div></div>
+        <div class="form-card"><h4>Quick Actions</h4>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <button class="btn btn-primary" onclick="showPanel('blogs')">✍️ New Blog Post</button>
             <button class="btn btn-secondary" onclick="showPanel('ventures')">🚀 Add Venture</button>
@@ -216,45 +179,43 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
       <!-- PROFILE -->
       <div class="panel" id="panel-profile">
         <div class="panel-header"><div><div class="panel-title">Profile & Hero</div><div class="panel-sub">Your main bio and positioning.</div></div></div>
-        <div class="form-card">
-          <h4>Identity</h4>
+        <div class="form-card"><h4>Identity</h4>
           <div class="grid-2">
             <div class="field"><label>Full Name</label><input id="p-name"/></div>
             <div class="field"><label>Label</label><input id="p-label"/></div>
           </div>
-          <div class="field"><label>Tagline (italic, left panel)</label><input id="p-tagline"/></div>
+          <div class="field"><label>Tagline</label><input id="p-tagline"/></div>
           <div class="field"><label>Hero Tags (comma separated)</label><input id="p-tags"/></div>
           <div class="grid-2">
             <div class="field"><label>Big Stat Number</label><input id="p-statnum"/></div>
             <div class="field"><label>Big Stat Label</label><input id="p-statlabel"/></div>
           </div>
           <div class="field"><label>Bio (HTML allowed)</label><textarea id="p-bio" style="min-height:120px"></textarea></div>
-          <div class="field"><label>About This Site (expandable)</label><textarea id="p-about"></textarea></div>
+          <div class="field"><label>About This Site</label><textarea id="p-about"></textarea></div>
         </div>
-        <div class="form-card">
-          <h4>Links</h4>
+        <div class="form-card"><h4>Links</h4>
           <div class="grid-3">
             <div class="field"><label>LinkedIn URL</label><input id="p-linkedin"/></div>
             <div class="field"><label>Email</label><input id="p-email" type="email"/></div>
             <div class="field"><label>Resume URL</label><input id="p-resume"/></div>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="saveProfile()">💾 Save Profile</button>
+        <button class="btn btn-primary" onclick="saveProfileData()">💾 Save Profile</button>
       </div>
 
       <!-- PHOTO -->
       <div class="panel" id="panel-photo">
-        <div class="panel-header"><div><div class="panel-title">Profile Photo</div><div class="panel-sub">Upload your profile picture.</div></div></div>
+        <div class="panel-header"><div><div class="panel-title">Profile Photo</div><div class="panel-sub">Upload your profile picture. Saves directly to database.</div></div></div>
         <div class="form-card">
           <div class="upload-zone" onclick="document.getElementById('photoFile').click()">
             <div style="font-size:28px">📷</div>
             <p>Click to upload · JPG or PNG · 400×400px recommended</p>
           </div>
-          <input type="file" id="photoFile" accept="image/*" style="display:none" onchange="handleImg(event,'photo','photoPreview','photoPrevWrap')"/>
-          <div id="photoPrevWrap" style="display:none;margin-top:12px">
-            <img id="photoPreview" class="upload-preview"/>
-            <p style="font-size:11px;color:var(--muted);margin-top:6px;font-family:var(--mono)">Preview</p>
-            <button class="btn btn-primary" style="margin-top:10px" onclick="applyPhoto()">✓ Apply Photo</button>
+          <input type="file" id="photoFile" accept="image/*" style="display:none" onchange="uploadPhoto(event)"/>
+          <div id="photoPrevWrap" style="display:none;margin-top:16px">
+            <img id="photoPreview" class="upload-preview" style="width:100px;height:100px"/>
+            <p style="font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--mono)" id="photoStatus">Ready to save</p>
+            <button class="btn btn-primary" style="margin-top:10px" onclick="savePhoto()">💾 Save Photo</button>
           </div>
         </div>
       </div>
@@ -265,18 +226,17 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
           <div><div class="panel-title">Blog Posts</div><div class="panel-sub">Publish and manage your writing.</div></div>
           <span class="panel-stat" id="blogCount">0 posts</span>
         </div>
-        <div class="form-card">
-          <h4>New Post</h4>
+        <div class="form-card"><h4>New Post</h4>
           <div class="field"><label>Title</label><input id="b-title" placeholder="Post title..."/></div>
           <div class="grid-2">
             <div class="field"><label>Date</label><input id="b-date" type="date"/></div>
             <div class="field"><label>Read Time</label><input id="b-read" placeholder="5 min read"/></div>
           </div>
-          <div class="field"><label>Excerpt</label><textarea id="b-excerpt" style="min-height:65px" placeholder="Short description shown on cards..."></textarea></div>
-          <div class="field"><label>Full Content</label><textarea id="b-content" style="min-height:130px" placeholder="Full blog post content..."></textarea></div>
+          <div class="field"><label>Excerpt</label><textarea id="b-excerpt" style="min-height:65px"></textarea></div>
+          <div class="field"><label>Full Content</label><textarea id="b-content" style="min-height:130px"></textarea></div>
           <div class="field"><label>Cover Image</label>
             <div class="upload-zone" style="padding:12px" onclick="document.getElementById('blogImg').click()"><p style="margin:0;font-size:12px">📷 Upload cover image</p></div>
-            <input type="file" id="blogImg" accept="image/*" style="display:none" onchange="handleImg(event,'blogImgData','blogImgPrev','blogImgWrap')"/>
+            <input type="file" id="blogImg" accept="image/*" style="display:none" onchange="handleImgTemp(event,'blogImgData','blogImgPrev','blogImgWrap')"/>
             <div id="blogImgWrap" style="display:none;margin-top:8px"><img id="blogImgPrev" class="upload-preview"/></div>
           </div>
           <button class="btn btn-primary" onclick="addBlog()">+ Publish Post</button>
@@ -286,17 +246,16 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
       <!-- CASES -->
       <div class="panel" id="panel-cases">
-        <div class="panel-header"><div><div class="panel-title">Case Studies</div><div class="panel-sub">Product decisions and outcomes.</div></div></div>
-        <div class="form-card">
-          <h4>New Case Study</h4>
+        <div class="panel-header"><div><div class="panel-title">Case Studies</div></div></div>
+        <div class="form-card"><h4>New Case Study</h4>
           <div class="grid-2">
-            <div class="field"><label>Company / Context</label><input id="cs-company" placeholder="Apar's Classroom · 800K+"/></div>
-            <div class="field"><label>Title</label><input id="cs-title" placeholder="Case study headline..."/></div>
+            <div class="field"><label>Company / Context</label><input id="cs-company"/></div>
+            <div class="field"><label>Title</label><input id="cs-title"/></div>
           </div>
-          <div class="field"><label>Problem</label><textarea id="cs-problem" style="min-height:60px"></textarea></div>
-          <div class="field"><label>Decision</label><textarea id="cs-decision" style="min-height:60px"></textarea></div>
-          <div class="field"><label>Measured By</label><textarea id="cs-measured" style="min-height:60px"></textarea></div>
-          <div class="field"><label>Result</label><input id="cs-result" placeholder="↑ 35% organic reach"/></div>
+          <div class="field"><label>Problem</label><textarea id="cs-problem" style="min-height:55px"></textarea></div>
+          <div class="field"><label>Decision</label><textarea id="cs-decision" style="min-height:55px"></textarea></div>
+          <div class="field"><label>Measured By</label><textarea id="cs-measured" style="min-height:55px"></textarea></div>
+          <div class="field"><label>Result</label><input id="cs-result"/></div>
           <button class="btn btn-primary" onclick="addCase()">+ Add</button>
         </div>
         <div id="caseList"></div>
@@ -304,12 +263,11 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
       <!-- THINKING -->
       <div class="panel" id="panel-thinking">
-        <div class="panel-header"><div><div class="panel-title">Product Thinking</div><div class="panel-sub">Short takes and opinions.</div></div></div>
-        <div class="form-card">
-          <h4>New Take</h4>
+        <div class="panel-header"><div><div class="panel-title">Product Thinking</div></div></div>
+        <div class="form-card"><h4>New Take</h4>
           <div class="grid-2">
-            <div class="field"><label>Tag / Category</label><input id="th-tag" placeholder="GTM · Emerging Markets"/></div>
-            <div class="field"><label>Title</label><input id="th-title" placeholder="Your take..."/></div>
+            <div class="field"><label>Tag</label><input id="th-tag"/></div>
+            <div class="field"><label>Title</label><input id="th-title"/></div>
           </div>
           <div class="field"><label>Body</label><textarea id="th-body" style="min-height:80px"></textarea></div>
           <button class="btn btn-primary" onclick="addThink()">+ Add</button>
@@ -319,19 +277,18 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
       <!-- VENTURES -->
       <div class="panel" id="panel-ventures">
-        <div class="panel-header"><div><div class="panel-title">Ventures</div><div class="panel-sub">Companies you've founded.</div></div></div>
-        <div class="form-card">
-          <h4>New Venture</h4>
+        <div class="panel-header"><div><div class="panel-title">Ventures</div></div></div>
+        <div class="form-card"><h4>New Venture</h4>
           <div class="grid-2">
-            <div class="field"><label>Name</label><input id="v-name" placeholder="Privatune"/></div>
-            <div class="field"><label>Website URL</label><input id="v-url" placeholder="https://privatune.com"/></div>
+            <div class="field"><label>Name</label><input id="v-name"/></div>
+            <div class="field"><label>Website URL</label><input id="v-url" placeholder="https://..."/></div>
           </div>
-          <div class="field"><label>Role</label><input id="v-role" placeholder="Founder & CEO"/></div>
-          <div class="field"><label>Description</label><textarea id="v-desc" style="min-height:70px"></textarea></div>
-          <div class="field"><label>Stats (comma separated)</label><input id="v-stats" placeholder="100K+ students, Organic growth"/></div>
+          <div class="field"><label>Role</label><input id="v-role"/></div>
+          <div class="field"><label>Description</label><textarea id="v-desc" style="min-height:65px"></textarea></div>
+          <div class="field"><label>Stats (comma separated)</label><input id="v-stats"/></div>
           <div class="field"><label>Logo</label>
             <div class="upload-zone" style="padding:12px" onclick="document.getElementById('vLogo').click()"><p style="margin:0;font-size:12px">🏢 Upload logo</p></div>
-            <input type="file" id="vLogo" accept="image/*" style="display:none" onchange="handleImg(event,'vLogoData','vLogoPrev','vLogoWrap')"/>
+            <input type="file" id="vLogo" accept="image/*" style="display:none" onchange="handleImgTemp(event,'vLogoData','vLogoPrev','vLogoWrap')"/>
             <div id="vLogoWrap" style="display:none;margin-top:8px"><img id="vLogoPrev" class="upload-preview"/></div>
           </div>
           <button class="btn btn-primary" onclick="addVenture()">+ Add Venture</button>
@@ -341,19 +298,18 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
       <!-- EXPERIENCE -->
       <div class="panel" id="panel-experience">
-        <div class="panel-header"><div><div class="panel-title">Experience</div><div class="panel-sub">Jobs and roles.</div></div></div>
-        <div class="form-card">
-          <h4>New Role</h4>
+        <div class="panel-header"><div><div class="panel-title">Experience</div></div></div>
+        <div class="form-card"><h4>New Role</h4>
           <div class="grid-2">
-            <div class="field"><label>Title & Company</label><input id="ex-title" placeholder="PM — Apar's Classroom"/></div>
-            <div class="field"><label>Company URL</label><input id="ex-url" placeholder="https://company.com"/></div>
+            <div class="field"><label>Title & Company</label><input id="ex-title"/></div>
+            <div class="field"><label>Company URL</label><input id="ex-url" placeholder="https://..."/></div>
           </div>
-          <div class="field"><label>Meta (tenure, scale)</label><input id="ex-meta" placeholder="800,000+ students · Bangladesh's largest EdTech"/></div>
-          <div class="field"><label>Description</label><textarea id="ex-desc" style="min-height:70px"></textarea></div>
-          <div class="field"><label>Badge (optional)</label><input id="ex-badge" placeholder="Key Role"/></div>
+          <div class="field"><label>Meta</label><input id="ex-meta"/></div>
+          <div class="field"><label>Description</label><textarea id="ex-desc" style="min-height:65px"></textarea></div>
+          <div class="field"><label>Badge (optional)</label><input id="ex-badge"/></div>
           <div class="field"><label>Company Logo</label>
             <div class="upload-zone" style="padding:12px" onclick="document.getElementById('exLogo').click()"><p style="margin:0;font-size:12px">🏢 Upload logo</p></div>
-            <input type="file" id="exLogo" accept="image/*" style="display:none" onchange="handleImg(event,'exLogoData','exLogoPrev','exLogoWrap')"/>
+            <input type="file" id="exLogo" accept="image/*" style="display:none" onchange="handleImgTemp(event,'exLogoData','exLogoPrev','exLogoWrap')"/>
             <div id="exLogoWrap" style="display:none;margin-top:8px"><img id="exLogoPrev" class="upload-preview"/></div>
           </div>
           <button class="btn btn-primary" onclick="addExp()">+ Add Role</button>
@@ -363,12 +319,11 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
       <!-- NUMBERS -->
       <div class="panel" id="panel-numbers">
-        <div class="panel-header"><div><div class="panel-title">Impact Numbers</div><div class="panel-sub">Stats shown in the By The Numbers section.</div></div></div>
-        <div class="form-card">
-          <h4>New Stat</h4>
+        <div class="panel-header"><div><div class="panel-title">Impact Numbers</div></div></div>
+        <div class="form-card"><h4>New Stat</h4>
           <div class="grid-2">
             <div class="field"><label>Value</label><input id="n-val" placeholder="1M+"/></div>
-            <div class="field"><label>Label</label><input id="n-label" placeholder="Students reached"/></div>
+            <div class="field"><label>Label</label><input id="n-label"/></div>
           </div>
           <button class="btn btn-primary" onclick="addNum()">+ Add</button>
         </div>
@@ -377,20 +332,19 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
       <!-- EDUCATION -->
       <div class="panel" id="panel-education">
-        <div class="panel-header"><div><div class="panel-title">Education</div><div class="panel-sub">Schools and certifications.</div></div></div>
-        <div class="form-card">
-          <h4>New Entry</h4>
+        <div class="panel-header"><div><div class="panel-title">Education</div></div></div>
+        <div class="form-card"><h4>New Entry</h4>
           <div class="grid-2">
-            <div class="field"><label>School</label><input id="ed-school" placeholder="Gettysburg College"/></div>
+            <div class="field"><label>School</label><input id="ed-school"/></div>
             <div class="field"><label>School Logo</label>
               <div class="upload-zone" style="padding:8px" onclick="document.getElementById('edLogo').click()"><p style="margin:0;font-size:11px">🎓 Logo</p></div>
-              <input type="file" id="edLogo" accept="image/*" style="display:none" onchange="handleImg(event,'edLogoData','edLogoPrev','edLogoWrap')"/>
+              <input type="file" id="edLogo" accept="image/*" style="display:none" onchange="handleImgTemp(event,'edLogoData','edLogoPrev','edLogoWrap')"/>
               <div id="edLogoWrap" style="display:none;margin-top:6px"><img id="edLogoPrev" class="upload-preview"/></div>
             </div>
           </div>
           <div class="field"><label>Degree / Program</label><input id="ed-deg"/></div>
-          <div class="field"><label>Scholarship Badge</label><input id="ed-badge" placeholder="🏆 Abraham Lincoln Scholar"/></div>
-          <div class="field"><label>Certifications (comma separated)</label><input id="ed-certs" placeholder="Harvard — CS50, Stanford — ML"/></div>
+          <div class="field"><label>Scholarship Badge</label><input id="ed-badge"/></div>
+          <div class="field"><label>Certifications (comma separated)</label><input id="ed-certs"/></div>
           <button class="btn btn-primary" onclick="addEdu()">+ Add</button>
         </div>
         <div id="eduList"></div>
@@ -398,19 +352,17 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
       <!-- FORM BUILDER -->
       <div class="panel" id="panel-formbuilder">
-        <div class="panel-header"><div><div class="panel-title">Form Builder</div><div class="panel-sub">Create custom forms for your visitors.</div></div></div>
-        <div class="form-card">
-          <h4>New Form</h4>
+        <div class="panel-header"><div><div class="panel-title">Form Builder</div><div class="panel-sub">Create custom forms for visitors.</div></div></div>
+        <div class="form-card"><h4>New Form</h4>
           <div class="grid-2">
-            <div class="field"><label>Form Title</label><input id="fb-title" placeholder="Work With Me"/></div>
-            <div class="field"><label>Description</label><input id="fb-desc" placeholder="Short card description"/></div>
+            <div class="field"><label>Form Title</label><input id="fb-title"/></div>
+            <div class="field"><label>Description</label><input id="fb-desc"/></div>
           </div>
           <div class="grid-2">
             <div class="field"><label>Button Text</label><input id="fb-btn" value="Submit →"/></div>
             <div class="field"><label>Thank You Message</label><input id="fb-thanks" value="Thanks! I'll get back to you soon."/></div>
           </div>
-          <div class="field">
-            <label>Fields</label>
+          <div class="field"><label>Fields</label>
             <div id="fb-fields"></div>
             <div class="fb-add-btns">
               <button class="fb-add-btn" onclick="addFBField('text')">+ Text</button>
@@ -427,27 +379,26 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
       <!-- RESPONSES -->
       <div class="panel" id="panel-responses">
         <div class="panel-header">
-          <div><div class="panel-title">Form Responses</div><div class="panel-sub">Submissions from your visitors.</div></div>
+          <div><div class="panel-title">Form Responses</div><div class="panel-sub">Live from Supabase.</div></div>
           <button class="btn btn-secondary btn-sm" onclick="exportCSV()">↓ Export CSV</button>
         </div>
-        <div id="responsesList"></div>
+        <div id="responsesList"><div class="loading">Loading...</div></div>
       </div>
 
       <!-- NEWSLETTER -->
       <div class="panel" id="panel-newsletter">
         <div class="panel-header">
-          <div><div class="panel-title">Newsletter</div><div class="panel-sub">Manage your subscribers.</div></div>
+          <div><div class="panel-title">Newsletter</div><div class="panel-sub">Subscribers from Supabase.</div></div>
           <button class="btn btn-secondary btn-sm" onclick="exportSubs()">↓ Export CSV</button>
         </div>
-        <div class="form-card">
-          <h4>Newsletter Settings</h4>
+        <div class="form-card"><h4>Newsletter Settings</h4>
           <div class="grid-2">
             <div class="field"><label>Title</label><input id="nl-title"/></div>
             <div class="field"><label>Description</label><input id="nl-desc"/></div>
           </div>
           <button class="btn btn-primary" onclick="saveNL()">💾 Save</button>
         </div>
-        <div id="subsList"></div>
+        <div id="subsList"><div class="loading">Loading...</div></div>
       </div>
 
       <!-- CONTACT -->
@@ -457,112 +408,57 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
           <div class="field"><label>Contact Heading</label><input id="c-heading"/></div>
           <div class="field"><label>Contact Description</label><textarea id="c-desc"></textarea></div>
           <div class="field"><label>Footer Tagline</label><textarea id="c-footer"></textarea></div>
-          <button class="btn btn-primary" onclick="saveContact()">💾 Save</button>
+          <button class="btn btn-primary" onclick="saveContactData()">💾 Save</button>
         </div>
       </div>
 
       <!-- AVAILABILITY -->
       <div class="panel" id="panel-availability">
-        <div class="panel-header"><div><div class="panel-title">Availability Badge</div><div class="panel-sub">Show visitors your current status.</div></div></div>
-        <div class="form-card">
-          <h4>Current Status</h4>
-          <div class="avail-row" id="av-open" onclick="setAvail('open')" style="cursor:pointer">
-            <div class="avail-dot green"></div>
-            <div><div style="font-weight:600;font-size:13px">Open to Opportunities</div><div style="font-size:12px;color:var(--muted)">Actively looking for PM / GTM roles</div></div>
-          </div>
-          <div class="avail-row" id="av-selective" onclick="setAvail('selective')" style="cursor:pointer">
-            <div class="avail-dot yellow"></div>
-            <div><div style="font-weight:600;font-size:13px">Selectively Open</div><div style="font-size:12px;color:var(--muted)">Open to select opportunities only</div></div>
-          </div>
-          <div class="avail-row" id="av-closed" onclick="setAvail('closed')" style="cursor:pointer">
-            <div class="avail-dot red"></div>
-            <div><div style="font-weight:600;font-size:13px">Not Available</div><div style="font-size:12px;color:var(--muted)">Not looking right now</div></div>
-          </div>
-          <button class="btn btn-primary" style="margin-top:12px" onclick="saveAvail()">💾 Save Status</button>
+        <div class="panel-header"><div><div class="panel-title">Availability Badge</div></div></div>
+        <div class="form-card"><h4>Current Status</h4>
+          <div class="avail-row" id="av-open" onclick="setAvail('open')"><div class="avail-dot green"></div><div><div style="font-weight:600;font-size:13px">Open to Opportunities</div><div style="font-size:12px;color:var(--muted)">Actively looking for PM / GTM roles</div></div></div>
+          <div class="avail-row" id="av-selective" onclick="setAvail('selective')"><div class="avail-dot yellow"></div><div><div style="font-weight:600;font-size:13px">Selectively Open</div><div style="font-size:12px;color:var(--muted)">Open to select opportunities only</div></div></div>
+          <div class="avail-row" id="av-closed" onclick="setAvail('closed')"><div class="avail-dot red"></div><div><div style="font-weight:600;font-size:13px">Not Available</div><div style="font-size:12px;color:var(--muted)">Not looking right now</div></div></div>
+          <button class="btn btn-primary" style="margin-top:14px" onclick="saveAvailData()">💾 Save Status</button>
         </div>
       </div>
 
       <!-- SECURITY -->
       <div class="panel" id="panel-security">
-        <div class="panel-header"><div><div class="panel-title">Security</div><div class="panel-sub">Manage admin credentials.</div></div></div>
+        <div class="panel-header"><div><div class="panel-title">Security</div></div></div>
         <div class="form-card">
-          <h4>Change Password</h4>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">For production, use a proper backend (Supabase Auth, Firebase Auth). The current password is stored in <code style="font-family:var(--mono);background:var(--bg);padding:2px 6px;border-radius:4px">data.js</code> — change it before deploying.</p>
-          <div class="field"><label>Current Password</label><input id="sec-cur" type="password"/></div>
+          <h4>Change Credentials</h4>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">Update username and password in <code style="font-family:var(--mono);background:var(--bg);padding:2px 6px;border-radius:4px">assets/data.js</code> and push to GitHub.</p>
+          <div class="field"><label>Current Password in data.js</label><input id="sec-cur" type="password"/></div>
           <div class="grid-2">
             <div class="field"><label>New Password</label><input id="sec-new" type="password"/></div>
-            <div class="field"><label>Confirm New Password</label><input id="sec-con" type="password"/></div>
+            <div class="field"><label>Confirm</label><input id="sec-con" type="password"/></div>
           </div>
-          <button class="btn btn-primary" onclick="changePass()">🔒 Update Password</button>
+          <button class="btn btn-primary" onclick="changePass()">🔒 Verify Match</button>
         </div>
         <div class="form-card">
           <h4 style="color:var(--danger)">Danger Zone</h4>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Reset all portfolio data to defaults. This cannot be undone.</p>
-          <button class="btn btn-danger" onclick="if(confirm('Reset ALL data? This cannot be undone.'))resetData()">⚠️ Reset All Data</button>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Reset all content to defaults.</p>
+          <button class="btn btn-danger" onclick="if(confirm('Reset ALL data?'))resetAllData()">⚠️ Reset All Data</button>
         </div>
       </div>
 
-    </div><!-- /admin-main -->
-  </div><!-- /admin-layout -->
-</div><!-- /adminShell -->
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast"></div>
 
+<script src="../assets/data.js"></script>
 <script>
-    const ADMIN_USERNAME = "nahiah01";
-    const ADMIN_PASSWORD = "B@ngladesh1971";
-    const SESSION_KEY = "admin_session";
-    const SESSION_EXPIRY = 2 * 60 * 60 * 1000;
-    
-    function login(username, password) {
-      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() }));
-        return true;
-      }
-      return false;
-    }
-    
-    function isLoggedIn() {
-      try {
-        const raw = sessionStorage.getItem(SESSION_KEY);
-        if (!raw) return false;
-        const { ts } = JSON.parse(raw);
-        return Date.now() - ts < SESSION_EXPIRY;
-      } catch { return false; }
-    }
-    
-    function logout() {
-      sessionStorage.removeItem(SESSION_KEY);
-    }
-    
-    function loadData() {
-      try {
-        const saved = localStorage.getItem("portfolio_data");
-        return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_DATA));
-      } catch { return JSON.parse(JSON.stringify(DEFAULT_DATA)); }
-    }
-    
-    function saveData(data) {
-      localStorage.setItem("portfolio_data", JSON.stringify(data));
-      return true;
-    }
-    
-    function nextId(arr) {
-      return arr.length ? Math.max(...arr.map(x => x.id)) + 1 : 1;
-    }
-    
-    function formatDate(d) {
-      if (!d) return "";
-      try { return new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); }
-      catch { return d; }
-    }
-    </script>
-<script>
-let D = loadData();
-let temps = { blogImgData:null, vLogoData:null, exLogoData:null, edLogoData:null, fbFields:[] };
+// ═══════════ STATE ═══════════
+let D = JSON.parse(JSON.stringify(DEFAULT_DATA));
+let temps = { blogImgData:null, vLogoData:null, exLogoData:null, edLogoData:null, photoData:null, fbFields:[] };
 let currentAvail = 'open';
+let sbResponses = [];
+let sbSubscribers = [];
 
-// ── AUTH ───────────────────────────────
+// ═══════════ AUTH ═══════════
 function doLogin() {
   const u = document.getElementById('loginUser').value.trim();
   const p = document.getElementById('loginPass').value;
@@ -578,162 +474,297 @@ function doLogin() {
 document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin() });
 document.getElementById('loginUser').addEventListener('keydown', e => { if(e.key==='Enter') doLogin() });
 
-function doLogout() {
-  logout();
-  location.reload();
-}
+function doLogout() { logout(); location.reload(); }
 
-// Check existing session
 if (isLoggedIn()) {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('adminShell').classList.add('visible');
   initAdmin();
 }
 
-function initAdmin() {
-  loadProfileFields();
-  loadContactFields();
-  loadNLFields();
+// ═══════════ INIT ═══════════
+async function initAdmin() {
+  toast('Loading data...', 'info');
+  await loadAllData();
+  populateProfileFields();
+  populateContactFields();
+  populateNLFields();
   renderAll();
+  toast('✓ Loaded', 'success');
 }
 
-// ── PANELS ─────────────────────────────
+async function loadAllData() {
+  try {
+    // Load profile
+    const prof = await loadProfile();
+    if (prof && Object.keys(prof).length > 0) D.profile = { ...D.profile, ...prof };
+
+    // Load all content sections
+    const sections = ['blogs','cases','thinks','ventures','experience','numbers','education','forms','newsletter','contact'];
+    await Promise.all(sections.map(async key => {
+      const data = await loadContent(key);
+      if (data) D[key] = data;
+    }));
+
+    // Load photo
+    const photo = await loadMedia('profile_photo');
+    if (photo) D.profile.photo = photo;
+
+    // Load responses and subscribers
+    sbResponses = await loadResponses();
+    sbSubscribers = await loadSubscribers();
+
+    currentAvail = D.profile.availability || 'open';
+  } catch(e) {
+    console.error('Load error:', e);
+    toast('Error loading data', 'error');
+  }
+}
+
+// ═══════════ PANELS ═══════════
 function showPanel(name) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
   document.getElementById('panel-' + name).classList.add('active');
   document.querySelector(`.sidebar-item[onclick="showPanel('${name}')"]`)?.classList.add('active');
+  if (name === 'responses') renderResponses();
+  if (name === 'newsletter') renderSubs();
+  if (name === 'availability') updateAvailUI();
 }
 
-// ── RENDER ─────────────────────────────
+// ═══════════ RENDER ═══════════
 function renderAll() {
-  renderDash(); renderBlogs(); renderCases(); renderThinks();
-  renderVentures(); renderExp(); renderNums(); renderEdu();
-  renderForms(); renderResponses(); renderSubs();
+  renderDash(); renderList('blogList', D.blogs, b => [b.img?`<img src="${b.img}"/>`:'📝', b.title, formatDate(b.date), 'blogs', b.id]);
+  renderList('caseList', D.cases, c => ['📋', c.title, c.company, 'cases', c.id]);
+  renderList('thinkList', D.thinks, t => ['💡', t.title, t.tag, 'thinks', t.id]);
+  renderList('ventureList', D.ventures, v => [v.logo?`<img src="${v.logo}"/>`:v.name[0], v.name, v.role, 'ventures', v.id]);
+  renderList('expList', D.experience, e => [e.logo?`<img src="${e.logo}"/>`:e.logoText, e.title, e.meta, 'experience', e.id]);
+  renderList('numList', D.numbers, n => ['📈', n.val, n.label, 'numbers', n.id]);
+  renderList('eduList', D.education, e => [e.logo?`<img src="${e.logo}"/>`:e.logoText, e.school, e.deg, 'education', e.id]);
+  renderList('formList', D.forms, f => ['📝', f.title, `${f.fields.length} fields`, 'forms', f.id]);
+  document.getElementById('blogCount').textContent = `${D.blogs.length} post${D.blogs.length!==1?'s':''}`;
 }
 
 function renderDash() {
   document.getElementById('dashStats').innerHTML = `
     <div class="stat-card"><div class="stat-val">${D.blogs.length}</div><div class="stat-lbl">Blog Posts</div></div>
-    <div class="stat-card"><div class="stat-val">${D.responses.length}</div><div class="stat-lbl">Form Responses</div></div>
-    <div class="stat-card"><div class="stat-val">${D.subscribers.length}</div><div class="stat-lbl">Subscribers</div></div>
+    <div class="stat-card"><div class="stat-val">${sbResponses.length}</div><div class="stat-lbl">Form Responses</div></div>
+    <div class="stat-card"><div class="stat-val">${sbSubscribers.length}</div><div class="stat-lbl">Subscribers</div></div>
     <div class="stat-card"><div class="stat-val">${D.ventures.length}</div><div class="stat-lbl">Ventures</div></div>`;
 }
 
-function mkListItem(icon, title, sub, actions) {
-  return `<div class="list-item">
-    <div class="list-item-logo">${icon}</div>
-    <div class="list-item-body"><div class="list-item-title">${title}</div><div class="list-item-sub">${sub}</div></div>
-    <div class="list-item-actions">${actions}</div>
-  </div>`;
+function renderList(elId, arr, fn) {
+  const el = document.getElementById(elId);
+  if (!arr.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);padding:16px;font-family:var(--mono)">Nothing yet.</p>`; return; }
+  el.innerHTML = arr.map(item => {
+    const [icon, title, sub, key, id] = fn(item);
+    return `<div class="list-item">
+      <div class="list-item-logo">${icon}</div>
+      <div class="list-item-body"><div class="list-item-title">${title}</div><div class="list-item-sub">${sub}</div></div>
+      <div class="list-item-actions"><button class="btn btn-danger btn-sm" onclick="delItem('${key}',${id})">Delete</button></div>
+    </div>`;
+  }).join('');
 }
-function delBtn(key, id) { return `<button class="btn btn-danger btn-sm" onclick="del('${key}',${id})">Delete</button>`; }
 
-function renderBlogs() {
-  document.getElementById('blogCount').textContent = `${D.blogs.length} post${D.blogs.length!==1?'s':''}`;
-  document.getElementById('blogList').innerHTML = D.blogs.map(b =>
-    mkListItem(b.img?`<img src="${b.img}"/>`:'📝', b.title, `${formatDate(b.date)} · ${b.read}`, delBtn('blogs',b.id))).join('');
-}
-function renderCases() {
-  document.getElementById('caseList').innerHTML = D.cases.map(c =>
-    mkListItem('📋', c.title, c.company, delBtn('cases',c.id))).join('');
-}
-function renderThinks() {
-  document.getElementById('thinkList').innerHTML = D.thinks.map(t =>
-    mkListItem('💡', t.title, t.tag, delBtn('thinks',t.id))).join('');
-}
-function renderVentures() {
-  document.getElementById('ventureList').innerHTML = D.ventures.map(v =>
-    mkListItem(v.logo?`<img src="${v.logo}"/>`:v.name[0], v.name, v.role, delBtn('ventures',v.id))).join('');
-}
-function renderExp() {
-  document.getElementById('expList').innerHTML = D.experience.map(e =>
-    mkListItem(e.logo?`<img src="${e.logo}"/>`:e.logoText, e.title, e.meta, delBtn('experience',e.id))).join('');
-}
-function renderNums() {
-  document.getElementById('numList').innerHTML = D.numbers.map(n =>
-    mkListItem('📈', n.val, n.label, delBtn('numbers',n.id))).join('');
-}
-function renderEdu() {
-  document.getElementById('eduList').innerHTML = D.education.map(e =>
-    mkListItem(e.logo?`<img src="${e.logo}"/>`:e.logoText, e.school, e.deg, delBtn('education',e.id))).join('');
-}
-function renderForms() {
-  document.getElementById('formList').innerHTML = D.forms.map(f =>
-    mkListItem('📝', f.title, `${f.fields.length} fields`, delBtn('forms',f.id))).join('');
-}
 function renderResponses() {
   const el = document.getElementById('responsesList');
-  if (!D.responses.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);font-family:var(--mono);padding:20px">No responses yet.</p>`; return; }
-  el.innerHTML = D.responses.map(r => `
+  if (!sbResponses.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);padding:20px;font-family:var(--mono)">No responses yet.</p>`; return; }
+  el.innerHTML = sbResponses.map(r => `
     <div class="resp-card">
-      <div class="resp-meta"><span class="resp-form-name">${r.formTitle}</span><span class="resp-date">${r.date}</span></div>
-      ${Object.entries(r.data).map(([k,val]) => `<div class="resp-field"><span class="resp-field-key">${k}</span>${val}</div>`).join('')}
+      <div class="resp-meta"><span class="resp-form-name">${r.form_title}</span><span class="resp-date">${new Date(r.created_at).toLocaleString()}</span></div>
+      ${Object.entries(r.data||{}).map(([k,val]) => `<div class="resp-field"><span class="resp-field-key">${k}</span>${val}</div>`).join('')}
     </div>`).join('');
 }
+
 function renderSubs() {
   const el = document.getElementById('subsList');
-  if (!D.subscribers.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);font-family:var(--mono);padding:20px">No subscribers yet.</p>`; return; }
-  el.innerHTML = D.subscribers.map(s => `<div class="sub-row"><span class="sub-email">${s.email}</span><span class="sub-date">${s.date}</span></div>`).join('');
+  if (!sbSubscribers.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);padding:20px;font-family:var(--mono)">No subscribers yet.</p>`; return; }
+  el.innerHTML = sbSubscribers.map(s => `
+    <div class="sub-row"><span class="sub-email">${s.email}</span><span class="sub-date">${new Date(s.created_at).toLocaleDateString()}</span></div>`).join('');
 }
 
-// ── ADD ACTIONS ────────────────────────
+function updateAvailUI() {
+  ['open','selective','closed'].forEach(s => {
+    document.getElementById('av-'+s)?.classList.toggle('selected', s === currentAvail);
+  });
+}
+
+// ═══════════ SAVE ALL ═══════════
+async function saveAll() {
+  try {
+    toast('Saving...', 'info');
+    await Promise.all([
+      saveProfile(D.profile),
+      saveContent('blogs', D.blogs),
+      saveContent('cases', D.cases),
+      saveContent('thinks', D.thinks),
+      saveContent('ventures', D.ventures),
+      saveContent('experience', D.experience),
+      saveContent('numbers', D.numbers),
+      saveContent('education', D.education),
+      saveContent('forms', D.forms),
+      saveContent('newsletter', D.newsletter),
+      saveContent('contact', D.contact),
+    ]);
+    renderDash();
+    toast('✓ All saved to Supabase!', 'success');
+  } catch(e) {
+    toast('Save failed: ' + e.message, 'error');
+  }
+}
+
+// ═══════════ PHOTO ═══════════
+function uploadPhoto(e) {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    temps.photoData = ev.target.result;
+    document.getElementById('photoPreview').src = ev.target.result;
+    document.getElementById('photoPrevWrap').style.display = 'block';
+    document.getElementById('photoStatus').textContent = 'Ready to save — click Save Photo';
+  };
+  r.readAsDataURL(f);
+}
+
+async function savePhoto() {
+  if (!temps.photoData) return toast('No photo selected', 'error');
+  try {
+    toast('Uploading photo...', 'info');
+    await saveMedia('profile_photo', temps.photoData);
+    D.profile.photo = temps.photoData;
+    await saveProfile(D.profile);
+    document.getElementById('photoStatus').textContent = '✓ Photo saved to database!';
+    toast('✓ Photo saved!', 'success');
+  } catch(e) {
+    toast('Upload failed: ' + e.message, 'error');
+  }
+}
+
+// ═══════════ PROFILE ═══════════
+async function saveProfileData() {
+  D.profile = {
+    ...D.profile,
+    name: v('p-name'), label: v('p-label'), tagline: v('p-tagline'),
+    tags: v('p-tags').split(',').map(t=>t.trim()),
+    statNum: v('p-statnum'), statLabel: v('p-statlabel'),
+    bio: v('p-bio'), about: v('p-about'),
+    linkedin: v('p-linkedin'), email: v('p-email'), resume: v('p-resume'),
+  };
+  try {
+    await saveProfile(D.profile);
+    toast('✓ Profile saved!', 'success');
+  } catch(e) { toast('Error: ' + e.message, 'error'); }
+}
+
+function populateProfileFields() {
+  const p = D.profile;
+  setVal('p-name', p.name); setVal('p-label', p.label); setVal('p-tagline', p.tagline);
+  setVal('p-tags', (p.tags||[]).join(', ')); setVal('p-statnum', p.statNum); setVal('p-statlabel', p.statLabel);
+  setVal('p-bio', p.bio); setVal('p-about', p.about);
+  setVal('p-linkedin', p.linkedin); setVal('p-email', p.email); setVal('p-resume', p.resume);
+}
+
+// ═══════════ CONTACT / NL ═══════════
+async function saveContactData() {
+  D.contact = { heading: v('c-heading'), desc: v('c-desc'), footerDesc: v('c-footer') };
+  await saveContent('contact', D.contact);
+  toast('✓ Saved!', 'success');
+}
+function populateContactFields() {
+  setVal('c-heading', D.contact?.heading||''); setVal('c-desc', D.contact?.desc||''); setVal('c-footer', D.contact?.footerDesc||'');
+}
+async function saveNL() {
+  D.newsletter = { title: v('nl-title'), desc: v('nl-desc') };
+  await saveContent('newsletter', D.newsletter);
+  toast('✓ Saved!', 'success');
+}
+function populateNLFields() {
+  setVal('nl-title', D.newsletter?.title||''); setVal('nl-desc', D.newsletter?.desc||'');
+}
+
+// ═══════════ AVAILABILITY ═══════════
+function setAvail(val) { currentAvail = val; updateAvailUI(); }
+async function saveAvailData() {
+  D.profile.availability = currentAvail;
+  await saveProfile(D.profile);
+  toast('✓ Status saved!', 'success');
+}
+
+// ═══════════ ADD ITEMS ═══════════
 function nid(arr) { return arr.length ? Math.max(...arr.map(x=>x.id))+1 : 1; }
-function v(id) { const el=document.getElementById(id); return el?el.value.trim():''; }
-function del(key, id) { D[key]=D[key].filter(x=>x.id!==id); saveAll(); renderAll(); }
 
-function addBlog() {
-  if (!v('b-title')) return toast('Title required','error');
+async function addBlog() {
+  if (!v('b-title')) return toast('Title required', 'error');
   D.blogs.unshift({ id:nid(D.blogs), title:v('b-title'), date:v('b-date')||new Date().toISOString().split('T')[0], read:v('b-read')||'5 min read', excerpt:v('b-excerpt'), content:v('b-content'), img:temps.blogImgData });
-  temps.blogImgData=null;
-  ['b-title','b-date','b-read','b-excerpt','b-content'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
-  document.getElementById('blogImgWrap').style.display='none';
-  saveAll(); renderAll();
-}
-function addCase() {
-  if (!v('cs-title')) return toast('Title required','error');
-  D.cases.push({ id:nid(D.cases), company:v('cs-company'), title:v('cs-title'), problem:v('cs-problem'), decision:v('cs-decision'), measured:v('cs-measured'), result:v('cs-result') });
-  ['cs-company','cs-title','cs-problem','cs-decision','cs-measured','cs-result'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
-  saveAll(); renderAll();
-}
-function addThink() {
-  if (!v('th-title')) return toast('Title required','error');
-  D.thinks.push({ id:nid(D.thinks), tag:v('th-tag'), title:v('th-title'), body:v('th-body') });
-  ['th-tag','th-title','th-body'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
-  saveAll(); renderAll();
-}
-function addVenture() {
-  if (!v('v-name')) return toast('Name required','error');
-  D.ventures.push({ id:nid(D.ventures), name:v('v-name'), logo:temps.vLogoData, role:v('v-role'), url:v('v-url')||'#', desc:v('v-desc'), stats:(v('v-stats')||'').split(',').map(s=>s.trim()).filter(Boolean) });
-  temps.vLogoData=null;
-  ['v-name','v-url','v-role','v-desc','v-stats'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
-  document.getElementById('vLogoWrap').style.display='none';
-  saveAll(); renderAll();
-}
-function addExp() {
-  if (!v('ex-title')) return toast('Title required','error');
-  D.experience.push({ id:nid(D.experience), title:v('ex-title'), logo:temps.exLogoData, logoText:v('ex-title').slice(0,2).toUpperCase(), url:v('ex-url')||'#', meta:v('ex-meta'), desc:v('ex-desc'), badge:v('ex-badge') });
-  temps.exLogoData=null;
-  ['ex-title','ex-url','ex-meta','ex-desc','ex-badge'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
-  document.getElementById('exLogoWrap').style.display='none';
-  saveAll(); renderAll();
-}
-function addNum() {
-  if (!v('n-val')) return toast('Value required','error');
-  D.numbers.push({ id:nid(D.numbers), val:v('n-val'), label:v('n-label') });
-  ['n-val','n-label'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
-  saveAll(); renderAll();
-}
-function addEdu() {
-  if (!v('ed-school')) return toast('School required','error');
-  D.education.push({ id:nid(D.education), school:v('ed-school'), logo:temps.edLogoData, logoText:v('ed-school').slice(0,2).toUpperCase(), deg:v('ed-deg'), badge:v('ed-badge'), certs:(v('ed-certs')||'').split(',').map(s=>s.trim()).filter(Boolean) });
-  temps.edLogoData=null;
-  ['ed-school','ed-deg','ed-badge','ed-certs'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
-  document.getElementById('edLogoWrap').style.display='none';
-  saveAll(); renderAll();
+  temps.blogImgData = null;
+  ['b-title','b-date','b-read','b-excerpt','b-content'].forEach(id => setVal(id,''));
+  document.getElementById('blogImgWrap').style.display = 'none';
+  await saveContent('blogs', D.blogs);
+  renderAll(); toast('✓ Post published!', 'success');
 }
 
-// ── FORM BUILDER ──────────────────────
+async function addCase() {
+  if (!v('cs-title')) return toast('Title required', 'error');
+  D.cases.push({ id:nid(D.cases), company:v('cs-company'), title:v('cs-title'), problem:v('cs-problem'), decision:v('cs-decision'), measured:v('cs-measured'), result:v('cs-result') });
+  ['cs-company','cs-title','cs-problem','cs-decision','cs-measured','cs-result'].forEach(id => setVal(id,''));
+  await saveContent('cases', D.cases);
+  renderAll(); toast('✓ Case study added!', 'success');
+}
+
+async function addThink() {
+  if (!v('th-title')) return toast('Title required', 'error');
+  D.thinks.push({ id:nid(D.thinks), tag:v('th-tag'), title:v('th-title'), body:v('th-body') });
+  ['th-tag','th-title','th-body'].forEach(id => setVal(id,''));
+  await saveContent('thinks', D.thinks);
+  renderAll(); toast('✓ Added!', 'success');
+}
+
+async function addVenture() {
+  if (!v('v-name')) return toast('Name required', 'error');
+  D.ventures.push({ id:nid(D.ventures), name:v('v-name'), logo:temps.vLogoData, role:v('v-role'), url:v('v-url')||'#', desc:v('v-desc'), stats:(v('v-stats')||'').split(',').map(s=>s.trim()).filter(Boolean) });
+  temps.vLogoData = null;
+  ['v-name','v-url','v-role','v-desc','v-stats'].forEach(id => setVal(id,''));
+  document.getElementById('vLogoWrap').style.display = 'none';
+  await saveContent('ventures', D.ventures);
+  renderAll(); toast('✓ Venture added!', 'success');
+}
+
+async function addExp() {
+  if (!v('ex-title')) return toast('Title required', 'error');
+  D.experience.push({ id:nid(D.experience), title:v('ex-title'), logo:temps.exLogoData, logoText:v('ex-title').slice(0,2).toUpperCase(), url:v('ex-url')||'#', meta:v('ex-meta'), desc:v('ex-desc'), badge:v('ex-badge') });
+  temps.exLogoData = null;
+  ['ex-title','ex-url','ex-meta','ex-desc','ex-badge'].forEach(id => setVal(id,''));
+  document.getElementById('exLogoWrap').style.display = 'none';
+  await saveContent('experience', D.experience);
+  renderAll(); toast('✓ Role added!', 'success');
+}
+
+async function addNum() {
+  if (!v('n-val')) return toast('Value required', 'error');
+  D.numbers.push({ id:nid(D.numbers), val:v('n-val'), label:v('n-label') });
+  ['n-val','n-label'].forEach(id => setVal(id,''));
+  await saveContent('numbers', D.numbers);
+  renderAll(); toast('✓ Added!', 'success');
+}
+
+async function addEdu() {
+  if (!v('ed-school')) return toast('School required', 'error');
+  D.education.push({ id:nid(D.education), school:v('ed-school'), logo:temps.edLogoData, logoText:v('ed-school').slice(0,2).toUpperCase(), deg:v('ed-deg'), badge:v('ed-badge'), certs:(v('ed-certs')||'').split(',').map(s=>s.trim()).filter(Boolean) });
+  temps.edLogoData = null;
+  ['ed-school','ed-deg','ed-badge','ed-certs'].forEach(id => setVal(id,''));
+  document.getElementById('edLogoWrap').style.display = 'none';
+  await saveContent('education', D.education);
+  renderAll(); toast('✓ Added!', 'success');
+}
+
+async function delItem(key, id) {
+  if (!confirm('Delete this item?')) return;
+  D[key] = D[key].filter(x => x.id !== id);
+  await saveContent(key, D[key]);
+  renderAll(); toast('✓ Deleted', 'success');
+}
+
+// ═══════════ FORM BUILDER ═══════════
 function addFBField(type) {
   temps.fbFields.push({ type, label:'', options:'' });
   renderFBFields();
@@ -743,125 +774,78 @@ function renderFBFields() {
     <div class="fb-field-row">
       <span class="fb-field-type">${f.type}</span>
       <input class="fb-field-label" placeholder="Label" value="${f.label}" oninput="temps.fbFields[${i}].label=this.value"/>
-      ${f.type==='select'?`<input class="fb-field-label" placeholder="Options (comma sep)" value="${f.options}" oninput="temps.fbFields[${i}].options=this.value"/>`:''}
+      ${f.type==='select'?`<input class="fb-field-label" placeholder="Options (comma sep)" oninput="temps.fbFields[${i}].options=this.value"/>`:''}
       <button class="btn btn-danger btn-sm" onclick="temps.fbFields.splice(${i},1);renderFBFields()">✕</button>
     </div>`).join('');
 }
-function publishForm() {
+async function publishForm() {
   if (!v('fb-title')) return toast('Title required','error');
   if (!temps.fbFields.length) return toast('Add at least one field','error');
   D.forms.push({ id:nid(D.forms), title:v('fb-title'), desc:v('fb-desc'), btnText:v('fb-btn')||'Submit →', thanks:v('fb-thanks')||'Thank you!', fields:JSON.parse(JSON.stringify(temps.fbFields)) });
-  temps.fbFields=[];
-  ['fb-title','fb-desc','fb-btn','fb-thanks'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
+  temps.fbFields = [];
+  ['fb-title','fb-desc','fb-btn','fb-thanks'].forEach(id => setVal(id,''));
   renderFBFields();
-  saveAll(); renderAll();
+  await saveContent('forms', D.forms);
+  renderAll(); toast('✓ Form published!', 'success');
 }
 
-// ── SAVE / LOAD ────────────────────────
-function saveProfile() {
-  D.profile = {
-    ...D.profile,
-    name:v('p-name'), label:v('p-label'), tagline:v('p-tagline'),
-    tags:v('p-tags').split(',').map(t=>t.trim()),
-    statNum:v('p-statnum'), statLabel:v('p-statlabel'),
-    bio:v('p-bio'), about:v('p-about'),
-    linkedin:v('p-linkedin'), email:v('p-email'), resume:v('p-resume'),
-  };
-  saveAll();
+// ═══════════ EXPORTS ═══════════
+async function exportCSV() {
+  const rows = await loadResponses();
+  if (!rows.length) return toast('No responses yet','error');
+  const headers = ['Form','Date',...new Set(rows.flatMap(r=>Object.keys(r.data||{})))];
+  const csv = [headers,...rows.map(r=>[r.form_title,new Date(r.created_at).toLocaleString(),...headers.slice(2).map(h=>(r.data||{})[h]||'')])].map(r=>r.map(c=>`"${(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  dlCSV(csv,'responses.csv');
 }
-function loadProfileFields() {
-  const p=D.profile;
-  setVal('p-name',p.name); setVal('p-label',p.label); setVal('p-tagline',p.tagline);
-  setVal('p-tags',(p.tags||[]).join(', ')); setVal('p-statnum',p.statNum); setVal('p-statlabel',p.statLabel);
-  setVal('p-bio',p.bio); setVal('p-about',p.about);
-  setVal('p-linkedin',p.linkedin); setVal('p-email',p.email); setVal('p-resume',p.resume);
+async function exportSubs() {
+  const rows = await loadSubscribers();
+  if (!rows.length) return toast('No subscribers yet','error');
+  dlCSV([['Email','Date'],...rows.map(s=>[s.email,new Date(s.created_at).toLocaleDateString()])].map(r=>r.join(',')).join('\n'),'subscribers.csv');
 }
-function saveContact() {
-  D.contact = { heading:v('c-heading'), desc:v('c-desc'), footerDesc:v('c-footer') };
-  saveAll();
-}
-function loadContactFields() {
-  setVal('c-heading',D.contact?.heading||''); setVal('c-desc',D.contact?.desc||''); setVal('c-footer',D.contact?.footerDesc||'');
-}
-function saveNL() {
-  D.newsletter = { title:v('nl-title'), desc:v('nl-desc') };
-  saveAll();
-}
-function loadNLFields() {
-  setVal('nl-title',D.newsletter?.title||''); setVal('nl-desc',D.newsletter?.desc||'');
-}
-function setVal(id,val) { const el=document.getElementById(id); if(el)el.value=val||''; }
-
-function saveAll() {
-  saveData(D);
-  toast('✓ Saved');
-  renderDash();
+function dlCSV(csv,name) {
+  const a = document.createElement('a'); a.href = 'data:text/csv;charset=utf-8,'+encodeURIComponent(csv); a.download = name; a.click();
 }
 
-// ── PHOTO / LOGOS ──────────────────────
-function handleImg(e, dataKey, previewId, wrapId) {
-  const f=e.target.files[0]; if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    temps[dataKey]=ev.target.result;
-    const prev=document.getElementById(previewId);
-    const wrap=document.getElementById(wrapId);
-    if(prev){prev.src=ev.target.result;}
-    if(wrap){wrap.style.display='block';}
+// ═══════════ SECURITY ═══════════
+function changePass() {
+  const cur = document.getElementById('sec-cur').value;
+  const nw = document.getElementById('sec-new').value;
+  const con = document.getElementById('sec-con').value;
+  if (cur !== ADMIN_PASSWORD) return toast('Current password wrong','error');
+  if (nw !== con) return toast('Passwords do not match','error');
+  if (nw.length < 8) return toast('Min 8 characters','error');
+  toast('✓ Passwords match! Update ADMIN_PASSWORD in assets/data.js and push.', 'success');
+}
+async function resetAllData() {
+  D = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  await saveAll();
+  location.reload();
+}
+
+// ═══════════ IMAGE TEMP ═══════════
+function handleImgTemp(e, dataKey, previewId, wrapId) {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    temps[dataKey] = ev.target.result;
+    const prev = document.getElementById(previewId);
+    const wrap = document.getElementById(wrapId);
+    if (prev) { prev.src = ev.target.result; prev.style.display = 'block'; }
+    if (wrap) { wrap.style.display = 'block'; }
   };
   r.readAsDataURL(f);
 }
-function applyPhoto() {
-  if (!temps.photo) return;
-  D.profile.photo = temps.photo;
-  saveAll();
-}
 
-// ── AVAILABILITY ───────────────────────
-function setAvail(val) {
-  currentAvail=val;
-  ['open','selective','closed'].forEach(s=>{
-    const el=document.getElementById('av-'+s);
-    if(el)el.style.background=s===val?'#f0f0f0':'';
-  });
-}
-function saveAvail() { D.profile.availability=currentAvail; saveAll(); }
-
-// ── SECURITY ───────────────────────────
-function changePass() {
-  const cur=document.getElementById('sec-cur').value;
-  const nw=document.getElementById('sec-new').value;
-  const con=document.getElementById('sec-con').value;
-  if(cur!==ADMIN_PASSWORD){toast('Current password incorrect','error');return;}
-  if(nw!==con){toast('Passwords do not match','error');return;}
-  if(nw.length<8){toast('Min 8 characters','error');return;}
-  toast('⚠️ Update password in data.js file to persist changes');
-}
-
-// ── EXPORTS ────────────────────────────
-function exportCSV() {
-  if(!D.responses.length) return toast('No responses yet','error');
-  const headers=['Form','Date',...new Set(D.responses.flatMap(r=>Object.keys(r.data)))];
-  const rows=D.responses.map(r=>[r.formTitle,r.date,...headers.slice(2).map(h=>r.data[h]||'')]);
-  dlCSV([headers,...rows],'responses.csv');
-}
-function exportSubs() {
-  if(!D.subscribers.length) return toast('No subscribers yet','error');
-  dlCSV([['Email','Date'],...D.subscribers.map(s=>[s.email,s.date])],'subscribers.csv');
-}
-function dlCSV(rows,name) {
-  const csv=rows.map(r=>r.map(c=>`"${(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-  const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv); a.download=name; a.click();
-}
-function resetData() { localStorage.clear(); location.reload(); }
-
-// ── TOAST ──────────────────────────────
-function toast(msg='✓ Saved', type='') {
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.className='toast'+(type==='error'?' error':'');
+// ═══════════ HELPERS ═══════════
+function v(id) { const el=document.getElementById(id); return el?el.value.trim():''; }
+function setVal(id, val) { const el=document.getElementById(id); if(el) el.value=val||''; }
+function toast(msg='✓', type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (type==='error'?' error':type==='success'?' success':'');
   t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.classList.remove('show'), 2800);
 }
 </script>
 </body>
