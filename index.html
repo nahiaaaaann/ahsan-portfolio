@@ -4,182 +4,290 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Ahsan Foez Nahian</title>
+<meta name="description" content="Ahsan Foez Nahian — Founder, PM, and growth strategist. Built products reaching 1M+ students."/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#f5f2ee;--bg2:#ede9e3;--card:#fff;--border:#e2ddd6;--text:#1a1a1a;--muted:#888;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,.sec-title,.hero-name{font-family:var(--serif)}
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 52px;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
-.nav-brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
-.nav-avatar{width:34px;height:34px;border-radius:50%;overflow:hidden;border:1.5px solid var(--border);background:linear-gradient(135deg,#444,#111);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff}
+
+/* ── NAV ── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;backdrop-filter:blur(8px)}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+.nav-avatar{width:32px;height:32px;border-radius:50%;overflow:hidden;border:1.5px solid var(--border);background:linear-gradient(135deg,#444,#111);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;flex-shrink:0}
 .nav-avatar img{width:100%;height:100%;object-fit:cover;object-position:top}
-.nav-links{display:flex;gap:26px;font-size:13px;color:var(--muted)}
+.nav-links{display:flex;gap:22px;font-size:13px;color:var(--muted)}
 .nav-links a:hover,.nav-links a.active{color:var(--text)}
-.hero{display:grid;grid-template-columns:220px 1fr;padding:64px 52px 56px;max-width:1160px;margin:0 auto}
-.hero-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-family:var(--mono)}
-.hero-pic{width:110px;height:110px;border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:16px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:36px;color:var(--muted)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;top:57px;background:var(--bg);z-index:199;padding:24px;flex-direction:column;gap:4px;border-top:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:18px;font-weight:500;font-family:var(--serif);color:var(--text);padding:14px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a:last-child{border-bottom:none}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:200px 1fr;padding:52px 48px;max-width:1160px;margin:0 auto}
+.hero-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-family:var(--mono)}
+.hero-pic{width:100px;height:100px;border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:32px;color:var(--muted)}
 .hero-pic img{width:100%;height:100%;object-fit:cover;object-position:top}
-.hero-name{font-size:22px;font-weight:700;margin-bottom:7px;letter-spacing:-.01em}
-.hero-tagline{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:18px;max-width:185px;font-style:italic;font-family:var(--serif)}
-.hero-socials{display:flex;gap:8px;flex-wrap:wrap}
-.hero-socials a{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:4px 11px;background:var(--card);transition:.2s}
+.hero-name{font-size:20px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+.hero-tagline{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px;max-width:185px;font-style:italic;font-family:var(--serif)}
+.hero-socials{display:flex;gap:6px;flex-wrap:wrap}
+.hero-socials a{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:4px 10px;background:var(--card);transition:.2s}
 .hero-socials a:hover{color:var(--text);border-color:#999}
-.hero-right{padding-left:52px;border-left:1px solid var(--border)}
-.hero-tags{display:flex;gap:0;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;flex-wrap:wrap;font-family:var(--mono)}
-.hero-tags span{padding-right:16px;margin-right:16px;border-right:1px solid var(--border)}
+.hero-right{padding-left:48px;border-left:1px solid var(--border)}
+.hero-tags{display:flex;gap:0;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;flex-wrap:wrap;font-family:var(--mono)}
+.hero-tags span{padding-right:14px;margin-right:14px;border-right:1px solid var(--border)}
 .hero-tags span:last-child{border-right:none}
-.hero-bigstat{font-size:13px;color:var(--muted);margin-bottom:22px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:10px;display:inline-flex;align-items:center;gap:12px}
-.hero-bigstat strong{font-size:24px;color:var(--text);font-family:var(--serif);font-weight:700}
-.hero-bio{font-size:16px;line-height:1.85;color:#2a2a2a;margin-bottom:20px;font-weight:300}
+.hero-bigstat{font-size:13px;color:var(--muted);margin-bottom:20px;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;display:inline-flex;align-items:center;gap:10px}
+.hero-bigstat strong{font-size:22px;color:var(--text);font-family:var(--serif);font-weight:700}
+.hero-bio{font-size:15px;line-height:1.85;color:#2a2a2a;margin-bottom:18px;font-weight:300}
 .hero-bio strong{font-weight:600}.hero-bio em{font-family:var(--serif);font-style:italic}
-.hero-cta{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;padding:12px 24px;border-radius:8px;font-size:13px;font-weight:500;margin-bottom:20px;cursor:pointer;border:none;transition:.2s;letter-spacing:.02em}
-.hero-cta:hover{background:#333;transform:translateY(-1px)}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;padding:11px 22px;border-radius:8px;font-size:13px;font-weight:500;margin-bottom:18px;cursor:pointer;border:none;transition:.2s;letter-spacing:.02em;width:100%;justify-content:center;max-width:320px}
+.hero-cta:hover{background:#333}
 .about-toggle{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;display:inline-block;font-family:var(--mono)}
-.about-extra{font-size:14px;color:#555;line-height:1.75;margin-top:14px;display:none;border-top:1px solid var(--border);padding-top:14px;font-style:italic;font-family:var(--serif)}
+.about-extra{font-size:14px;color:#555;line-height:1.75;margin-top:12px;display:none;border-top:1px solid var(--border);padding-top:12px;font-style:italic;font-family:var(--serif)}
 .about-extra.open{display:block}
-hr.divider{border:none;border-top:1px solid var(--border);margin:0 52px}
-.section-wrap{border-top:1px solid var(--border)}
-.section{max-width:1160px;margin:0 auto;padding:62px 52px}
-.sec-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:38px;align-items:start}
-.sec-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-family:var(--mono)}
-.sec-title{font-size:26px;font-weight:600;letter-spacing:-.02em}
-.sec-desc{font-size:14px;color:var(--muted);line-height:1.7;padding-top:26px;font-style:italic;font-family:var(--serif)}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.blog-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.2s;cursor:pointer}
-.blog-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.08);transform:translateY(-2px)}
-.blog-thumb{width:100%;height:160px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden}
-.blog-thumb img{width:100%;height:100%;object-fit:cover}
-.blog-body{padding:18px}
-.blog-date{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-family:var(--mono)}
-.blog-title{font-size:15px;font-weight:600;line-height:1.35;margin-bottom:8px;font-family:var(--serif)}
-.blog-excerpt{font-size:13px;color:#666;line-height:1.55;font-weight:300}
-.blog-read{font-size:11px;color:var(--muted);margin-top:12px;font-family:var(--mono)}
-.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.case-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:26px;transition:.2s}
-.case-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.07);transform:translateY(-2px)}
-.case-company{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-family:var(--mono)}
-.case-title{font-size:17px;font-weight:600;margin-bottom:16px;line-height:1.3;font-family:var(--serif)}
-.case-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
-.case-step-label{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:2px 7px;white-space:nowrap;margin-top:2px;flex-shrink:0;font-family:var(--mono)}
-.case-step-text{font-size:13px;color:#555;line-height:1.55;font-weight:300}
-.case-result{background:var(--bg);border-left:2px solid #1a1a1a;padding:10px 14px;border-radius:0 6px 6px 0;font-size:13px;font-weight:500;margin-top:14px;font-family:var(--mono)}
-.thinking-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.think-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:.2s}
-.think-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.think-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;font-family:var(--mono)}
-.think-title{font-size:15px;font-weight:600;margin-bottom:10px;line-height:1.35;font-family:var(--serif)}
-.think-body{font-size:13px;color:#555;line-height:1.65;font-weight:300}
-.ventures-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.venture-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;gap:16px;transition:.2s;cursor:pointer;position:relative}
-.venture-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
-.venture-card .ext-link{position:absolute;top:14px;right:16px;font-size:11px;color:var(--muted);font-family:var(--mono);opacity:0;transition:.2s}
-.venture-card:hover .ext-link{opacity:1}
-.v-logo{width:44px;height:44px;border-radius:10px;overflow:hidden;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;flex-shrink:0;font-family:var(--serif)}
-.v-logo img{width:100%;height:100%;object-fit:cover}
-.v-name{font-weight:600;font-size:15px;margin-bottom:2px;font-family:var(--serif)}
-.v-role{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-family:var(--mono)}
-.v-desc{font-size:13px;color:#555;line-height:1.55;margin-bottom:10px;font-weight:300}
-.v-stats{display:flex;flex-wrap:wrap;gap:6px}
-.v-stat{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 9px;color:#666;font-family:var(--mono)}
-.exp-list{display:flex;flex-direction:column}
-.exp-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;display:flex;gap:16px}
-.exp-spacer{height:1px;background:var(--border);margin:0 16px}
-.exp-logo{width:42px;height:42px;border-radius:9px;overflow:hidden;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;color:var(--muted);font-family:var(--mono)}
-.exp-logo img{width:100%;height:100%;object-fit:cover}
-.exp-title{font-weight:600;font-size:14px}
-.exp-badge{font-size:9px;padding:2px 8px;border-radius:20px;background:#1a1a1a;color:#fff;letter-spacing:.06em;font-family:var(--mono)}
-.exp-meta{font-size:11px;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
-.exp-desc{font-size:13px;color:#555;line-height:1.55;font-weight:300}
-.nums-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.num-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
-.num-val{font-size:34px;font-weight:700;font-family:var(--serif);margin-bottom:4px;letter-spacing:-.02em}
-.num-label{font-size:13px;color:var(--muted);font-weight:300}
-.edu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:26px;display:flex;gap:20px;margin-bottom:16px}
-.edu-icon{width:48px;height:48px;border-radius:10px;overflow:hidden;background:#1a1a1a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;font-family:var(--mono)}
-.edu-icon img{width:100%;height:100%;object-fit:cover}
-.edu-school{font-weight:600;font-size:16px;margin-bottom:2px;font-family:var(--serif)}
-.edu-deg{font-size:13px;color:var(--muted);margin-bottom:10px;font-weight:300}
-.edu-badge{display:inline-block;background:#fff8e1;border:1px solid #f0d060;border-radius:4px;font-size:11px;padding:3px 10px;color:#7a6010;font-weight:500;margin-bottom:10px;font-family:var(--mono)}
-.edu-tags{display:flex;flex-wrap:wrap;gap:8px}
-.edu-tag{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:3px 10px;color:#666;font-family:var(--mono)}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px}
-.skill-cat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:11px;font-family:var(--mono)}
-.skill-list{list-style:none;display:flex;flex-direction:column;gap:7px}
-.skill-list li{font-size:13px;color:#444;display:flex;align-items:center;gap:8px;font-weight:300}
-.skill-list li::before{content:'→';color:var(--muted);font-size:11px;font-family:var(--mono)}
-.newsletter-wrap{background:#1a1a1a;border-radius:14px;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.newsletter-wrap h3{font-size:22px;font-weight:600;color:#fff;margin-bottom:6px;letter-spacing:-.02em}
-.newsletter-wrap p{font-size:14px;color:#aaa;max-width:380px;line-height:1.65;font-style:italic;font-family:var(--serif)}
-.nl-form{display:flex;gap:8px;flex-wrap:wrap}
-.nl-input{padding:12px 16px;border-radius:8px;border:none;font-size:13px;font-family:var(--sans);background:#2a2a2a;color:#fff;outline:none;width:240px;transition:.2s}
-.nl-input::placeholder{color:#666}
-.nl-input:focus{background:#333}
-.nl-btn{background:#fff;color:#1a1a1a;padding:12px 22px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:.2s}
-.nl-btn:hover{background:#e8e8e8}
-.nl-subs{font-size:11px;color:#555;margin-top:8px;font-family:var(--mono)}
-.forms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.form-display-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:.2s}
-.form-display-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);transform:translateY(-2px)}
-.fdc-title{font-size:16px;font-weight:600;font-family:var(--serif);margin-bottom:6px}
-.fdc-desc{font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:300}
-.fdc-fields{display:flex;gap:6px;flex-wrap:wrap}
-.fdc-field-tag{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;color:#666;font-family:var(--mono)}
-.fdc-btn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:#1a1a1a;color:#fff;padding:10px 18px;border-radius:7px;font-size:13px;border:none;cursor:pointer}
-.contact-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:38px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.ct-text h3{font-size:24px;font-weight:600;margin-bottom:8px;letter-spacing:-.02em}
-.ct-text p{font-size:14px;color:var(--muted);max-width:420px;line-height:1.65;font-weight:300;font-style:italic;font-family:var(--serif)}
-.ct-btns{display:flex;gap:10px;flex-wrap:wrap}
-.ct-btn-p{background:#1a1a1a;color:#fff;padding:12px 24px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:.2s}
-.ct-btn-p:hover{background:#333;transform:translateY(-1px)}
-.ct-btn-s{background:var(--bg);color:var(--text);padding:12px 22px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);transition:.2s}
-.ct-btn-s:hover{background:var(--bg2)}
-.footer-outer{border-top:1px solid var(--border)}
-footer{max-width:1160px;margin:0 auto;padding:46px 52px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:28px}
-.footer-brand{font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px;font-family:var(--serif)}
-.footer-desc{font-size:13px;color:var(--muted);line-height:1.65;font-weight:300;font-style:italic}
-.footer-col h4{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:13px;font-family:var(--mono)}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-col ul li a{font-size:13px;color:#666;font-weight:300}.footer-col ul li a:hover{color:var(--text)}
-.footer-bottom{display:flex;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);font-family:var(--mono)}
-.footer-disc{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:14px;font-family:var(--serif)}
-.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:#1a1a1a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;opacity:0;transition:.3s;z-index:99;border:none}
-.scroll-top.visible{opacity:1}
-.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);overflow-y:auto;padding:40px 20px}
-.modal-overlay.open{display:flex}
-.modal-box{background:var(--card);border-radius:16px;max-width:700px;width:100%;margin:auto;padding:40px 48px;position:relative}
-.modal-close{position:absolute;top:16px;right:18px;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--mono);color:var(--muted)}
-.modal-title{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1.3;margin-bottom:16px}
-.modal-meta{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
-.modal-content{font-size:15px;line-height:1.85;color:#333;font-weight:300;white-space:pre-wrap}
-.modal-img{width:100%;border-radius:10px;margin-bottom:24px;object-fit:cover;max-height:300px}
-.form-modal-box{background:var(--card);border-radius:16px;max-width:560px;width:100%;margin:auto;padding:40px;position:relative}
-.dyn-field{margin-bottom:18px}
-.dyn-field label{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
-.dyn-field input,.dyn-field textarea,.dyn-field select{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:var(--sans);background:var(--bg);outline:none;transition:.2s;color:var(--text)}
-.dyn-field input:focus,.dyn-field textarea:focus{border-color:#999;background:#fff}
-.dyn-field textarea{min-height:90px;resize:vertical}
-.submit-btn{width:100%;background:#1a1a1a;color:#fff;padding:13px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;transition:.2s;margin-top:8px}
-.submit-btn:hover{background:#333}
-.form-success{text-align:center;padding:20px 0}
-.form-success .check{font-size:40px;margin-bottom:12px}
-.form-success h4{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:8px}
-.form-success p{font-size:14px;color:var(--muted);font-style:italic}
 .avail-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-family:var(--mono);padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--card);margin-bottom:12px}
 .avail-dot{width:7px;height:7px;border-radius:50%}
 .avail-dot.green{background:#22c55e}
 .avail-dot.yellow{background:#eab308}
 .avail-dot.red{background:#ef4444}
+
+hr.divider{border:none;border-top:1px solid var(--border);margin:0 24px}
+.section-wrap{border-top:1px solid var(--border)}
+.section{max-width:1160px;margin:0 auto;padding:48px 24px}
+.sec-header{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px;align-items:start}
+.sec-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:var(--mono)}
+.sec-title{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sec-desc{font-size:14px;color:var(--muted);line-height:1.7;padding-top:24px;font-style:italic;font-family:var(--serif)}
+
+/* ── BLOGS ── */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.2s;cursor:pointer}
+.blog-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.08);transform:translateY(-2px)}
+.blog-thumb{width:100%;height:150px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:28px;overflow:hidden}
+.blog-thumb img{width:100%;height:100%;object-fit:cover}
+.blog-body{padding:16px}
+.blog-date{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:var(--mono)}
+.blog-title{font-size:14px;font-weight:600;line-height:1.35;margin-bottom:7px;font-family:var(--serif)}
+.blog-excerpt{font-size:12px;color:#666;line-height:1.55;font-weight:300}
+.blog-read{font-size:11px;color:var(--muted);margin-top:10px;font-family:var(--mono)}
+
+/* ── CASES ── */
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:.2s}
+.case-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
+.case-company{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:var(--mono)}
+.case-title{font-size:16px;font-weight:600;margin-bottom:14px;line-height:1.3;font-family:var(--serif)}
+.case-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.case-step-label{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:2px 6px;white-space:nowrap;margin-top:2px;flex-shrink:0;font-family:var(--mono)}
+.case-step-text{font-size:13px;color:#555;line-height:1.5;font-weight:300}
+.case-result{background:var(--bg);border-left:2px solid #1a1a1a;padding:9px 12px;border-radius:0 6px 6px 0;font-size:12px;font-weight:500;margin-top:12px;font-family:var(--mono)}
+
+/* ── THINKING ── */
+.thinking-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.think-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:.2s}
+.think-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.think-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:var(--mono)}
+.think-title{font-size:14px;font-weight:600;margin-bottom:9px;line-height:1.35;font-family:var(--serif)}
+.think-body{font-size:13px;color:#555;line-height:1.65;font-weight:300}
+
+/* ── VENTURES ── */
+.ventures-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.venture-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;gap:14px;transition:.2s;cursor:pointer;position:relative}
+.venture-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+.venture-card .ext-link{position:absolute;top:12px;right:14px;font-size:10px;color:var(--muted);font-family:var(--mono);opacity:0;transition:.2s}
+.venture-card:hover .ext-link{opacity:1}
+.v-logo{width:40px;height:40px;border-radius:9px;overflow:hidden;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0;font-family:var(--serif)}
+.v-logo img{width:100%;height:100%;object-fit:cover}
+.v-name{font-weight:600;font-size:14px;margin-bottom:2px;font-family:var(--serif)}
+.v-role{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px;font-family:var(--mono)}
+.v-desc{font-size:12px;color:#555;line-height:1.55;margin-bottom:9px;font-weight:300}
+.v-stats{display:flex;flex-wrap:wrap;gap:5px}
+.v-stat{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;color:#666;font-family:var(--mono)}
+
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column}
+.exp-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;display:flex;gap:14px}
+.exp-spacer{height:1px;background:var(--border);margin:0 14px}
+.exp-logo{width:40px;height:40px;border-radius:8px;overflow:hidden;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;color:var(--muted);font-family:var(--mono)}
+.exp-logo img{width:100%;height:100%;object-fit:cover}
+.exp-title{font-weight:600;font-size:14px}
+.exp-badge{font-size:9px;padding:2px 8px;border-radius:20px;background:#1a1a1a;color:#fff;letter-spacing:.06em;font-family:var(--mono)}
+.exp-meta{font-size:11px;color:var(--muted);margin-bottom:4px;font-family:var(--mono)}
+.exp-desc{font-size:13px;color:#555;line-height:1.55;font-weight:300}
+
+/* ── NUMBERS ── */
+.nums-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.num-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.num-val{font-size:30px;font-weight:700;font-family:var(--serif);margin-bottom:3px;letter-spacing:-.02em}
+.num-label{font-size:12px;color:var(--muted);font-weight:300}
+
+/* ── EDUCATION ── */
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;gap:18px;margin-bottom:14px}
+.edu-icon{width:44px;height:44px;border-radius:9px;overflow:hidden;background:#1a1a1a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;font-family:var(--mono)}
+.edu-icon img{width:100%;height:100%;object-fit:cover}
+.edu-school{font-weight:600;font-size:15px;margin-bottom:2px;font-family:var(--serif)}
+.edu-deg{font-size:13px;color:var(--muted);margin-bottom:9px;font-weight:300}
+.edu-badge{display:inline-block;background:#fff8e1;border:1px solid #f0d060;border-radius:4px;font-size:11px;padding:3px 10px;color:#7a6010;font-weight:500;margin-bottom:9px;font-family:var(--mono)}
+.edu-tags{display:flex;flex-wrap:wrap;gap:6px}
+.edu-tag{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:3px 9px;color:#666;font-family:var(--mono)}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.skill-cat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-family:var(--mono)}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.skill-list li{font-size:13px;color:#444;display:flex;align-items:center;gap:8px;font-weight:300}
+.skill-list li::before{content:'→';color:var(--muted);font-size:11px;font-family:var(--mono)}
+
+/* ── NEWSLETTER ── */
+.newsletter-wrap{background:#1a1a1a;border-radius:14px;padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.newsletter-wrap h3{font-size:20px;font-weight:600;color:#fff;margin-bottom:6px;letter-spacing:-.02em}
+.newsletter-wrap p{font-size:13px;color:#aaa;max-width:360px;line-height:1.65;font-style:italic;font-family:var(--serif)}
+.nl-form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.nl-input{padding:11px 14px;border-radius:8px;border:none;font-size:13px;font-family:var(--sans);background:#2a2a2a;color:#fff;outline:none;flex:1;min-width:180px;transition:.2s}
+.nl-input::placeholder{color:#666}
+.nl-input:focus{background:#333}
+.nl-btn{background:#fff;color:#1a1a1a;padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:.2s;white-space:nowrap}
+.nl-btn:hover{background:#e8e8e8}
+.nl-subs{font-size:11px;color:#555;margin-top:8px;font-family:var(--mono)}
+
+/* ── FORMS ── */
+.forms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.form-display-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:.2s}
+.form-display-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);transform:translateY(-2px)}
+.fdc-title{font-size:15px;font-weight:600;font-family:var(--serif);margin-bottom:5px}
+.fdc-desc{font-size:13px;color:var(--muted);margin-bottom:14px;font-weight:300}
+.fdc-fields{display:flex;gap:6px;flex-wrap:wrap}
+.fdc-field-tag{font-size:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;color:#666;font-family:var(--mono)}
+.fdc-btn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:#1a1a1a;color:#fff;padding:10px 16px;border-radius:7px;font-size:13px;border:none;cursor:pointer;font-family:var(--sans)}
+
+/* ── CONTACT ── */
+.contact-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:34px;display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+.ct-text h3{font-size:22px;font-weight:600;margin-bottom:7px;letter-spacing:-.02em}
+.ct-text p{font-size:14px;color:var(--muted);max-width:400px;line-height:1.65;font-weight:300;font-style:italic;font-family:var(--serif)}
+.ct-btns{display:flex;gap:10px;flex-wrap:wrap}
+.ct-btn-p{background:#1a1a1a;color:#fff;padding:12px 22px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:.2s}
+.ct-btn-p:hover{background:#333}
+.ct-btn-s{background:var(--bg);color:var(--text);padding:12px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);transition:.2s}
+
+/* ── FOOTER ── */
+.footer-outer{border-top:1px solid var(--border)}
+footer{max-width:1160px;margin:0 auto;padding:40px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:24px}
+.footer-brand{font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:7px;font-family:var(--serif)}
+.footer-desc{font-size:13px;color:var(--muted);line-height:1.65;font-weight:300;font-style:italic}
+.footer-col h4{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:11px;font-family:var(--mono)}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.footer-col ul li a{font-size:13px;color:#666;font-weight:300}
+.footer-col ul li a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:18px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);font-family:var(--mono);flex-wrap:wrap;gap:8px}
+.footer-disc{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:12px;font-family:var(--serif)}
+
+.scroll-top{position:fixed;bottom:24px;right:24px;width:42px;height:42px;background:#1a1a1a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;opacity:0;transition:.3s;z-index:99;border:none}
+.scroll-top.visible{opacity:1}
+
+/* ── MODALS ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);overflow-y:auto;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--card);border-radius:16px;max-width:680px;width:100%;margin:auto;padding:32px;position:relative}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--mono);color:var(--muted)}
+.modal-title{font-family:var(--serif);font-size:22px;font-weight:700;line-height:1.3;margin-bottom:14px}
+.modal-meta{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.modal-content{font-size:14px;line-height:1.85;color:#333;font-weight:300;white-space:pre-wrap}
+.modal-img{width:100%;border-radius:10px;margin-bottom:20px;object-fit:cover;max-height:260px}
+.form-modal-box{background:var(--card);border-radius:16px;max-width:540px;width:100%;margin:auto;padding:32px;position:relative}
+.dyn-field{margin-bottom:16px}
+.dyn-field label{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
+.dyn-field input,.dyn-field textarea,.dyn-field select{width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:var(--sans);background:var(--bg);outline:none;transition:.2s;color:var(--text)}
+.dyn-field input:focus,.dyn-field textarea:focus{border-color:#999;background:#fff}
+.dyn-field textarea{min-height:80px;resize:vertical}
+.submit-btn{width:100%;background:#1a1a1a;color:#fff;padding:13px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;transition:.2s;margin-top:8px}
+.submit-btn:hover{background:#333}
+.form-success{text-align:center;padding:24px 0}
+.form-success .check{font-size:36px;margin-bottom:10px}
+.form-success h4{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:7px}
+.form-success p{font-size:13px;color:var(--muted);font-style:italic}
+
+/* ═══════════════════════════
+   MOBILE RESPONSIVE
+═══════════════════════════ */
 @media(max-width:768px){
-  .hero{grid-template-columns:1fr}.hero-right{padding-left:0;border-left:none;border-top:1px solid var(--border);padding-top:28px;margin-top:28px}
-  .case-grid,.ventures-grid,.thinking-grid,.skills-grid,.nums-grid,.blog-grid,.forms-grid{grid-template-columns:1fr}
-  .sec-header,.footer-grid{grid-template-columns:1fr}
-  nav,.hero,.section,footer{padding-left:20px;padding-right:20px}
+  /* Nav */
+  .nav-links{display:none}
+  .hamburger{display:flex}
+
+  /* Hero */
+  .hero{grid-template-columns:1fr;padding:28px 20px;gap:0}
+  .hero-left{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+  .hero-left-top{display:flex;align-items:center;gap:16px;margin-bottom:12px}
+  .hero-pic{width:72px;height:72px;border-radius:10px;margin-bottom:0;flex-shrink:0}
+  .hero-name{font-size:18px}
+  .hero-tagline{font-size:12px;max-width:100%}
+  .hero-right{padding-left:0;border-left:none}
+  .hero-tags{margin-bottom:16px}
+  .hero-tags span{font-size:9px;padding-right:10px;margin-right:10px}
+  .hero-bigstat{width:100%;margin-bottom:16px}
+  .hero-bigstat strong{font-size:20px}
+  .hero-bio{font-size:14px;margin-bottom:16px}
+  .hero-cta{max-width:100%;font-size:14px}
+
+  /* Sections */
+  .section{padding:36px 20px}
+  .sec-header{grid-template-columns:1fr;gap:6px;margin-bottom:24px}
+  .sec-desc{padding-top:0;font-size:13px}
+  .sec-title{font-size:22px}
   hr.divider{margin:0 20px}
-  .newsletter-wrap{flex-direction:column}.nl-input{width:100%}
+
+  /* All grids → 1 column */
+  .blog-grid{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr}
+  .thinking-grid{grid-template-columns:1fr}
+  .ventures-grid{grid-template-columns:1fr}
+  .nums-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-grid{grid-template-columns:1fr}
+  .forms-grid{grid-template-columns:1fr}
+
+  /* Venture cards */
+  .venture-card .ext-link{opacity:1}
+
+  /* Education */
+  .edu-card{flex-direction:column;gap:12px}
+
+  /* Newsletter */
+  .newsletter-wrap{flex-direction:column;padding:28px 20px}
+  .newsletter-wrap h3{font-size:18px}
+  .nl-form{flex-direction:column}
+  .nl-input{width:100%;min-width:unset}
+  .nl-btn{width:100%}
+
+  /* Contact */
+  .contact-wrap{flex-direction:column;padding:24px 20px}
+  .ct-btns{width:100%;flex-direction:column}
+  .ct-btn-p,.ct-btn-s{width:100%;text-align:center;justify-content:center}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  footer{padding:32px 20px}
+  .footer-bottom{flex-direction:column;gap:6px}
+
+  /* Modal */
+  .modal-box,.form-modal-box{padding:24px 18px;border-radius:12px}
+  .modal-title{font-size:20px}
+}
+
+@media(max-width:400px){
+  .hero-name{font-size:16px}
+  .nums-grid{grid-template-columns:1fr}
+  .hero-bigstat{flex-direction:column;align-items:flex-start;gap:4px}
+  .hero-bigstat strong{font-size:28px}
 }
 </style>
 </head>
@@ -199,7 +307,20 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
     <a href="#experience">Experience</a>
     <a href="#forms">Connect</a>
   </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">Home</a>
+  <a href="#blogs" onclick="closeMenu()">Writing</a>
+  <a href="#thinking" onclick="closeMenu()">Thinking</a>
+  <a href="#ventures" onclick="closeMenu()">Ventures</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#forms" onclick="closeMenu()">Connect</a>
+</div>
 
 <!-- HERO -->
 <div class="hero" id="about">
@@ -224,9 +345,10 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
       <span id="heroStatLabel">students reached through products I built.</span>
     </div>
     <div class="hero-bio" id="heroBio">
-      To founders, PMs, and the curious. I'm <strong>Ahsan Foez Nahian</strong> — a tech-enabled entrepreneur who has built and scaled real products serving <strong>1M+ users</strong>. I founded <strong>Privatune</strong> (100K+ students/yr), led product at <strong>Apar's Classroom</strong> (800K+), and grew a 1M+ community.<br><br>Now at <em>Gettysburg College</em> on a full-ride Abraham Lincoln Scholarship, studying Business, Economics & Data Science — targeting <strong>PM, GTM, and growth roles.</strong>
+      To founders, PMs, and the curious. I'm <strong>Ahsan Foez Nahian</strong> — a tech-enabled entrepreneur who has built and scaled real products serving <strong>1M+ users</strong>. I founded <strong>Privatune</strong> (100K+ students/yr), led product at <strong>Apar's Classroom</strong> (800K+).<br><br>Now at <em>Gettysburg College</em> on a full-ride Abraham Lincoln Scholarship — targeting <strong>PM, GTM, and growth roles.</strong>
     </div>
-    <button class="hero-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">→ I'm open to PM & GTM roles</button><br/>
+    <button class="hero-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">→ I'm open to PM & GTM roles</button>
+    <br/>
     <div class="about-toggle" onclick="toggleAbout()">ABOUT THIS SITE +</div>
     <div class="about-extra" id="aboutExtra">This site is for hiring managers, founders, and investors. I built products in Bangladesh that most PMs only reach at Series B.</div>
   </div>
@@ -242,10 +364,10 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
   <div class="blog-grid" id="blogGrid"><div style="font-size:13px;color:var(--muted);font-family:var(--mono)">Loading...</div></div>
 </div></div>
 
-<!-- CASE STUDIES -->
+<!-- CASES -->
 <div class="section-wrap"><div class="section" id="casestudies">
   <div class="sec-header">
-    <div><div class="sec-label">02 · CASE STUDIES</div><div class="sec-title">Product Decisions I Made →</div></div>
+    <div><div class="sec-label">02 · CASE STUDIES</div><div class="sec-title">Product Decisions →</div></div>
     <div class="sec-desc">Real problems, real decisions, real outcomes.</div>
   </div>
   <div class="case-grid" id="caseGrid"></div>
@@ -264,7 +386,7 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
 <div class="section-wrap"><div class="section" id="ventures">
   <div class="sec-header">
     <div><div class="sec-label">04 · FOUNDED</div><div class="sec-title">Founded Ventures →</div></div>
-    <div class="sec-desc">Companies built from scratch. Click to visit.</div>
+    <div class="sec-desc">Companies built from scratch. Tap to visit.</div>
   </div>
   <div class="ventures-grid" id="venturesGrid"></div>
 </div></div>
@@ -272,8 +394,8 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
 <!-- EXPERIENCE -->
 <div class="section-wrap"><div class="section" id="experience">
   <div class="sec-header">
-    <div><div class="sec-label">05 · EXPERIENCE</div><div class="sec-title">Product & Growth Experience →</div></div>
-    <div class="sec-desc">Scaling platforms and shipping decisions that affected hundreds of thousands of users.</div>
+    <div><div class="sec-label">05 · EXPERIENCE</div><div class="sec-title">Experience →</div></div>
+    <div class="sec-desc">Scaling platforms that affected hundreds of thousands of users.</div>
   </div>
   <div class="exp-list" id="expList"></div>
 </div></div>
@@ -290,11 +412,11 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
 <!-- EDUCATION -->
 <div class="section-wrap"><div class="section" id="education">
   <div class="sec-header">
-    <div><div class="sec-label">07 · EDUCATION & SKILLS</div><div class="sec-title">Academic & Technical Stack →</div></div>
+    <div><div class="sec-label">07 · EDUCATION & SKILLS</div><div class="sec-title">Academic Stack →</div></div>
     <div class="sec-desc">Theory meets practice.</div>
   </div>
   <div id="eduWrap"></div>
-  <div class="skills-grid" style="margin-top:16px">
+  <div class="skills-grid" style="margin-top:14px">
     <div class="skill-card"><div class="skill-cat">Product & Business</div><ul class="skill-list"><li>Product Strategy & MVP Development</li><li>Growth Systems & GTM</li><li>Market Analysis & Modeling</li><li>User Behavior & Retention</li></ul></div>
     <div class="skill-card"><div class="skill-cat">Technical (Applied)</div><ul class="skill-list"><li>Data Analysis — Python</li><li>SQL & Data Systems</li><li>ML-driven SEO & Growth</li><li>No-code & AI Workflows</li></ul></div>
     <div class="skill-card"><div class="skill-cat">Leadership</div><ul class="skill-list"><li>Cross-functional Team Management</li><li>Strategic Execution</li><li>Community Building at Scale</li><li>Emerging Market GTM</li></ul></div>
@@ -317,7 +439,7 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
       <h3 id="nlTitle">The Builder's Brief</h3>
       <p id="nlDesc">Occasional essays on product, growth, and building in emerging markets.</p>
     </div>
-    <div>
+    <div style="width:100%;max-width:400px">
       <div class="nl-form">
         <input class="nl-input" id="nlEmailInput" type="email" placeholder="your@email.com"/>
         <button class="nl-btn" onclick="subscribeNewsletter()">Subscribe →</button>
@@ -360,7 +482,10 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
     </ul></div>
   </div>
   <div class="footer-disc">Views on this site are personal and do not represent Gettysburg College or any employer.</div>
-  <div class="footer-bottom"><div>Privacy · Accessibility</div><div>© 2026 Ahsan Foez Nahian. All rights reserved.</div></div>
+  <div class="footer-bottom">
+    <div>Privacy · Accessibility</div>
+    <div>© 2026 Ahsan Foez Nahian. All rights reserved.</div>
+  </div>
 </footer></div>
 
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -385,325 +510,190 @@ footer{max-width:1160px;margin:0 auto;padding:46px 52px}
 </div>
 
 <script>
-// ═══════════════════════════════════════
-//  SUPABASE CONFIG
-// ═══════════════════════════════════════
 const SUPABASE_URL = "https://laghhnxxfgwgjpvsfzhw.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhZ2hobnh4Zmd3Z2pwdnNmemh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NDUxNDIsImV4cCI6MjA5MTAyMTE0Mn0.tsufxhlF1OyI4hfvbHYDlHhIS6dp-C_wbr3ev5oZyoE";
 
 async function sbGet(path) {
   try {
-    const r = await fetch(SUPABASE_URL + "/rest/v1/" + path, {
-      headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
-    });
-    const t = await r.text();
-    return t ? JSON.parse(t) : null;
+    const r = await fetch(SUPABASE_URL+"/rest/v1/"+path,{headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY}});
+    const t = await r.text(); return t?JSON.parse(t):null;
   } catch { return null; }
 }
-
-async function sbPost(path, body) {
+async function sbPost(path,body) {
   try {
-    await fetch(SUPABASE_URL + "/rest/v1/" + path, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_KEY,
-        "Authorization": "Bearer " + SUPABASE_KEY,
-        "Prefer": "resolution=merge-duplicates"
-      },
-      body: JSON.stringify(body)
-    });
-  } catch(e) { console.error(e); }
+    await fetch(SUPABASE_URL+"/rest/v1/"+path,{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Prefer":"resolution=merge-duplicates"},body:JSON.stringify(body)});
+  } catch(e){console.error(e);}
 }
 
-// ═══════════════════════════════════════
-//  DEFAULT DATA (fallback if Supabase empty)
-// ═══════════════════════════════════════
 let D = {
-  blogs: [
-    { id:1, title:"Why Western GTM Playbooks Fail in Emerging Markets", date:"2026-03-15", read:"6 min read", excerpt:"CAC models built for credit-card economies collapse in mobile-money markets.", content:"Full content here...", img:null },
-    { id:2, title:"The Week-2 Cliff: The Retention Metric Most EdTech PMs Ignore", date:"2026-02-20", read:"4 min read", excerpt:"Students who return after their first-week cliff have 4x lifetime engagement.", content:"Full content here...", img:null },
-    { id:3, title:"Referral Loops Only Work When the Reward Is the Product", date:"2026-01-10", read:"5 min read", excerpt:"At Privatune, discount referrals had 12% conversion. Product-as-reward hit 34%.", content:"Full content here...", img:null }
+  blogs:[
+    {id:1,title:"Why Western GTM Playbooks Fail in Emerging Markets",date:"2026-03-15",read:"6 min read",excerpt:"CAC models built for credit-card economies collapse in mobile-money markets.",content:"Full content here...",img:null},
+    {id:2,title:"The Week-2 Cliff: The Retention Metric Most EdTech PMs Ignore",date:"2026-02-20",read:"4 min read",excerpt:"Students who return after their first-week cliff have 4x lifetime engagement.",content:"Full content here...",img:null},
+    {id:3,title:"Referral Loops Only Work When the Reward Is the Product",date:"2026-01-10",read:"5 min read",excerpt:"At Privatune, discount referrals had 12% conversion. Product-as-reward hit 34%.",content:"Full content here...",img:null}
   ],
-  cases: [
-    { id:1, company:"Apar's Classroom · 800K+", title:"Growing organic reach 35% with ML-driven SEO", problem:"Platform growth had plateaued.", decision:"Built ML-assisted SEO architecture.", measured:"Organic traffic, new user acquisition rate.", result:"↑ 35% organic reach · Reduced CAC" },
-    { id:2, company:"Privatune · EdTech", title:"Scaling 0 → 100K students/yr without paid marketing", problem:"New platform, near-zero budget.", decision:"Referral-first growth loop.", measured:"Weekly active students, referral conversion.", result:"→ 100,000+ students/year" },
-    { id:3, company:"Connecting Goal", title:"Bangladesh's first digital group study platform", problem:"Students lacked peer collaboration tools.", decision:"Group study rooms with goals and tracking.", measured:"Completion rate, academic performance surveys.", result:"↑ 40% academic performance · 50,000+ students" },
-    { id:4, company:"VisaCracked", title:"Solving the last mile — the visa interview", problem:"Qualified students failed US visa interviews.", decision:"Mock interview simulations platform.", measured:"Interview success rate vs control.", result:"→ Democratizing global access to education" }
+  cases:[
+    {id:1,company:"Apar's Classroom · 800K+",title:"Growing organic reach 35% with ML-driven SEO",problem:"Platform growth had plateaued.",decision:"Built ML-assisted SEO architecture.",measured:"Organic traffic, new user acquisition rate.",result:"↑ 35% organic reach · Reduced CAC"},
+    {id:2,company:"Privatune · EdTech",title:"Scaling 0 → 100K students/yr without paid marketing",problem:"New platform, near-zero budget.",decision:"Referral-first growth loop.",measured:"Weekly active students, referral conversion.",result:"→ 100,000+ students/year"},
+    {id:3,company:"Connecting Goal",title:"Bangladesh's first digital group study platform",problem:"Students lacked peer collaboration tools.",decision:"Group study rooms with goals and tracking.",measured:"Completion rate, academic performance surveys.",result:"↑ 40% academic performance · 50,000+ students"},
+    {id:4,company:"VisaCracked",title:"Solving the last mile — the visa interview",problem:"Qualified students failed US visa interviews.",decision:"Mock interview simulations platform.",measured:"Interview success rate vs control.",result:"→ Democratizing global access to education"}
   ],
-  thinks: [
-    { id:1, tag:"GTM · Emerging Markets", title:"Why Western GTM playbooks fail in Bangladesh", body:"CAC models built for credit-card markets collapse in mobile-money economies." },
-    { id:2, tag:"Product · Retention", title:"The retention metric most EdTech PMs ignore", body:"The real signal is day-8 return rate — 4x lifetime engagement." },
-    { id:3, tag:"Growth · Distribution", title:"Referral loops only work when the reward is the product", body:"At Privatune, discount referrals: 12%. Product-as-reward: 34%." }
+  thinks:[
+    {id:1,tag:"GTM · Emerging Markets",title:"Why Western GTM playbooks fail in Bangladesh",body:"CAC models built for credit-card markets collapse in mobile-money economies."},
+    {id:2,tag:"Product · Retention",title:"The retention metric most EdTech PMs ignore",body:"The real signal is day-8 return rate — 4x lifetime engagement."},
+    {id:3,tag:"Growth · Distribution",title:"Referral loops only work when the reward is the product",body:"At Privatune, discount referrals: 12%. Product-as-reward: 34%."}
   ],
-  ventures: [
-    { id:1, name:"Privatune", logo:null, role:"Founder & CEO", url:"https://privatune.com", desc:"Bangladesh's fastest-growing edtech platform.", stats:["100,000+ students/yr","Organic growth"] },
-    { id:2, name:"VisaCracked", logo:null, role:"Founder", url:"#", desc:"Solving the last-mile access barrier in education.", stats:["Global access","EdTech"] },
-    { id:3, name:"Ezionic", logo:null, role:"Founder & CEO", url:"#", desc:"Social media management & web dev agency.", stats:["50+ websites","International revenue"] },
-    { id:4, name:"Connecting Goal", logo:null, role:"Co-Founder", url:"#", desc:"Bangladesh's first digital group study platform.", stats:["50,000+ students","40% performance lift"] }
+  ventures:[
+    {id:1,name:"Privatune",logo:null,role:"Founder & CEO",url:"https://privatune.com",desc:"Bangladesh's fastest-growing edtech platform.",stats:["100,000+ students/yr","Organic growth"]},
+    {id:2,name:"VisaCracked",logo:null,role:"Founder",url:"#",desc:"Solving the last-mile access barrier in education.",stats:["Global access","EdTech"]},
+    {id:3,name:"Ezionic",logo:null,role:"Founder & CEO",url:"#",desc:"Social media management & web dev agency.",stats:["50+ websites","International revenue"]},
+    {id:4,name:"Connecting Goal",logo:null,role:"Co-Founder",url:"#",desc:"Bangladesh's first digital group study platform.",stats:["50,000+ students","40% performance lift"]}
   ],
-  experience: [
-    { id:1, title:"Product Manager — Apar's Classroom", logo:null, logoText:"AC", meta:"800,000+ students · Bangladesh's largest EdTech", desc:"Drove 35% organic reach growth using ML-powered SEO.", badge:"Key Role" },
-    { id:2, title:"Marketing Team Lead — Apar's Classroom", logo:null, logoText:"AC", meta:"1M+ student community", desc:"Led growth campaigns across Bangladesh's largest student network.", badge:"" },
-    { id:3, title:"Intern — HNVI Management, The City Bank Ltd", logo:null, logoText:"CB", meta:"Financial Analysis · Market Research", desc:"Improved portfolio returns by 25%.", badge:"" }
+  experience:[
+    {id:1,title:"Product Manager — Apar's Classroom",logo:null,logoText:"AC",meta:"800,000+ students · Bangladesh's largest EdTech",desc:"Drove 35% organic reach growth using ML-powered SEO.",badge:"Key Role"},
+    {id:2,title:"Marketing Team Lead — Apar's Classroom",logo:null,logoText:"AC",meta:"1M+ student community",desc:"Led growth campaigns across Bangladesh's largest student network.",badge:""},
+    {id:3,title:"Intern — HNVI Management, The City Bank Ltd",logo:null,logoText:"CB",meta:"Financial Analysis · Market Research",desc:"Improved portfolio returns by 25%.",badge:""}
   ],
-  numbers: [
-    { id:1, val:"1M+", label:"Students reached across all platforms" },
-    { id:2, val:"100K+", label:"Privatune annual student base" },
-    { id:3, val:"35%", label:"Organic reach growth via ML-SEO" },
-    { id:4, val:"50K+", label:"Students on Connecting Goal" },
-    { id:5, val:"$75K/yr", label:"Abraham Lincoln Scholarship value" },
-    { id:6, val:"50+", label:"School websites via Ezionic" }
+  numbers:[
+    {id:1,val:"1M+",label:"Students reached across all platforms"},
+    {id:2,val:"100K+",label:"Privatune annual student base"},
+    {id:3,val:"35%",label:"Organic reach growth via ML-SEO"},
+    {id:4,val:"50K+",label:"Students on Connecting Goal"},
+    {id:5,val:"$75K/yr",label:"Abraham Lincoln Scholarship value"},
+    {id:6,val:"50+",label:"School websites via Ezionic"}
   ],
-  education: [
-    { id:1, school:"Gettysburg College", logo:null, logoText:"GC", deg:"Business, Organizations & Management · Economics · Minor in Data Science", badge:"🏆 Abraham Lincoln Scholar — Full Ride (~$75K/yr)", certs:["Harvard — CS50","UC San Diego — DSA","Stanford — Machine Learning"] }
+  education:[
+    {id:1,school:"Gettysburg College",logo:null,logoText:"GC",deg:"Business, Organizations & Management · Economics · Minor in Data Science",badge:"🏆 Abraham Lincoln Scholar — Full Ride (~$75K/yr)",certs:["Harvard — CS50","UC San Diego — DSA","Stanford — Machine Learning"]}
   ],
-  forms: [
-    { id:1, title:"Work With Me", desc:"PM, GTM, or growth opportunities", btnText:"Send →", thanks:"Thanks! I'll get back to you soon.", fields:[{type:"text",label:"Your Name"},{type:"email",label:"Email"},{type:"text",label:"Company / Role"},{type:"textarea",label:"What are you working on?"}] },
-    { id:2, title:"Mentorship Request", desc:"Students and early founders", btnText:"Request →", thanks:"Got it! I'll be in touch.", fields:[{type:"text",label:"Your Name"},{type:"email",label:"Email"},{type:"textarea",label:"What would you like to discuss?"}] }
+  forms:[
+    {id:1,title:"Work With Me",desc:"PM, GTM, or growth opportunities",btnText:"Send →",thanks:"Thanks! I'll get back to you soon.",fields:[{type:"text",label:"Your Name"},{type:"email",label:"Email"},{type:"text",label:"Company / Role"},{type:"textarea",label:"What are you working on?"}]},
+    {id:2,title:"Mentorship Request",desc:"Students and early founders",btnText:"Request →",thanks:"Got it! I'll be in touch.",fields:[{type:"text",label:"Your Name"},{type:"email",label:"Email"},{type:"textarea",label:"What would you like to discuss?"}]}
   ]
 };
 
-// ═══════════════════════════════════════
-//  LOAD FROM SUPABASE
-// ═══════════════════════════════════════
-async function loadFromSupabase() {
-  try {
-    // Photo
-    const media = await sbGet("media?key=eq.profile_photo&select=data");
-    if (media?.length && media[0].data) {
-      document.getElementById('heroPicWrap').innerHTML = `<img src="${media[0].data}" style="width:100%;height:100%;object-fit:cover;object-position:top"/>`;
-      document.getElementById('navAvatar').innerHTML = `<img src="${media[0].data}" style="width:100%;height:100%;object-fit:cover"/>`;
+async function loadFromSupabase(){
+  try{
+    const media=await sbGet("media?key=eq.profile_photo&select=data");
+    if(media?.length&&media[0].data){
+      document.getElementById('heroPicWrap').innerHTML=`<img src="${media[0].data}" style="width:100%;height:100%;object-fit:cover;object-position:top"/>`;
+      document.getElementById('navAvatar').innerHTML=`<img src="${media[0].data}" style="width:100%;height:100%;object-fit:cover"/>`;
     }
-
-    // Profile
-    const prof = await sbGet("profile?id=eq.1&select=data");
-    if (prof?.length && prof[0].data) {
-      const p = prof[0].data;
-      if (p.name) { setText('heroName',p.name); setText('navName',p.name.toUpperCase()); setText('footerName',p.name); }
-      if (p.label) setText('heroLabel',p.label);
-      if (p.tagline) setText('heroTagline',p.tagline);
-      if (p.bio) document.getElementById('heroBio').innerHTML = p.bio;
-      if (p.statNum) setText('heroStatNum',p.statNum);
-      if (p.statLabel) setText('heroStatLabel',p.statLabel);
-      if (p.about) setText('aboutExtra',p.about);
-      if (p.tags) document.getElementById('heroTags').innerHTML = p.tags.map(t=>`<span>${t}</span>`).join('');
-      if (p.linkedin) { setHref('socialLinkedIn',p.linkedin); setHref('ftLinkedIn',p.linkedin); }
-      if (p.email) { setHref('socialEmail','mailto:'+p.email); setHref('ftEmail','mailto:'+p.email); document.getElementById('ctEmailBtn').onclick=()=>location.href='mailto:'+p.email; }
-      if (p.resume) { setHref('socialResume',p.resume); setHref('ftResume',p.resume); }
-      if (p.footerDesc) setText('footerDesc',p.footerDesc);
-      // Availability badge
-      if (p.availability) {
-        const cfg = { open:{dot:'green',label:'Open to Opportunities'}, selective:{dot:'yellow',label:'Selectively Open'}, closed:{dot:'red',label:'Not Available'} };
-        const c = cfg[p.availability] || cfg.open;
-        document.getElementById('availBadge').innerHTML = `<div class="avail-badge"><div class="avail-dot ${c.dot}"></div>${c.label}</div>`;
+    const prof=await sbGet("profile?id=eq.1&select=data");
+    if(prof?.length&&prof[0].data){
+      const p=prof[0].data;
+      if(p.name){setText('heroName',p.name);setText('navName',p.name.toUpperCase());setText('footerName',p.name);}
+      if(p.label)setText('heroLabel',p.label);
+      if(p.tagline)setText('heroTagline',p.tagline);
+      if(p.bio)document.getElementById('heroBio').innerHTML=p.bio;
+      if(p.statNum)setText('heroStatNum',p.statNum);
+      if(p.statLabel)setText('heroStatLabel',p.statLabel);
+      if(p.about)setText('aboutExtra',p.about);
+      if(p.tags)document.getElementById('heroTags').innerHTML=p.tags.map(t=>`<span>${t}</span>`).join('');
+      if(p.linkedin){setHref('socialLinkedIn',p.linkedin);setHref('ftLinkedIn',p.linkedin);}
+      if(p.email){setHref('socialEmail','mailto:'+p.email);setHref('ftEmail','mailto:'+p.email);document.getElementById('ctEmailBtn').onclick=()=>location.href='mailto:'+p.email;}
+      if(p.resume){setHref('socialResume',p.resume);setHref('ftResume',p.resume);}
+      if(p.footerDesc)setText('footerDesc',p.footerDesc);
+      if(p.availability){
+        const cfg={open:{dot:'green',label:'Open to Opportunities'},selective:{dot:'yellow',label:'Selectively Open'},closed:{dot:'red',label:'Not Available'}};
+        const c=cfg[p.availability]||cfg.open;
+        document.getElementById('availBadge').innerHTML=`<div class="avail-badge"><div class="avail-dot ${c.dot}"></div>${c.label}</div>`;
       }
     }
-
-    // Content sections
-    const keys = ['blogs','cases','thinks','ventures','experience','numbers','education','forms'];
-    const results = await Promise.all(keys.map(k => sbGet(`content?key=eq.${k}&select=data`)));
-    keys.forEach((key,i) => { if (results[i]?.length && results[i][0].data?.length) D[key] = results[i][0].data; });
-
-    // Newsletter
-    const nl = await sbGet("content?key=eq.newsletter&select=data");
-    if (nl?.length && nl[0].data) { setText('nlTitle',nl[0].data.title||''); setText('nlDesc',nl[0].data.desc||''); }
-
-    // Contact
-    const ct = await sbGet("content?key=eq.contact&select=data");
-    if (ct?.length && ct[0].data) {
-      const c = ct[0].data;
-      if (c.heading) setText('ctTitle',c.heading);
-      if (c.desc) setText('ctDesc',c.desc);
-      if (c.footerDesc) setText('footerDesc',c.footerDesc);
-    }
-
-    // Subscriber count
-    const subs = await sbGet("subscribers?select=id");
-    if (subs?.length) document.getElementById('nlSubsCount').textContent = `Join ${subs.length} subscriber${subs.length!==1?'s':''}`;
-
-  } catch(e) { console.error('Supabase error:', e); }
-
+    const keys=['blogs','cases','thinks','ventures','experience','numbers','education','forms'];
+    const results=await Promise.all(keys.map(k=>sbGet(`content?key=eq.${k}&select=data`)));
+    keys.forEach((key,i)=>{if(results[i]?.length&&results[i][0].data?.length)D[key]=results[i][0].data;});
+    const nl=await sbGet("content?key=eq.newsletter&select=data");
+    if(nl?.length&&nl[0].data){setText('nlTitle',nl[0].data.title||'');setText('nlDesc',nl[0].data.desc||'');}
+    const ct=await sbGet("content?key=eq.contact&select=data");
+    if(ct?.length&&ct[0].data){const c=ct[0].data;if(c.heading)setText('ctTitle',c.heading);if(c.desc)setText('ctDesc',c.desc);if(c.footerDesc)setText('footerDesc',c.footerDesc);}
+    const subs=await sbGet("subscribers?select=id");
+    if(subs?.length)document.getElementById('nlSubsCount').textContent=`Join ${subs.length} subscriber${subs.length!==1?'s':''}`;
+  }catch(e){console.error('Supabase error:',e);}
   render();
 }
 
-// ═══════════════════════════════════════
-//  RENDER
-// ═══════════════════════════════════════
-function render() {
-  renderBlogs(); renderCases(); renderThinks();
-  renderVentures(); renderExp(); renderNums(); renderEdu(); renderForms();
+function render(){renderBlogs();renderCases();renderThinks();renderVentures();renderExp();renderNums();renderEdu();renderForms();}
+
+function renderBlogs(){
+  document.getElementById('blogGrid').innerHTML=D.blogs.length
+    ?D.blogs.map(b=>`<div class="blog-card" onclick="openBlog(${b.id})"><div class="blog-thumb">${b.img?`<img src="${b.img}"/>`:'📝'}</div><div class="blog-body"><div class="blog-date">${fmt(b.date)}</div><div class="blog-title">${b.title}</div><div class="blog-excerpt">${b.excerpt}</div><div class="blog-read">${b.read} →</div></div></div>`).join('')
+    :'<p style="font-size:13px;color:var(--muted);font-family:var(--mono)">No posts yet.</p>';
+}
+function renderCases(){
+  document.getElementById('caseGrid').innerHTML=D.cases.map(c=>`<div class="case-card"><div class="case-company">${c.company}</div><div class="case-title">${c.title}</div><div class="case-step"><span class="case-step-label">Problem</span><span class="case-step-text">${c.problem}</span></div><div class="case-step"><span class="case-step-label">Decision</span><span class="case-step-text">${c.decision}</span></div><div class="case-step"><span class="case-step-label">Measured by</span><span class="case-step-text">${c.measured}</span></div><div class="case-result">${c.result}</div></div>`).join('');
+}
+function renderThinks(){
+  document.getElementById('thinkGrid').innerHTML=D.thinks.map(t=>`<div class="think-card"><div class="think-tag">${t.tag}</div><div class="think-title">${t.title}</div><div class="think-body">${t.body}</div></div>`).join('');
+}
+function renderVentures(){
+  document.getElementById('venturesGrid').innerHTML=D.ventures.map(v=>`<div class="venture-card" onclick="if('${v.url}'!='#')window.open('${v.url}','_blank')"><span class="ext-link">${v.url!='#'?'↗ Visit':''}</span><div class="v-logo">${v.logo?`<img src="${v.logo}"/>`:v.name[0]}</div><div><div class="v-name">${v.name}</div><div class="v-role">${v.role}</div><div class="v-desc">${v.desc}</div><div class="v-stats">${(v.stats||[]).map(s=>`<span class="v-stat">${s}</span>`).join('')}</div></div></div>`).join('');
+}
+function renderExp(){
+  document.getElementById('expList').innerHTML=D.experience.map((e,i)=>`${i>0?'<div class="exp-spacer"></div>':''}<div class="exp-item"><div class="exp-logo">${e.logo?`<img src="${e.logo}"/>`:e.logoText}</div><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px"><span class="exp-title">${e.title}</span>${e.badge?`<span class="exp-badge">${e.badge}</span>`:''}</div><div class="exp-meta">${e.meta}</div><div class="exp-desc">${e.desc}</div></div></div>`).join('');
+}
+function renderNums(){
+  document.getElementById('numsGrid').innerHTML=D.numbers.map(n=>`<div class="num-card"><div class="num-val">${n.val}</div><div class="num-label">${n.label}</div></div>`).join('');
+}
+function renderEdu(){
+  document.getElementById('eduWrap').innerHTML=D.education.map(e=>`<div class="edu-card"><div class="edu-icon">${e.logo?`<img src="${e.logo}"/>`:e.logoText}</div><div><div class="edu-school">${e.school}</div><div class="edu-deg">${e.deg}</div><span class="edu-badge">${e.badge}</span><div class="edu-tags">${(e.certs||[]).map(c=>`<span class="edu-tag">${c}</span>`).join('')}</div></div></div>`).join('');
+}
+function renderForms(){
+  document.getElementById('formsGrid').innerHTML=D.forms.map(f=>`<div class="form-display-card"><div class="fdc-title">${f.title}</div><div class="fdc-desc">${f.desc}</div><div class="fdc-fields">${f.fields.map(fld=>`<span class="fdc-field-tag">${fld.label}</span>`).join('')}</div><button class="fdc-btn" onclick="openFormModal(${f.id})">Open Form →</button></div>`).join('');
 }
 
-function renderBlogs() {
-  document.getElementById('blogGrid').innerHTML = D.blogs.length
-    ? D.blogs.map(b=>`
-      <div class="blog-card" onclick="openBlog(${b.id})">
-        <div class="blog-thumb">${b.img?`<img src="${b.img}"/>`:'📝'}</div>
-        <div class="blog-body">
-          <div class="blog-date">${fmt(b.date)}</div>
-          <div class="blog-title">${b.title}</div>
-          <div class="blog-excerpt">${b.excerpt}</div>
-          <div class="blog-read">${b.read} →</div>
-        </div>
-      </div>`).join('')
-    : '<p style="font-size:13px;color:var(--muted);font-family:var(--mono)">No posts yet.</p>';
-}
-
-function renderCases() {
-  document.getElementById('caseGrid').innerHTML = D.cases.map(c=>`
-    <div class="case-card">
-      <div class="case-company">${c.company}</div>
-      <div class="case-title">${c.title}</div>
-      <div class="case-step"><span class="case-step-label">Problem</span><span class="case-step-text">${c.problem}</span></div>
-      <div class="case-step"><span class="case-step-label">Decision</span><span class="case-step-text">${c.decision}</span></div>
-      <div class="case-step"><span class="case-step-label">Measured by</span><span class="case-step-text">${c.measured}</span></div>
-      <div class="case-result">${c.result}</div>
-    </div>`).join('');
-}
-
-function renderThinks() {
-  document.getElementById('thinkGrid').innerHTML = D.thinks.map(t=>`
-    <div class="think-card">
-      <div class="think-tag">${t.tag}</div>
-      <div class="think-title">${t.title}</div>
-      <div class="think-body">${t.body}</div>
-    </div>`).join('');
-}
-
-function renderVentures() {
-  document.getElementById('venturesGrid').innerHTML = D.ventures.map(v=>`
-    <div class="venture-card" onclick="if('${v.url}'!='#')window.open('${v.url}','_blank')">
-      <span class="ext-link">${v.url!='#'?'↗ Visit':''}</span>
-      <div class="v-logo">${v.logo?`<img src="${v.logo}"/>`:v.name[0]}</div>
-      <div>
-        <div class="v-name">${v.name}</div>
-        <div class="v-role">${v.role}</div>
-        <div class="v-desc">${v.desc}</div>
-        <div class="v-stats">${(v.stats||[]).map(s=>`<span class="v-stat">${s}</span>`).join('')}</div>
-      </div>
-    </div>`).join('');
-}
-
-function renderExp() {
-  document.getElementById('expList').innerHTML = D.experience.map((e,i)=>`
-    ${i>0?'<div class="exp-spacer"></div>':''}
-    <div class="exp-item">
-      <div class="exp-logo">${e.logo?`<img src="${e.logo}"/>`:e.logoText}</div>
-      <div style="flex:1">
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
-          <span class="exp-title">${e.title}</span>
-          ${e.badge?`<span class="exp-badge">${e.badge}</span>`:''}
-        </div>
-        <div class="exp-meta">${e.meta}</div>
-        <div class="exp-desc">${e.desc}</div>
-      </div>
-    </div>`).join('');
-}
-
-function renderNums() {
-  document.getElementById('numsGrid').innerHTML = D.numbers.map(n=>`
-    <div class="num-card"><div class="num-val">${n.val}</div><div class="num-label">${n.label}</div></div>`).join('');
-}
-
-function renderEdu() {
-  document.getElementById('eduWrap').innerHTML = D.education.map(e=>`
-    <div class="edu-card">
-      <div class="edu-icon">${e.logo?`<img src="${e.logo}"/>`:e.logoText}</div>
-      <div>
-        <div class="edu-school">${e.school}</div>
-        <div class="edu-deg">${e.deg}</div>
-        <span class="edu-badge">${e.badge}</span>
-        <div class="edu-tags">${(e.certs||[]).map(c=>`<span class="edu-tag">${c}</span>`).join('')}</div>
-      </div>
-    </div>`).join('');
-}
-
-function renderForms() {
-  document.getElementById('formsGrid').innerHTML = D.forms.map(f=>`
-    <div class="form-display-card">
-      <div class="fdc-title">${f.title}</div>
-      <div class="fdc-desc">${f.desc}</div>
-      <div class="fdc-fields">${f.fields.map(fld=>`<span class="fdc-field-tag">${fld.label}</span>`).join('')}</div>
-      <button class="fdc-btn" onclick="openFormModal(${f.id})">Open Form →</button>
-    </div>`).join('');
-}
-
-// ═══════════════════════════════════════
-//  BLOG MODAL
-// ═══════════════════════════════════════
-function openBlog(id) {
-  const b = D.blogs.find(x=>x.id===id); if(!b) return;
-  setText('bm-title', b.title);
-  setText('bm-meta', fmt(b.date) + ' · ' + b.read);
-  const img = document.getElementById('bm-img');
-  if (b.img) { img.src=b.img; img.style.display='block'; } else { img.style.display='none'; }
-  setText('bm-content', b.content || b.excerpt);
+function openBlog(id){
+  const b=D.blogs.find(x=>x.id===id);if(!b)return;
+  setText('bm-title',b.title);setText('bm-meta',fmt(b.date)+' · '+b.read);
+  const img=document.getElementById('bm-img');
+  if(b.img){img.src=b.img;img.style.display='block';}else{img.style.display='none';}
+  setText('bm-content',b.content||b.excerpt);
   openModal('blogModal');
 }
-
-// ═══════════════════════════════════════
-//  FORM MODAL
-// ═══════════════════════════════════════
-function openFormModal(fid) {
-  const f = D.forms.find(x=>x.id===fid); if(!f) return;
-  document.getElementById('formModalInner').innerHTML = `
-    <div style="margin-bottom:20px">
-      <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-family:var(--mono)">GET IN TOUCH</div>
-      <div style="font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:6px">${f.title}</div>
-      <div style="font-size:13px;color:var(--muted)">${f.desc}</div>
-    </div>
-    ${f.fields.map((fld,i)=>`
-      <div class="dyn-field">
-        <label>${fld.label}</label>
-        ${fld.type==='textarea'?`<textarea id="ff_${i}"></textarea>`:
-          fld.type==='select'?`<select id="ff_${i}"><option value="">Select...</option>${(fld.options||'').split(',').map(o=>`<option>${o.trim()}</option>`).join('')}</select>`:
-          `<input id="ff_${i}" type="${fld.type}" placeholder="${fld.label}"/>`}
-      </div>`).join('')}
-    <button class="submit-btn" onclick="submitForm(${fid})">${f.btnText}</button>`;
+function openFormModal(fid){
+  const f=D.forms.find(x=>x.id===fid);if(!f)return;
+  document.getElementById('formModalInner').innerHTML=`<div style="margin-bottom:18px"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;font-family:var(--mono)">GET IN TOUCH</div><div style="font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:5px">${f.title}</div><div style="font-size:13px;color:var(--muted)">${f.desc}</div></div>${f.fields.map((fld,i)=>`<div class="dyn-field"><label>${fld.label}</label>${fld.type==='textarea'?`<textarea id="ff_${i}"></textarea>`:fld.type==='select'?`<select id="ff_${i}"><option value="">Select...</option>${(fld.options||'').split(',').map(o=>`<option>${o.trim()}</option>`).join('')}</select>`:`<input id="ff_${i}" type="${fld.type}" placeholder="${fld.label}"/>`}</div>`).join('')}<button class="submit-btn" onclick="submitForm(${fid})">${f.btnText}</button>`;
   openModal('formModal');
 }
-
-async function submitForm(fid) {
-  const f = D.forms.find(x=>x.id===fid); if(!f) return;
-  const data = {};
-  f.fields.forEach((fld,i) => { const el=document.getElementById('ff_'+i); if(el) data[fld.label]=el.value; });
-  await sbPost("responses", { form_title: f.title, data });
-  document.getElementById('formModalInner').innerHTML = `
-    <div class="form-success">
-      <div class="check">✅</div>
-      <h4>${f.thanks}</h4>
-      <p>Your response has been recorded.</p>
-    </div>`;
-  setTimeout(()=>closeModal('formModal'), 3000);
+async function submitForm(fid){
+  const f=D.forms.find(x=>x.id===fid);if(!f)return;
+  const data={};
+  f.fields.forEach((fld,i)=>{const el=document.getElementById('ff_'+i);if(el)data[fld.label]=el.value;});
+  await sbPost("responses",{form_title:f.title,data});
+  document.getElementById('formModalInner').innerHTML=`<div class="form-success"><div class="check">✅</div><h4>${f.thanks}</h4><p>Your response has been recorded.</p></div>`;
+  setTimeout(()=>closeModal('formModal'),3000);
+}
+async function subscribeNewsletter(){
+  const email=document.getElementById('nlEmailInput').value.trim();
+  if(!email||!email.includes('@'))return alert('Please enter a valid email');
+  await sbPost("subscribers",{email});
+  document.getElementById('nlEmailInput').value='';
+  document.getElementById('nlSubsCount').textContent='Thanks for subscribing! ✓';
 }
 
-// ═══════════════════════════════════════
-//  NEWSLETTER
-// ═══════════════════════════════════════
-async function subscribeNewsletter() {
-  const email = document.getElementById('nlEmailInput').value.trim();
-  if (!email || !email.includes('@')) return alert('Please enter a valid email');
-  await sbPost("subscribers", { email });
-  document.getElementById('nlEmailInput').value = '';
-  document.getElementById('nlSubsCount').textContent = 'Thanks for subscribing! ✓';
+/* Mobile menu */
+function toggleMenu(){
+  const h=document.getElementById('hamburger');
+  const m=document.getElementById('mobileMenu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow='';
 }
 
-// ═══════════════════════════════════════
-//  HELPERS
-// ═══════════════════════════════════════
-function setText(id,t){ const el=document.getElementById(id); if(el) el.textContent=t; }
-function setHref(id,h){ const el=document.getElementById(id); if(el) el.href=h; }
-function fmt(d){ if(!d)return''; try{return new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}catch{return d;} }
-function openModal(id){ document.getElementById(id).classList.add('open'); }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); }
-function toggleAbout(){ const el=document.getElementById('aboutExtra'),btn=document.querySelector('.about-toggle'); el.classList.toggle('open'); btn.textContent=el.classList.contains('open')?'ABOUT THIS SITE −':'ABOUT THIS SITE +'; }
+function setText(id,t){const el=document.getElementById(id);if(el)el.textContent=t;}
+function setHref(id,h){const el=document.getElementById(id);if(el)el.href=h;}
+function fmt(d){if(!d)return'';try{return new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}catch{return d;}}
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+function toggleAbout(){const el=document.getElementById('aboutExtra'),btn=document.querySelector('.about-toggle');el.classList.toggle('open');btn.textContent=el.classList.contains('open')?'ABOUT THIS SITE −':'ABOUT THIS SITE +';}
 
 window.addEventListener('scroll',()=>document.getElementById('scrollTop').classList.toggle('visible',scrollY>400));
-document.getElementById('blogModal').addEventListener('click',e=>{if(e.target===document.getElementById('blogModal'))closeModal('blogModal')});
-document.getElementById('formModal').addEventListener('click',e=>{if(e.target===document.getElementById('formModal'))closeModal('formModal')});
+document.getElementById('blogModal').addEventListener('click',e=>{if(e.target===document.getElementById('blogModal'))closeModal('blogModal');});
+document.getElementById('formModal').addEventListener('click',e=>{if(e.target===document.getElementById('formModal'))closeModal('formModal');});
 
-// INIT
 loadFromSupabase();
 </script>
 </body>
