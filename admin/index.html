@@ -449,8 +449,77 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
 <div class="toast" id="toast"></div>
 
-<script src="../assets/data.js"></script>
 <script>
+    // ═══ SUPABASE CONFIG ═══
+    const SUPABASE_URL = "https://laghhnxxfgwgjpvsfzhw.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhZ2hobnh4Zmd3Z2pwdnNmemh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NDUxNDIsImV4cCI6MjA5MTAyMTE0Mn0.tsufxhlF1OyI4hfvbHYDlHhIS6dp-C_wbr3ev5oZyoE";
+    
+    // ═══ AUTH ═══
+    const ADMIN_USERNAME = "ahsan";
+    const ADMIN_PASSWORD = "changeme123";
+    const SESSION_KEY = "admin_session";
+    const SESSION_EXPIRY = 2 * 60 * 60 * 1000;
+    
+    function login(u, p) {
+      if (u === ADMIN_USERNAME && p === ADMIN_PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() }));
+        return true;
+      }
+      return false;
+    }
+    function isLoggedIn() {
+      try {
+        const raw = sessionStorage.getItem(SESSION_KEY);
+        if (!raw) return false;
+        const { ts } = JSON.parse(raw);
+        return Date.now() - ts < SESSION_EXPIRY;
+      } catch { return false; }
+    }
+    function logout() { sessionStorage.removeItem(SESSION_KEY); }
+    
+    // ═══ SUPABASE HELPERS ═══
+    async function sbFetch(path, method = "GET", body = null) {
+      const opts = {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Prefer": method === "POST" ? "resolution=merge-duplicates" : ""
+        }
+      };
+      if (body) opts.body = JSON.stringify(body);
+      const res = await fetch(SUPABASE_URL + "/rest/v1/" + path, opts);
+      const text = await res.text();
+      return text ? JSON.parse(text) : null;
+    }
+    async function loadContent(key) {
+      try { const r = await sbFetch(`content?key=eq.${key}&select=data`); return r?.length ? r[0].data : null; } catch { return null; }
+    }
+    async function saveContent(key, data) {
+      await sbFetch("content", "POST", { key, data });
+    }
+    async function loadProfile() {
+      try { const r = await sbFetch("profile?id=eq.1&select=data"); return r?.length ? r[0].data : null; } catch { return null; }
+    }
+    async function saveProfile(data) { await sbFetch("profile", "POST", { id: 1, data }); }
+    async function loadMedia(key) {
+      try { const r = await sbFetch(`media?key=eq.${key}&select=data`); return r?.length ? r[0].data : null; } catch { return null; }
+    }
+    async function saveMedia(key, data) { await sbFetch("media", "POST", { key, data, updated_at: new Date().toISOString() }); }
+    async function saveResponse(formTitle, data) { await sbFetch("responses", "POST", { form_title: formTitle, data }); }
+    async function loadResponses() { try { return await sbFetch("responses?select=*&order=created_at.desc") || []; } catch { return []; } }
+    async function saveSubscriber(email) { await sbFetch("subscribers", "POST", { email }); }
+    async function loadSubscribers() { try { return await sbFetch("subscribers?select=*&order=created_at.desc") || []; } catch { return []; } }
+    function nextId(arr) { return arr.length ? Math.max(...arr.map(x=>x.id))+1 : 1; }
+    function formatDate(d) { if(!d) return ""; try { return new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}); } catch { return d; } }
+    
+    const DEFAULT_DATA = {
+      profile: { name:"Ahsan Foez Nahian", label:"Founder · PM · EdTech · Growth", tagline:"Building products that reach the next billion.", tags:["EdTech · Growth","Product Strategy","Emerging Markets","Bangladesh → USA"], statNum:"1,000,000+", statLabel:"students reached through products I built.", bio:"To founders, PMs, and the curious. I'm <strong>Ahsan Foez Nahian</strong> — a tech-enabled entrepreneur serving <strong>1M+ users</strong>.", about:"This site is for hiring managers, founders, and investors.", linkedin:"https://linkedin.com/in/ahsannahian", email:"ahsan@gettysburg.edu", resume:"#", photo:null, availability:"open" },
+      blogs:[], cases:[], thinks:[], ventures:[], experience:[], numbers:[], education:[], forms:[],
+      newsletter:{ title:"The Builder's Brief", desc:"Occasional essays on product and growth." },
+      contact:{ heading:"Let's build something together.", desc:"I'm looking for PM, GTM, and growth roles.", footerDesc:"Founder turned PM candidate. Gettysburg College, Abraham Lincoln Scholar." }
+    };
 // ═══════════ STATE ═══════════
 let D = JSON.parse(JSON.stringify(DEFAULT_DATA));
 let temps = { blogImgData:null, vLogoData:null, exLogoData:null, edLogoData:null, photoData:null, fbFields:[] };
