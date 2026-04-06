@@ -508,7 +508,55 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 
 <div class="toast" id="toast"></div>
 
-<script src="../assets/data.js"></script>
+<script>
+    const ADMIN_USERNAME = "nahiah01";
+    const ADMIN_PASSWORD = "B@ngladesh1971";
+    const SESSION_KEY = "admin_session";
+    const SESSION_EXPIRY = 2 * 60 * 60 * 1000;
+    
+    function login(username, password) {
+      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() }));
+        return true;
+      }
+      return false;
+    }
+    
+    function isLoggedIn() {
+      try {
+        const raw = sessionStorage.getItem(SESSION_KEY);
+        if (!raw) return false;
+        const { ts } = JSON.parse(raw);
+        return Date.now() - ts < SESSION_EXPIRY;
+      } catch { return false; }
+    }
+    
+    function logout() {
+      sessionStorage.removeItem(SESSION_KEY);
+    }
+    
+    function loadData() {
+      try {
+        const saved = localStorage.getItem("portfolio_data");
+        return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_DATA));
+      } catch { return JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+    }
+    
+    function saveData(data) {
+      localStorage.setItem("portfolio_data", JSON.stringify(data));
+      return true;
+    }
+    
+    function nextId(arr) {
+      return arr.length ? Math.max(...arr.map(x => x.id)) + 1 : 1;
+    }
+    
+    function formatDate(d) {
+      if (!d) return "";
+      try { return new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); }
+      catch { return d; }
+    }
+    </script>
 <script>
 let D = loadData();
 let temps = { blogImgData:null, vLogoData:null, exLogoData:null, edLogoData:null, fbFields:[] };
