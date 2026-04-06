@@ -4,112 +4,140 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Admin — Ahsan Foez Nahian</title>
-<meta name="robots" content="noindex, nofollow"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#f7f7f5;--card:#fff;--border:#e8e8e8;--text:#1a1a1a;--muted:#888;--accent:#1a1a1a;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;--danger:#dc2626;--success:#16a34a}
+:root{--bg:#f7f7f5;--card:#fff;--border:#e8e8e8;--text:#1a1a1a;--muted:#888;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;--serif:'Playfair Display',serif;--danger:#dc2626;--success:#16a34a;--info:#2563eb}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
+
+/* LOGIN */
 #loginScreen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
 .login-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 8px 40px rgba(0,0,0,.08)}
-.login-logo{font-size:28px;font-weight:700;font-family:'Georgia',serif;margin-bottom:6px}
-.login-sub{font-size:13px;color:var(--muted);margin-bottom:32px}
-.login-field{margin-bottom:16px}
-.login-field label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
-.login-field input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:var(--sans);outline:none;transition:.2s;background:var(--bg)}
-.login-field input:focus{border-color:#999;background:#fff}
-.login-btn{width:100%;background:var(--accent);color:#fff;padding:13px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;transition:.2s;margin-top:8px}
-.login-btn:hover{background:#333}
+.login-logo{font-size:26px;font-weight:700;font-family:var(--serif);margin-bottom:6px}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
 .login-err{background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:10px 14px;font-size:13px;color:var(--danger);margin-bottom:14px;display:none}
 .login-err.show{display:block}
-.login-back{text-align:center;margin-top:20px;font-size:13px;color:var(--muted)}
+.lf{margin-bottom:14px}
+.lf label{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-family:var(--mono)}
+.lf input{width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans);outline:none;background:var(--bg);transition:.2s}
+.lf input:focus{border-color:#999;background:#fff}
+.login-btn{width:100%;background:var(--text);color:#fff;padding:12px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;margin-top:6px;transition:.2s}
+.login-btn:hover{background:#333}
+.login-back{text-align:center;margin-top:18px;font-size:13px;color:var(--muted)}
 .login-back a{color:var(--text);text-decoration:underline}
+
+/* SHELL */
 #adminShell{display:none;min-height:100vh;flex-direction:column}
 #adminShell.visible{display:flex}
-.admin-topbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:50}
-.admin-topbar-brand{font-weight:600;font-size:14px;display:flex;align-items:center;gap:10px}
-.admin-topbar-brand span{font-size:10px;color:var(--muted);font-family:var(--mono);background:var(--bg);border:1px solid var(--border);padding:2px 8px;border-radius:4px}
-.admin-topbar-actions{display:flex;align-items:center;gap:10px}
-.topbar-btn{font-size:12px;padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--card);cursor:pointer;font-family:var(--mono);color:var(--muted);transition:.2s}
-.topbar-btn:hover{color:var(--text);border-color:#aaa}
-.topbar-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.topbar-btn.primary:hover{background:#333}
-.topbar-btn.danger{color:var(--danger);border-color:#fecaca}
-.topbar-btn.danger:hover{background:#fef2f2}
-.admin-layout{display:flex;flex:1}
-.admin-sidebar{width:200px;background:var(--card);border-right:1px solid var(--border);padding:16px 0;flex-shrink:0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
-.sidebar-section{padding:8px 16px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);margin-top:8px}
-.sidebar-item{display:flex;align-items:center;gap:10px;padding:9px 18px;font-size:13px;cursor:pointer;color:#555;border-left:2px solid transparent;transition:.15s}
-.sidebar-item:hover{color:var(--text);background:#f5f5f5}
-.sidebar-item.active{color:var(--text);font-weight:600;border-left-color:var(--accent);background:#fafafa}
-.sidebar-item .ico{font-size:14px;width:18px;text-align:center}
-.admin-main{flex:1;padding:28px 32px;overflow-y:auto}
+.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:100}
+.topbar-brand{font-weight:600;font-size:14px;display:flex;align-items:center;gap:10px}
+.topbar-brand span{font-size:10px;color:var(--muted);font-family:var(--mono);background:var(--bg);border:1px solid var(--border);padding:2px 8px;border-radius:4px}
+.topbar-actions{display:flex;gap:8px}
+.tbtn{font-size:12px;padding:7px 14px;border:1px solid var(--border);border-radius:6px;background:var(--card);cursor:pointer;font-family:var(--mono);color:var(--muted);transition:.2s;text-decoration:none;display:inline-flex;align-items:center}
+.tbtn:hover{color:var(--text);border-color:#aaa}
+.tbtn.primary{background:var(--text);color:#fff;border-color:var(--text)}
+.tbtn.primary:hover{background:#333}
+.tbtn.danger{color:var(--danger);border-color:#fecaca}
+.tbtn.danger:hover{background:#fef2f2}
+
+.layout{display:flex;flex:1}
+.sidebar{width:190px;background:var(--card);border-right:1px solid var(--border);padding:12px 0;flex-shrink:0;position:sticky;top:54px;height:calc(100vh - 54px);overflow-y:auto}
+.sg{padding:7px 14px 3px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--mono)}
+.si{display:flex;align-items:center;gap:9px;padding:9px 16px;font-size:13px;cursor:pointer;color:#555;border-left:2px solid transparent;transition:.15s}
+.si:hover{color:var(--text);background:#f5f5f5}
+.si.active{color:var(--text);font-weight:600;border-left-color:var(--text);background:#fafafa}
+.si .ico{font-size:14px;width:16px;text-align:center}
+
+.main{flex:1;padding:24px 28px;overflow-y:auto;max-width:900px}
 .panel{display:none}.panel.active{display:block}
-.panel-header{margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start}
-.panel-title{font-size:20px;font-weight:600;font-family:'Georgia',serif;margin-bottom:4px}
-.panel-sub{font-size:13px;color:var(--muted)}
-.panel-stat{font-size:12px;color:var(--muted);font-family:var(--mono);background:var(--bg);border:1px solid var(--border);padding:4px 10px;border-radius:4px}
-.form-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:20px}
-.form-card h4{font-size:14px;font-weight:600;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-family:var(--mono)}
-.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans);background:#fafafa;outline:none;transition:.2s;color:var(--text)}
-.field input:focus,.field textarea:focus{border-color:#999;background:#fff}
-.field textarea{min-height:80px;resize:vertical;line-height:1.5}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.btn{padding:10px 18px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:var(--sans);transition:.2s;display:inline-flex;align-items:center;gap:6px}
-.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#333}
-.btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}.btn-secondary:hover{background:#eee}
-.btn-danger{background:#fef2f2;color:var(--danger);border:1px solid #fecaca}.btn-danger:hover{background:#fee2e2}
-.btn-sm{padding:6px 12px;font-size:12px}
-.list-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;gap:12px;align-items:center}
-.list-item-logo{width:38px;height:38px;border-radius:7px;overflow:hidden;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;color:var(--muted);font-family:var(--mono)}
-.list-item-logo img{width:100%;height:100%;object-fit:cover}
-.list-item-body{flex:1;min-width:0}
-.list-item-title{font-size:14px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.list-item-sub{font-size:11px;color:var(--muted);font-family:var(--mono)}
-.list-item-actions{display:flex;gap:6px;flex-shrink:0}
-.upload-zone{border:2px dashed var(--border);border-radius:10px;padding:18px;text-align:center;cursor:pointer;transition:.2s;background:#fafafa}
-.upload-zone:hover{border-color:#999;background:#f5f5f5}
-.upload-zone p{font-size:12px;color:var(--muted);margin-top:6px}
-.upload-preview{width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid var(--border);margin-top:8px}
-.resp-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px}
-.resp-meta{display:flex;justify-content:space-between;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.resp-form-name{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-family:var(--mono)}
-.resp-date{font-size:11px;color:var(--muted);font-family:var(--mono)}
-.resp-field{font-size:13px;margin-bottom:5px;display:flex;gap:8px}
-.resp-field-key{color:var(--muted);font-size:11px;font-family:var(--mono);min-width:120px;flex-shrink:0}
-.sub-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:13px}
-.sub-email{font-family:var(--mono)}
-.sub-date{font-size:11px;color:var(--muted);font-family:var(--mono)}
-.fb-field-row{display:flex;gap:8px;align-items:center;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:7px;margin-bottom:6px}
-.fb-field-type{font-size:10px;font-family:var(--mono);background:#fff;border:1px solid var(--border);border-radius:4px;padding:3px 8px;color:var(--muted);flex-shrink:0}
-.fb-field-label{flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans);outline:none;background:#fff}
-.fb-add-btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.fb-add-btn{background:#fff;border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:11px;cursor:pointer;font-family:var(--mono);transition:.2s}
-.fb-add-btn:hover{background:var(--bg)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px}
-.stat-val{font-size:26px;font-weight:700;font-family:'Georgia',serif;margin-bottom:3px}
-.stat-lbl{font-size:12px;color:var(--muted)}
-.avail-row{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;cursor:pointer;transition:.2s}
-.avail-row:hover{background:#f5f5f5}
-.avail-row.selected{border-color:#1a1a1a;background:#f5f5f5}
-.avail-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.avail-dot.green{background:#22c55e;box-shadow:0 0 0 3px #dcfce7}
-.avail-dot.yellow{background:#eab308;box-shadow:0 0 0 3px #fef9c3}
-.avail-dot.red{background:#ef4444;box-shadow:0 0 0 3px #fee2e2}
-.loading{text-align:center;padding:40px;font-size:13px;color:var(--muted);font-family:var(--mono)}
-.toast{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;font-family:var(--mono);opacity:0;transition:.3s;pointer-events:none;z-index:9999}
+.ph{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.ph-title{font-size:20px;font-weight:600;font-family:var(--serif)}
+.ph-sub{font-size:13px;color:var(--muted);margin-top:2px}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.card h4{font-size:13px;font-weight:600;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--mono)}
+
+/* FIELDS */
+.f{margin-bottom:13px}
+.f label{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-family:var(--mono)}
+.f input,.f textarea,.f select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans);background:#fafafa;outline:none;transition:.2s;color:var(--text)}
+.f input:focus,.f textarea:focus{border-color:#999;background:#fff}
+.f textarea{min-height:80px;resize:vertical;line-height:1.5}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+
+/* BUTTONS */
+.btn{padding:9px 16px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:var(--sans);transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-p{background:var(--text);color:#fff}.btn-p:hover{background:#333}
+.btn-s{background:var(--bg);color:var(--text);border:1px solid var(--border)}.btn-s:hover{background:#eee}
+.btn-e{background:#eff6ff;color:var(--info);border:1px solid #bfdbfe}.btn-e:hover{background:#dbeafe}
+.btn-d{background:#fef2f2;color:var(--danger);border:1px solid #fecaca}.btn-d:hover{background:#fee2e2}
+.btn-sm{padding:5px 11px;font-size:12px}
+
+/* LIST ITEMS */
+.li{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.li-logo{width:36px;height:36px;border-radius:7px;overflow:hidden;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;color:var(--muted);font-family:var(--mono)}
+.li-logo img{width:100%;height:100%;object-fit:cover}
+.li-body{flex:1;min-width:0}
+.li-title{font-size:14px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li-sub{font-size:11px;color:var(--muted);font-family:var(--mono)}
+.li-actions{display:flex;gap:6px;flex-shrink:0;align-items:center}
+
+/* UPLOAD */
+.uz{border:2px dashed var(--border);border-radius:9px;padding:16px;text-align:center;cursor:pointer;transition:.2s;background:#fafafa}
+.uz:hover{border-color:#999;background:#f5f5f5}
+.uz p{font-size:12px;color:var(--muted);margin-top:5px}
+.uprev{width:48px;height:48px;border-radius:7px;object-fit:cover;border:1px solid var(--border);margin-top:8px}
+
+/* STATS */
+.sg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.sc-val{font-size:24px;font-weight:700;font-family:var(--serif);margin-bottom:3px}
+.sc-lbl{font-size:12px;color:var(--muted)}
+
+/* AVAIL */
+.av-row{display:flex;align-items:center;gap:10px;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:.2s}
+.av-row:hover,.av-row.sel{background:#f5f5f5;border-color:#999}
+.av-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.av-dot.g{background:#22c55e;box-shadow:0 0 0 3px #dcfce7}
+.av-dot.y{background:#eab308;box-shadow:0 0 0 3px #fef9c3}
+.av-dot.r{background:#ef4444;box-shadow:0 0 0 3px #fee2e2}
+
+/* FORM BUILDER */
+.fb-row{display:flex;gap:8px;align-items:center;padding:9px;background:var(--bg);border:1px solid var(--border);border-radius:7px;margin-bottom:6px}
+.fb-type{font-size:10px;font-family:var(--mono);background:#fff;border:1px solid var(--border);border-radius:4px;padding:3px 7px;color:var(--muted);flex-shrink:0}
+.fb-lbl{flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans);outline:none;background:#fff}
+.fb-btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.fb-btn{background:#fff;border:1px solid var(--border);border-radius:6px;padding:5px 11px;font-size:11px;cursor:pointer;font-family:var(--mono);transition:.2s}
+.fb-btn:hover{background:var(--bg)}
+
+/* RESPONSES */
+.rc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:8px}
+.rc-meta{display:flex;justify-content:space-between;margin-bottom:8px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.rc-fn{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-family:var(--mono)}
+.rc-date{font-size:11px;color:var(--muted);font-family:var(--mono)}
+.rc-f{font-size:13px;margin-bottom:4px;display:flex;gap:8px}
+.rc-fk{color:var(--muted);font-size:11px;font-family:var(--mono);min-width:110px;flex-shrink:0;padding-top:1px}
+.sub-row{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:5px;font-size:13px;font-family:var(--mono)}
+
+/* ── EDIT MODAL ── */
+.em-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);overflow-y:auto;padding:20px}
+.em-overlay.open{display:flex}
+.em-box{background:#fff;border-radius:14px;max-width:620px;width:100%;margin:auto;padding:28px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.2)}
+.em-close{position:absolute;top:14px;right:16px;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 12px;cursor:pointer;font-size:12px;font-family:var(--mono);color:var(--muted)}
+.em-close:hover{background:var(--bg)}
+.em-title{font-size:18px;font-weight:600;font-family:var(--serif);margin-bottom:18px}
+.em-actions{display:flex;gap:8px;margin-top:20px;justify-content:flex-end}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--text);color:#fff;padding:11px 18px;border-radius:8px;font-size:13px;font-family:var(--mono);opacity:0;transition:.3s;pointer-events:none;z-index:9999;display:flex;align-items:center;gap:8px}
 .toast.show{opacity:1}
-.toast.error{background:var(--danger)}
-.toast.success{background:var(--success)}
-@media(max-width:768px){
-  .admin-sidebar{display:none}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .grid-2,.grid-3{grid-template-columns:1fr}
-}
+.toast.err{background:var(--danger)}
+.toast.ok{background:var(--success)}
+
+.empty{font-size:13px;color:var(--muted);font-family:var(--mono);padding:16px 0}
 </style>
 </head>
 <body>
@@ -118,331 +146,303 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 <div id="loginScreen">
   <div class="login-box">
     <div class="login-logo">Ahsan.</div>
-    <div class="login-sub">Admin access only. Sign in to continue.</div>
-    <div class="login-err" id="loginErr">Incorrect username or password.</div>
-    <div class="login-field"><label>Username</label><input id="loginUser" type="text" autocomplete="username"/></div>
-    <div class="login-field"><label>Password</label><input id="loginPass" type="password" autocomplete="current-password"/></div>
+    <div class="login-sub">Admin access only.</div>
+    <div class="login-err" id="loginErr">Incorrect credentials.</div>
+    <div class="lf"><label>Username</label><input id="lu" type="text" autocomplete="username"/></div>
+    <div class="lf"><label>Password</label><input id="lp" type="password" autocomplete="current-password"/></div>
     <button class="login-btn" onclick="doLogin()">Sign In →</button>
     <div class="login-back"><a href="/">← Back to portfolio</a></div>
   </div>
 </div>
 
-<!-- ADMIN SHELL -->
+<!-- ADMIN -->
 <div id="adminShell">
-  <div class="admin-topbar">
-    <div class="admin-topbar-brand">⚙ Admin Panel <span>ahsanfnahian.com</span></div>
-    <div class="admin-topbar-actions">
-      <button class="topbar-btn primary" onclick="saveAll()">💾 Save All</button>
-      <a href="/" target="_blank"><button class="topbar-btn">↗ View Site</button></a>
-      <button class="topbar-btn danger" onclick="doLogout()">Sign Out</button>
+  <div class="topbar">
+    <div class="topbar-brand">⚙ Admin <span>ahsanfnahian.com</span></div>
+    <div class="topbar-actions">
+      <a href="/" target="_blank" class="tbtn">↗ View Site</a>
+      <button class="tbtn danger" onclick="doLogout()">Sign Out</button>
     </div>
   </div>
-  <div class="admin-layout">
-    <div class="admin-sidebar">
-      <div class="sidebar-section">Overview</div>
-      <div class="sidebar-item active" onclick="showPanel('dashboard')"><span class="ico">📊</span>Dashboard</div>
-      <div class="sidebar-section">Content</div>
-      <div class="sidebar-item" onclick="showPanel('profile')"><span class="ico">👤</span>Profile</div>
-      <div class="sidebar-item" onclick="showPanel('photo')"><span class="ico">🖼</span>Photo</div>
-      <div class="sidebar-item" onclick="showPanel('blogs')"><span class="ico">✍️</span>Blogs</div>
-      <div class="sidebar-item" onclick="showPanel('cases')"><span class="ico">📋</span>Cases</div>
-      <div class="sidebar-item" onclick="showPanel('thinking')"><span class="ico">💡</span>Thinking</div>
-      <div class="sidebar-item" onclick="showPanel('ventures')"><span class="ico">🚀</span>Ventures</div>
-      <div class="sidebar-item" onclick="showPanel('experience')"><span class="ico">💼</span>Experience</div>
-      <div class="sidebar-item" onclick="showPanel('numbers')"><span class="ico">📈</span>Numbers</div>
-      <div class="sidebar-item" onclick="showPanel('education')"><span class="ico">🎓</span>Education</div>
-      <div class="sidebar-section">Engagement</div>
-      <div class="sidebar-item" onclick="showPanel('formbuilder')"><span class="ico">📝</span>Form Builder</div>
-      <div class="sidebar-item" onclick="showPanel('responses')"><span class="ico">📥</span>Responses</div>
-      <div class="sidebar-item" onclick="showPanel('newsletter')"><span class="ico">📬</span>Newsletter</div>
-      <div class="sidebar-section">Settings</div>
-      <div class="sidebar-item" onclick="showPanel('contact')"><span class="ico">🔗</span>Contact</div>
-      <div class="sidebar-item" onclick="showPanel('availability')"><span class="ico">🟢</span>Availability</div>
-      <div class="sidebar-item" onclick="showPanel('security')"><span class="ico">🔒</span>Security</div>
+  <div class="layout">
+    <div class="sidebar">
+      <div class="sg">Overview</div>
+      <div class="si active" onclick="showPanel('dashboard')"><span class="ico">📊</span>Dashboard</div>
+      <div class="sg">Content</div>
+      <div class="si" onclick="showPanel('profile')"><span class="ico">👤</span>Profile</div>
+      <div class="si" onclick="showPanel('photo')"><span class="ico">🖼</span>Photo</div>
+      <div class="si" onclick="showPanel('blogs')"><span class="ico">✍️</span>Blogs</div>
+      <div class="si" onclick="showPanel('cases')"><span class="ico">📋</span>Case Studies</div>
+      <div class="si" onclick="showPanel('thinking')"><span class="ico">💡</span>Thinking</div>
+      <div class="si" onclick="showPanel('ventures')"><span class="ico">🚀</span>Ventures</div>
+      <div class="si" onclick="showPanel('experience')"><span class="ico">💼</span>Experience</div>
+      <div class="si" onclick="showPanel('numbers')"><span class="ico">📈</span>Numbers</div>
+      <div class="si" onclick="showPanel('education')"><span class="ico">🎓</span>Education</div>
+      <div class="sg">Engagement</div>
+      <div class="si" onclick="showPanel('formbuilder')"><span class="ico">📝</span>Form Builder</div>
+      <div class="si" onclick="showPanel('responses')"><span class="ico">📥</span>Responses</div>
+      <div class="si" onclick="showPanel('newsletter')"><span class="ico">📬</span>Newsletter</div>
+      <div class="sg">Settings</div>
+      <div class="si" onclick="showPanel('contact')"><span class="ico">🔗</span>Contact</div>
+      <div class="si" onclick="showPanel('availability')"><span class="ico">🟢</span>Availability</div>
+      <div class="si" onclick="showPanel('security')"><span class="ico">🔒</span>Security</div>
     </div>
-    <div class="admin-main">
+    <div class="main">
 
       <!-- DASHBOARD -->
       <div class="panel active" id="panel-dashboard">
-        <div class="panel-header"><div><div class="panel-title">Dashboard</div><div class="panel-sub">Welcome back, Ahsan.</div></div></div>
-        <div class="stats-grid" id="dashStats"><div class="loading">Loading...</div></div>
-        <div class="form-card"><h4>Quick Actions</h4>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn btn-primary" onclick="showPanel('blogs')">✍️ New Blog Post</button>
-            <button class="btn btn-secondary" onclick="showPanel('ventures')">🚀 Add Venture</button>
-            <button class="btn btn-secondary" onclick="showPanel('responses')">📥 View Responses</button>
-            <button class="btn btn-secondary" onclick="showPanel('newsletter')">📬 Subscribers</button>
+        <div class="ph"><div><div class="ph-title">Dashboard</div><div class="ph-sub">Welcome back, Ahsan.</div></div></div>
+        <div class="sg-grid" id="dashStats"></div>
+        <div class="card"><h4>Quick Actions</h4>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-p" onclick="showPanel('blogs')">✍️ New Blog Post</button>
+            <button class="btn btn-s" onclick="showPanel('ventures')">🚀 Add Venture</button>
+            <button class="btn btn-s" onclick="showPanel('responses')">📥 Responses</button>
+            <button class="btn btn-s" onclick="showPanel('newsletter')">📬 Subscribers</button>
           </div>
         </div>
       </div>
 
       <!-- PROFILE -->
       <div class="panel" id="panel-profile">
-        <div class="panel-header"><div><div class="panel-title">Profile & Hero</div><div class="panel-sub">Your main bio and positioning.</div></div></div>
-        <div class="form-card"><h4>Identity</h4>
-          <div class="grid-2">
-            <div class="field"><label>Full Name</label><input id="p-name"/></div>
-            <div class="field"><label>Label</label><input id="p-label"/></div>
-          </div>
-          <div class="field"><label>Tagline</label><input id="p-tagline"/></div>
-          <div class="field"><label>Hero Tags (comma separated)</label><input id="p-tags"/></div>
-          <div class="grid-2">
-            <div class="field"><label>Big Stat Number</label><input id="p-statnum"/></div>
-            <div class="field"><label>Big Stat Label</label><input id="p-statlabel"/></div>
-          </div>
-          <div class="field"><label>Bio (HTML allowed)</label><textarea id="p-bio" style="min-height:120px"></textarea></div>
-          <div class="field"><label>About This Site</label><textarea id="p-about"></textarea></div>
+        <div class="ph"><div><div class="ph-title">Profile & Hero</div><div class="ph-sub">Edit your bio, tags, and links.</div></div></div>
+        <div class="card"><h4>Identity</h4>
+          <div class="g2"><div class="f"><label>Full Name</label><input id="p-name"/></div><div class="f"><label>Label (under avatar)</label><input id="p-label"/></div></div>
+          <div class="f"><label>Tagline (italic)</label><input id="p-tagline"/></div>
+          <div class="f"><label>Hero Tags (comma separated)</label><input id="p-tags"/></div>
+          <div class="g2"><div class="f"><label>Big Stat Number</label><input id="p-statnum"/></div><div class="f"><label>Big Stat Label</label><input id="p-statlabel"/></div></div>
+          <div class="f"><label>Bio (HTML allowed)</label><textarea id="p-bio" style="min-height:120px"></textarea></div>
+          <div class="f"><label>About This Site (expandable section)</label><textarea id="p-about"></textarea></div>
         </div>
-        <div class="form-card"><h4>Links</h4>
-          <div class="grid-3">
-            <div class="field"><label>LinkedIn URL</label><input id="p-linkedin"/></div>
-            <div class="field"><label>Email</label><input id="p-email" type="email"/></div>
-            <div class="field"><label>Resume URL</label><input id="p-resume"/></div>
+        <div class="card"><h4>Links</h4>
+          <div class="g3">
+            <div class="f"><label>LinkedIn URL</label><input id="p-linkedin"/></div>
+            <div class="f"><label>Email</label><input id="p-email" type="email"/></div>
+            <div class="f"><label>Resume URL</label><input id="p-resume"/></div>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="saveProfileData()">💾 Save Profile</button>
+        <button class="btn btn-p" onclick="saveProfileData()">💾 Save Profile</button>
       </div>
 
       <!-- PHOTO -->
       <div class="panel" id="panel-photo">
-        <div class="panel-header"><div><div class="panel-title">Profile Photo</div><div class="panel-sub">Upload your profile picture. Saves directly to database.</div></div></div>
-        <div class="form-card">
-          <div class="upload-zone" onclick="document.getElementById('photoFile').click()">
-            <div style="font-size:28px">📷</div>
-            <p>Click to upload · JPG or PNG · 400×400px recommended</p>
+        <div class="ph"><div><div class="ph-title">Profile Photo</div><div class="ph-sub">Saved directly to Supabase.</div></div></div>
+        <div class="card">
+          <div class="uz" onclick="document.getElementById('photoFile').click()">
+            <div style="font-size:26px">📷</div><p>Click to upload · JPG/PNG · 400×400 recommended</p>
           </div>
           <input type="file" id="photoFile" accept="image/*" style="display:none" onchange="uploadPhoto(event)"/>
-          <div id="photoPrevWrap" style="display:none;margin-top:16px">
-            <img id="photoPreview" class="upload-preview" style="width:100px;height:100px"/>
-            <p style="font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--mono)" id="photoStatus">Ready to save</p>
-            <button class="btn btn-primary" style="margin-top:10px" onclick="savePhoto()">💾 Save Photo</button>
+          <div id="photoPrevWrap" style="display:none;margin-top:12px">
+            <img id="photoPreview" style="width:90px;height:90px;border-radius:10px;object-fit:cover;border:1px solid var(--border)"/>
+            <p style="font-size:11px;color:var(--muted);margin-top:6px;font-family:var(--mono)" id="photoStatus">Ready to save</p>
+            <button class="btn btn-p" style="margin-top:10px" onclick="savePhoto()">💾 Save Photo</button>
           </div>
         </div>
       </div>
 
       <!-- BLOGS -->
       <div class="panel" id="panel-blogs">
-        <div class="panel-header">
-          <div><div class="panel-title">Blog Posts</div><div class="panel-sub">Publish and manage your writing.</div></div>
-          <span class="panel-stat" id="blogCount">0 posts</span>
-        </div>
-        <div class="form-card"><h4>New Post</h4>
-          <div class="field"><label>Title</label><input id="b-title" placeholder="Post title..."/></div>
-          <div class="grid-2">
-            <div class="field"><label>Date</label><input id="b-date" type="date"/></div>
-            <div class="field"><label>Read Time</label><input id="b-read" placeholder="5 min read"/></div>
-          </div>
-          <div class="field"><label>Excerpt</label><textarea id="b-excerpt" style="min-height:65px"></textarea></div>
-          <div class="field"><label>Full Content</label><textarea id="b-content" style="min-height:130px"></textarea></div>
-          <div class="field"><label>Cover Image</label>
-            <div class="upload-zone" style="padding:12px" onclick="document.getElementById('blogImg').click()"><p style="margin:0;font-size:12px">📷 Upload cover image</p></div>
+        <div class="ph"><div><div class="ph-title">Blog Posts</div><div class="ph-sub" id="blogCountSub">0 posts</div></div></div>
+        <div class="card"><h4>New Post</h4>
+          <div class="f"><label>Title</label><input id="b-title" placeholder="Post title..."/></div>
+          <div class="g2"><div class="f"><label>Date</label><input id="b-date" type="date"/></div><div class="f"><label>Read Time</label><input id="b-read" placeholder="5 min read"/></div></div>
+          <div class="f"><label>Excerpt (shown on card)</label><textarea id="b-excerpt" style="min-height:60px"></textarea></div>
+          <div class="f"><label>Full Content</label><textarea id="b-content" style="min-height:120px"></textarea></div>
+          <div class="f"><label>Cover Image</label>
+            <div class="uz" style="padding:12px" onclick="document.getElementById('blogImg').click()"><p style="margin:0;font-size:12px">📷 Upload cover image</p></div>
             <input type="file" id="blogImg" accept="image/*" style="display:none" onchange="handleImgTemp(event,'blogImgData','blogImgPrev','blogImgWrap')"/>
-            <div id="blogImgWrap" style="display:none;margin-top:8px"><img id="blogImgPrev" class="upload-preview"/></div>
+            <div id="blogImgWrap" style="display:none;margin-top:7px"><img id="blogImgPrev" class="uprev"/></div>
           </div>
-          <button class="btn btn-primary" onclick="addBlog()">+ Publish Post</button>
+          <button class="btn btn-p" onclick="addItem('blogs')">+ Publish Post</button>
         </div>
         <div id="blogList"></div>
       </div>
 
       <!-- CASES -->
       <div class="panel" id="panel-cases">
-        <div class="panel-header"><div><div class="panel-title">Case Studies</div></div></div>
-        <div class="form-card"><h4>New Case Study</h4>
-          <div class="grid-2">
-            <div class="field"><label>Company / Context</label><input id="cs-company"/></div>
-            <div class="field"><label>Title</label><input id="cs-title"/></div>
-          </div>
-          <div class="field"><label>Problem</label><textarea id="cs-problem" style="min-height:55px"></textarea></div>
-          <div class="field"><label>Decision</label><textarea id="cs-decision" style="min-height:55px"></textarea></div>
-          <div class="field"><label>Measured By</label><textarea id="cs-measured" style="min-height:55px"></textarea></div>
-          <div class="field"><label>Result</label><input id="cs-result"/></div>
-          <button class="btn btn-primary" onclick="addCase()">+ Add</button>
+        <div class="ph"><div><div class="ph-title">Case Studies</div><div class="ph-sub">Product decisions and outcomes.</div></div></div>
+        <div class="card"><h4>New Case Study</h4>
+          <div class="g2"><div class="f"><label>Company / Context</label><input id="cs-company" placeholder="Apar's Classroom · 800K+"/></div><div class="f"><label>Title</label><input id="cs-title"/></div></div>
+          <div class="f"><label>Problem</label><textarea id="cs-problem" style="min-height:55px"></textarea></div>
+          <div class="f"><label>Decision</label><textarea id="cs-decision" style="min-height:55px"></textarea></div>
+          <div class="f"><label>Measured By</label><textarea id="cs-measured" style="min-height:55px"></textarea></div>
+          <div class="f"><label>Result</label><input id="cs-result" placeholder="↑ 35% organic reach"/></div>
+          <button class="btn btn-p" onclick="addItem('cases')">+ Add</button>
         </div>
         <div id="caseList"></div>
       </div>
 
       <!-- THINKING -->
       <div class="panel" id="panel-thinking">
-        <div class="panel-header"><div><div class="panel-title">Product Thinking</div></div></div>
-        <div class="form-card"><h4>New Take</h4>
-          <div class="grid-2">
-            <div class="field"><label>Tag</label><input id="th-tag"/></div>
-            <div class="field"><label>Title</label><input id="th-title"/></div>
-          </div>
-          <div class="field"><label>Body</label><textarea id="th-body" style="min-height:80px"></textarea></div>
-          <button class="btn btn-primary" onclick="addThink()">+ Add</button>
+        <div class="ph"><div><div class="ph-title">Product Thinking</div></div></div>
+        <div class="card"><h4>New Take</h4>
+          <div class="g2"><div class="f"><label>Tag</label><input id="th-tag" placeholder="GTM · Emerging Markets"/></div><div class="f"><label>Title</label><input id="th-title"/></div></div>
+          <div class="f"><label>Body</label><textarea id="th-body" style="min-height:80px"></textarea></div>
+          <button class="btn btn-p" onclick="addItem('thinks')">+ Add</button>
         </div>
         <div id="thinkList"></div>
       </div>
 
       <!-- VENTURES -->
       <div class="panel" id="panel-ventures">
-        <div class="panel-header"><div><div class="panel-title">Ventures</div></div></div>
-        <div class="form-card"><h4>New Venture</h4>
-          <div class="grid-2">
-            <div class="field"><label>Name</label><input id="v-name"/></div>
-            <div class="field"><label>Website URL</label><input id="v-url" placeholder="https://..."/></div>
-          </div>
-          <div class="field"><label>Role</label><input id="v-role"/></div>
-          <div class="field"><label>Description</label><textarea id="v-desc" style="min-height:65px"></textarea></div>
-          <div class="field"><label>Stats (comma separated)</label><input id="v-stats"/></div>
-          <div class="field"><label>Logo</label>
-            <div class="upload-zone" style="padding:12px" onclick="document.getElementById('vLogo').click()"><p style="margin:0;font-size:12px">🏢 Upload logo</p></div>
+        <div class="ph"><div><div class="ph-title">Ventures</div></div></div>
+        <div class="card"><h4>New Venture</h4>
+          <div class="g2"><div class="f"><label>Name</label><input id="v-name"/></div><div class="f"><label>Website URL</label><input id="v-url" placeholder="https://..."/></div></div>
+          <div class="f"><label>Role</label><input id="v-role" placeholder="Founder & CEO"/></div>
+          <div class="f"><label>Description</label><textarea id="v-desc" style="min-height:65px"></textarea></div>
+          <div class="f"><label>Stats (comma separated)</label><input id="v-stats" placeholder="100K+ students, Organic growth"/></div>
+          <div class="f"><label>Logo</label>
+            <div class="uz" style="padding:11px" onclick="document.getElementById('vLogo').click()"><p style="margin:0;font-size:12px">🏢 Upload logo</p></div>
             <input type="file" id="vLogo" accept="image/*" style="display:none" onchange="handleImgTemp(event,'vLogoData','vLogoPrev','vLogoWrap')"/>
-            <div id="vLogoWrap" style="display:none;margin-top:8px"><img id="vLogoPrev" class="upload-preview"/></div>
+            <div id="vLogoWrap" style="display:none;margin-top:7px"><img id="vLogoPrev" class="uprev"/></div>
           </div>
-          <button class="btn btn-primary" onclick="addVenture()">+ Add Venture</button>
+          <button class="btn btn-p" onclick="addItem('ventures')">+ Add Venture</button>
         </div>
         <div id="ventureList"></div>
       </div>
 
       <!-- EXPERIENCE -->
       <div class="panel" id="panel-experience">
-        <div class="panel-header"><div><div class="panel-title">Experience</div></div></div>
-        <div class="form-card"><h4>New Role</h4>
-          <div class="grid-2">
-            <div class="field"><label>Title & Company</label><input id="ex-title"/></div>
-            <div class="field"><label>Company URL</label><input id="ex-url" placeholder="https://..."/></div>
-          </div>
-          <div class="field"><label>Meta</label><input id="ex-meta"/></div>
-          <div class="field"><label>Description</label><textarea id="ex-desc" style="min-height:65px"></textarea></div>
-          <div class="field"><label>Badge (optional)</label><input id="ex-badge"/></div>
-          <div class="field"><label>Company Logo</label>
-            <div class="upload-zone" style="padding:12px" onclick="document.getElementById('exLogo').click()"><p style="margin:0;font-size:12px">🏢 Upload logo</p></div>
+        <div class="ph"><div><div class="ph-title">Experience</div></div></div>
+        <div class="card"><h4>New Role</h4>
+          <div class="g2"><div class="f"><label>Title & Company</label><input id="ex-title" placeholder="PM — Apar's Classroom"/></div><div class="f"><label>Company URL</label><input id="ex-url" placeholder="https://..."/></div></div>
+          <div class="f"><label>Meta (tenure, scale)</label><input id="ex-meta" placeholder="800,000+ students · Bangladesh's largest EdTech"/></div>
+          <div class="f"><label>Description</label><textarea id="ex-desc" style="min-height:65px"></textarea></div>
+          <div class="f"><label>Badge (optional)</label><input id="ex-badge" placeholder="Key Role"/></div>
+          <div class="f"><label>Company Logo</label>
+            <div class="uz" style="padding:11px" onclick="document.getElementById('exLogo').click()"><p style="margin:0;font-size:12px">🏢 Upload logo</p></div>
             <input type="file" id="exLogo" accept="image/*" style="display:none" onchange="handleImgTemp(event,'exLogoData','exLogoPrev','exLogoWrap')"/>
-            <div id="exLogoWrap" style="display:none;margin-top:8px"><img id="exLogoPrev" class="upload-preview"/></div>
+            <div id="exLogoWrap" style="display:none;margin-top:7px"><img id="exLogoPrev" class="uprev"/></div>
           </div>
-          <button class="btn btn-primary" onclick="addExp()">+ Add Role</button>
+          <button class="btn btn-p" onclick="addItem('experience')">+ Add Role</button>
         </div>
         <div id="expList"></div>
       </div>
 
       <!-- NUMBERS -->
       <div class="panel" id="panel-numbers">
-        <div class="panel-header"><div><div class="panel-title">Impact Numbers</div></div></div>
-        <div class="form-card"><h4>New Stat</h4>
-          <div class="grid-2">
-            <div class="field"><label>Value</label><input id="n-val" placeholder="1M+"/></div>
-            <div class="field"><label>Label</label><input id="n-label"/></div>
-          </div>
-          <button class="btn btn-primary" onclick="addNum()">+ Add</button>
+        <div class="ph"><div><div class="ph-title">Impact Numbers</div></div></div>
+        <div class="card"><h4>New Stat</h4>
+          <div class="g2"><div class="f"><label>Value</label><input id="n-val" placeholder="1M+"/></div><div class="f"><label>Label</label><input id="n-label" placeholder="Students reached"/></div></div>
+          <button class="btn btn-p" onclick="addItem('numbers')">+ Add</button>
         </div>
         <div id="numList"></div>
       </div>
 
       <!-- EDUCATION -->
       <div class="panel" id="panel-education">
-        <div class="panel-header"><div><div class="panel-title">Education</div></div></div>
-        <div class="form-card"><h4>New Entry</h4>
-          <div class="grid-2">
-            <div class="field"><label>School</label><input id="ed-school"/></div>
-            <div class="field"><label>School Logo</label>
-              <div class="upload-zone" style="padding:8px" onclick="document.getElementById('edLogo').click()"><p style="margin:0;font-size:11px">🎓 Logo</p></div>
+        <div class="ph"><div><div class="ph-title">Education</div></div></div>
+        <div class="card"><h4>New Entry</h4>
+          <div class="g2">
+            <div class="f"><label>School</label><input id="ed-school"/></div>
+            <div class="f"><label>School Logo</label>
+              <div class="uz" style="padding:8px" onclick="document.getElementById('edLogo').click()"><p style="margin:0;font-size:11px">🎓 Logo</p></div>
               <input type="file" id="edLogo" accept="image/*" style="display:none" onchange="handleImgTemp(event,'edLogoData','edLogoPrev','edLogoWrap')"/>
-              <div id="edLogoWrap" style="display:none;margin-top:6px"><img id="edLogoPrev" class="upload-preview"/></div>
+              <div id="edLogoWrap" style="display:none;margin-top:6px"><img id="edLogoPrev" class="uprev"/></div>
             </div>
           </div>
-          <div class="field"><label>Degree / Program</label><input id="ed-deg"/></div>
-          <div class="field"><label>Scholarship Badge</label><input id="ed-badge"/></div>
-          <div class="field"><label>Certifications (comma separated)</label><input id="ed-certs"/></div>
-          <button class="btn btn-primary" onclick="addEdu()">+ Add</button>
+          <div class="f"><label>Degree / Program</label><input id="ed-deg"/></div>
+          <div class="f"><label>Scholarship Badge</label><input id="ed-badge" placeholder="🏆 Abraham Lincoln Scholar"/></div>
+          <div class="f"><label>Certifications (comma separated)</label><input id="ed-certs" placeholder="Harvard — CS50, Stanford — ML"/></div>
+          <button class="btn btn-p" onclick="addItem('education')">+ Add</button>
         </div>
         <div id="eduList"></div>
       </div>
 
       <!-- FORM BUILDER -->
       <div class="panel" id="panel-formbuilder">
-        <div class="panel-header"><div><div class="panel-title">Form Builder</div><div class="panel-sub">Create custom forms for visitors.</div></div></div>
-        <div class="form-card"><h4>New Form</h4>
-          <div class="grid-2">
-            <div class="field"><label>Form Title</label><input id="fb-title"/></div>
-            <div class="field"><label>Description</label><input id="fb-desc"/></div>
-          </div>
-          <div class="grid-2">
-            <div class="field"><label>Button Text</label><input id="fb-btn" value="Submit →"/></div>
-            <div class="field"><label>Thank You Message</label><input id="fb-thanks" value="Thanks! I'll get back to you soon."/></div>
-          </div>
-          <div class="field"><label>Fields</label>
+        <div class="ph"><div><div class="ph-title">Form Builder</div><div class="ph-sub">Create custom forms for visitors.</div></div></div>
+        <div class="card"><h4>New Form</h4>
+          <div class="g2"><div class="f"><label>Title</label><input id="fb-title"/></div><div class="f"><label>Description</label><input id="fb-desc"/></div></div>
+          <div class="g2"><div class="f"><label>Button Text</label><input id="fb-btn" value="Submit →"/></div><div class="f"><label>Thank You Message</label><input id="fb-thanks" value="Thanks! I'll get back to you soon."/></div></div>
+          <div class="f"><label>Fields</label>
             <div id="fb-fields"></div>
-            <div class="fb-add-btns">
-              <button class="fb-add-btn" onclick="addFBField('text')">+ Text</button>
-              <button class="fb-add-btn" onclick="addFBField('email')">+ Email</button>
-              <button class="fb-add-btn" onclick="addFBField('textarea')">+ Textarea</button>
-              <button class="fb-add-btn" onclick="addFBField('select')">+ Dropdown</button>
+            <div class="fb-btns">
+              <button class="fb-btn" onclick="addFBField('text')">+ Text</button>
+              <button class="fb-btn" onclick="addFBField('email')">+ Email</button>
+              <button class="fb-btn" onclick="addFBField('textarea')">+ Textarea</button>
+              <button class="fb-btn" onclick="addFBField('select')">+ Dropdown</button>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="publishForm()">+ Publish Form</button>
+          <button class="btn btn-p" onclick="addItem('forms')">+ Publish Form</button>
         </div>
         <div id="formList"></div>
       </div>
 
       <!-- RESPONSES -->
       <div class="panel" id="panel-responses">
-        <div class="panel-header">
-          <div><div class="panel-title">Form Responses</div><div class="panel-sub">Live from Supabase.</div></div>
-          <button class="btn btn-secondary btn-sm" onclick="exportCSV()">↓ Export CSV</button>
+        <div class="ph">
+          <div><div class="ph-title">Form Responses</div><div class="ph-sub">Live from Supabase.</div></div>
+          <button class="btn btn-s btn-sm" onclick="exportCSV()">↓ Export CSV</button>
         </div>
-        <div id="responsesList"><div class="loading">Loading...</div></div>
+        <div id="responsesList"><div class="empty">Loading...</div></div>
       </div>
 
       <!-- NEWSLETTER -->
       <div class="panel" id="panel-newsletter">
-        <div class="panel-header">
-          <div><div class="panel-title">Newsletter</div><div class="panel-sub">Subscribers from Supabase.</div></div>
-          <button class="btn btn-secondary btn-sm" onclick="exportSubs()">↓ Export CSV</button>
+        <div class="ph">
+          <div><div class="ph-title">Newsletter</div><div class="ph-sub" id="subCountSub">0 subscribers</div></div>
+          <button class="btn btn-s btn-sm" onclick="exportSubs()">↓ Export CSV</button>
         </div>
-        <div class="form-card"><h4>Newsletter Settings</h4>
-          <div class="grid-2">
-            <div class="field"><label>Title</label><input id="nl-title"/></div>
-            <div class="field"><label>Description</label><input id="nl-desc"/></div>
-          </div>
-          <button class="btn btn-primary" onclick="saveNL()">💾 Save</button>
+        <div class="card"><h4>Settings</h4>
+          <div class="g2"><div class="f"><label>Title</label><input id="nl-title"/></div><div class="f"><label>Description</label><input id="nl-desc"/></div></div>
+          <button class="btn btn-p" onclick="saveNL()">💾 Save</button>
         </div>
-        <div id="subsList"><div class="loading">Loading...</div></div>
+        <div id="subsList"><div class="empty">Loading...</div></div>
       </div>
 
       <!-- CONTACT -->
       <div class="panel" id="panel-contact">
-        <div class="panel-header"><div><div class="panel-title">Contact & Footer</div></div></div>
-        <div class="form-card">
-          <div class="field"><label>Contact Heading</label><input id="c-heading"/></div>
-          <div class="field"><label>Contact Description</label><textarea id="c-desc"></textarea></div>
-          <div class="field"><label>Footer Tagline</label><textarea id="c-footer"></textarea></div>
-          <button class="btn btn-primary" onclick="saveContactData()">💾 Save</button>
+        <div class="ph"><div><div class="ph-title">Contact & Footer</div></div></div>
+        <div class="card">
+          <div class="f"><label>Contact Heading</label><input id="c-heading"/></div>
+          <div class="f"><label>Contact Description</label><textarea id="c-desc"></textarea></div>
+          <div class="f"><label>Footer Tagline</label><textarea id="c-footer"></textarea></div>
+          <button class="btn btn-p" onclick="saveContactData()">💾 Save</button>
         </div>
       </div>
 
       <!-- AVAILABILITY -->
       <div class="panel" id="panel-availability">
-        <div class="panel-header"><div><div class="panel-title">Availability Badge</div></div></div>
-        <div class="form-card"><h4>Current Status</h4>
-          <div class="avail-row" id="av-open" onclick="setAvail('open')"><div class="avail-dot green"></div><div><div style="font-weight:600;font-size:13px">Open to Opportunities</div><div style="font-size:12px;color:var(--muted)">Actively looking for PM / GTM roles</div></div></div>
-          <div class="avail-row" id="av-selective" onclick="setAvail('selective')"><div class="avail-dot yellow"></div><div><div style="font-weight:600;font-size:13px">Selectively Open</div><div style="font-size:12px;color:var(--muted)">Open to select opportunities only</div></div></div>
-          <div class="avail-row" id="av-closed" onclick="setAvail('closed')"><div class="avail-dot red"></div><div><div style="font-weight:600;font-size:13px">Not Available</div><div style="font-size:12px;color:var(--muted)">Not looking right now</div></div></div>
-          <button class="btn btn-primary" style="margin-top:14px" onclick="saveAvailData()">💾 Save Status</button>
+        <div class="ph"><div><div class="ph-title">Availability Badge</div><div class="ph-sub">Shows on your portfolio hero.</div></div></div>
+        <div class="card">
+          <div class="av-row" id="av-open" onclick="setAvail('open')"><div class="av-dot g"></div><div><div style="font-weight:600;font-size:13px">Open to Opportunities</div><div style="font-size:12px;color:var(--muted)">Actively looking for PM / GTM roles</div></div></div>
+          <div class="av-row" id="av-selective" onclick="setAvail('selective')"><div class="av-dot y"></div><div><div style="font-weight:600;font-size:13px">Selectively Open</div><div style="font-size:12px;color:var(--muted)">Open to specific opportunities</div></div></div>
+          <div class="av-row" id="av-closed" onclick="setAvail('closed')"><div class="av-dot r"></div><div><div style="font-weight:600;font-size:13px">Not Available</div><div style="font-size:12px;color:var(--muted)">Not looking right now</div></div></div>
+          <button class="btn btn-p" style="margin-top:14px" onclick="saveAvailData()">💾 Save Status</button>
         </div>
       </div>
 
       <!-- SECURITY -->
       <div class="panel" id="panel-security">
-        <div class="panel-header"><div><div class="panel-title">Security</div></div></div>
-        <div class="form-card">
-          <h4>Change Credentials</h4>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">Update username and password in <code style="font-family:var(--mono);background:var(--bg);padding:2px 6px;border-radius:4px">assets/data.js</code> and push to GitHub.</p>
-          <div class="field"><label>Current Password in data.js</label><input id="sec-cur" type="password"/></div>
-          <div class="grid-2">
-            <div class="field"><label>New Password</label><input id="sec-new" type="password"/></div>
-            <div class="field"><label>Confirm</label><input id="sec-con" type="password"/></div>
-          </div>
-          <button class="btn btn-primary" onclick="changePass()">🔒 Verify Match</button>
+        <div class="ph"><div><div class="ph-title">Security</div></div></div>
+        <div class="card">
+          <h4>Change Password</h4>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6">Update <code style="font-family:var(--mono);background:var(--bg);padding:2px 6px;border-radius:4px">ADMIN_PASSWORD</code> in <code style="font-family:var(--mono);background:var(--bg);padding:2px 6px;border-radius:4px">assets/data.js</code> and push to GitHub.</p>
+          <div class="f"><label>Current Password</label><input id="sec-cur" type="password"/></div>
+          <div class="g2"><div class="f"><label>New Password</label><input id="sec-new" type="password"/></div><div class="f"><label>Confirm</label><input id="sec-con" type="password"/></div></div>
+          <button class="btn btn-p" onclick="changePass()">🔒 Verify</button>
         </div>
-        <div class="form-card">
+        <div class="card" style="margin-top:16px">
           <h4 style="color:var(--danger)">Danger Zone</h4>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Reset all content to defaults.</p>
-          <button class="btn btn-danger" onclick="if(confirm('Reset ALL data?'))resetAllData()">⚠️ Reset All Data</button>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Reset all content to defaults. Cannot be undone.</p>
+          <button class="btn btn-d" onclick="if(confirm('Reset ALL data?'))resetAllData()">⚠️ Reset All Data</button>
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="em-overlay" id="editModal">
+  <div class="em-box">
+    <button class="em-close" onclick="closeEditModal()">✕ Close</button>
+    <div class="em-title" id="emTitle">Edit Item</div>
+    <div id="emBody"></div>
+    <div class="em-actions">
+      <button class="btn btn-s" onclick="closeEditModal()">Cancel</button>
+      <button class="btn btn-p" id="emSaveBtn" onclick="saveEdit()">💾 Save Changes</button>
     </div>
   </div>
 </div>
@@ -450,471 +450,428 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 <div class="toast" id="toast"></div>
 
 <script>
-    // ═══ SUPABASE CONFIG ═══
-    const SUPABASE_URL = "https://laghhnxxfgwgjpvsfzhw.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhZ2hobnh4Zmd3Z2pwdnNmemh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NDUxNDIsImV4cCI6MjA5MTAyMTE0Mn0.tsufxhlF1OyI4hfvbHYDlHhIS6dp-C_wbr3ev5oZyoE";
-    
-    // ═══ AUTH ═══
-    const ADMIN_USERNAME = "ahsan";
-    const ADMIN_PASSWORD = "changeme123";
-    const SESSION_KEY = "admin_session";
-    const SESSION_EXPIRY = 2 * 60 * 60 * 1000;
-    
-    function login(u, p) {
-      if (u === ADMIN_USERNAME && p === ADMIN_PASSWORD) {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() }));
-        return true;
-      }
-      return false;
-    }
-    function isLoggedIn() {
-      try {
-        const raw = sessionStorage.getItem(SESSION_KEY);
-        if (!raw) return false;
-        const { ts } = JSON.parse(raw);
-        return Date.now() - ts < SESSION_EXPIRY;
-      } catch { return false; }
-    }
-    function logout() { sessionStorage.removeItem(SESSION_KEY); }
-    
-    // ═══ SUPABASE HELPERS ═══
-    async function sbFetch(path, method = "GET", body = null) {
-      const opts = {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": SUPABASE_KEY,
-          "Authorization": "Bearer " + SUPABASE_KEY,
-          "Prefer": method === "POST" ? "resolution=merge-duplicates" : ""
-        }
-      };
-      if (body) opts.body = JSON.stringify(body);
-      const res = await fetch(SUPABASE_URL + "/rest/v1/" + path, opts);
-      const text = await res.text();
-      return text ? JSON.parse(text) : null;
-    }
-    async function loadContent(key) {
-      try { const r = await sbFetch(`content?key=eq.${key}&select=data`); return r?.length ? r[0].data : null; } catch { return null; }
-    }
-    async function saveContent(key, data) {
-      await sbFetch("content", "POST", { key, data });
-    }
-    async function loadProfile() {
-      try { const r = await sbFetch("profile?id=eq.1&select=data"); return r?.length ? r[0].data : null; } catch { return null; }
-    }
-    async function saveProfile(data) { await sbFetch("profile", "POST", { id: 1, data }); }
-    async function loadMedia(key) {
-      try { const r = await sbFetch(`media?key=eq.${key}&select=data`); return r?.length ? r[0].data : null; } catch { return null; }
-    }
-    async function saveMedia(key, data) { await sbFetch("media", "POST", { key, data, updated_at: new Date().toISOString() }); }
-    async function saveResponse(formTitle, data) { await sbFetch("responses", "POST", { form_title: formTitle, data }); }
-    async function loadResponses() { try { return await sbFetch("responses?select=*&order=created_at.desc") || []; } catch { return []; } }
-    async function saveSubscriber(email) { await sbFetch("subscribers", "POST", { email }); }
-    async function loadSubscribers() { try { return await sbFetch("subscribers?select=*&order=created_at.desc") || []; } catch { return []; } }
-    function nextId(arr) { return arr.length ? Math.max(...arr.map(x=>x.id))+1 : 1; }
-    function formatDate(d) { if(!d) return ""; try { return new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}); } catch { return d; } }
-    
-    const DEFAULT_DATA = {
-      profile: { name:"Ahsan Foez Nahian", label:"Founder · PM · EdTech · Growth", tagline:"Building products that reach the next billion.", tags:["EdTech · Growth","Product Strategy","Emerging Markets","Bangladesh → USA"], statNum:"1,000,000+", statLabel:"students reached through products I built.", bio:"To founders, PMs, and the curious. I'm <strong>Ahsan Foez Nahian</strong> — a tech-enabled entrepreneur serving <strong>1M+ users</strong>.", about:"This site is for hiring managers, founders, and investors.", linkedin:"https://linkedin.com/in/ahsannahian", email:"ahsan@gettysburg.edu", resume:"#", photo:null, availability:"open" },
-      blogs:[], cases:[], thinks:[], ventures:[], experience:[], numbers:[], education:[], forms:[],
-      newsletter:{ title:"The Builder's Brief", desc:"Occasional essays on product and growth." },
-      contact:{ heading:"Let's build something together.", desc:"I'm looking for PM, GTM, and growth roles.", footerDesc:"Founder turned PM candidate. Gettysburg College, Abraham Lincoln Scholar." }
-    };
-// ═══════════ STATE ═══════════
+// ══════════════════════════════════════
+//  SUPABASE + AUTH (inline — no external dep)
+// ══════════════════════════════════════
+const SUPABASE_URL = "https://laghhnxxfgwgjpvsfzhw.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhZ2hobnh4Zmd3Z2pwdnNmemh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NDUxNDIsImV4cCI6MjA5MTAyMTE0Mn0.tsufxhlF1OyI4hfvbHYDlHhIS6dp-C_wbr3ev5oZyoE";
+const ADMIN_USERNAME = "ahsan";
+const ADMIN_PASSWORD = "changeme123";
+const SESSION_KEY = "admin_session";
+const SESSION_EXPIRY = 2*60*60*1000;
+
+function login(u,p){if(u===ADMIN_USERNAME&&p===ADMIN_PASSWORD){sessionStorage.setItem(SESSION_KEY,JSON.stringify({ts:Date.now()}));return true;}return false;}
+function isLoggedIn(){try{const r=sessionStorage.getItem(SESSION_KEY);if(!r)return false;const{ts}=JSON.parse(r);return Date.now()-ts<SESSION_EXPIRY;}catch{return false;}}
+function logout(){sessionStorage.removeItem(SESSION_KEY);}
+
+async function sbFetch(path,method="GET",body=null){
+  const opts={method,headers:{"Content-Type":"application/json","apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Prefer":method==="POST"?"resolution=merge-duplicates":""}};
+  if(body)opts.body=JSON.stringify(body);
+  const res=await fetch(SUPABASE_URL+"/rest/v1/"+path,opts);
+  const text=await res.text();return text?JSON.parse(text):null;
+}
+async function loadContent(key){try{const r=await sbFetch(`content?key=eq.${key}&select=data`);return r?.length?r[0].data:null;}catch{return null;}}
+async function saveContent(key,data){await sbFetch("content","POST",{key,data});}
+async function loadProfile(){try{const r=await sbFetch("profile?id=eq.1&select=data");return r?.length?r[0].data:null;}catch{return null;}}
+async function saveProfileSB(data){await sbFetch("profile","POST",{id:1,data});}
+async function loadMedia(key){try{const r=await sbFetch(`media?key=eq.${key}&select=data`);return r?.length?r[0].data:null;}catch{return null;}}
+async function saveMedia(key,data){await sbFetch("media","POST",{key,data,updated_at:new Date().toISOString()});}
+async function loadResponses(){try{return await sbFetch("responses?select=*&order=created_at.desc")||[];}catch{return[];}}
+async function loadSubscribers(){try{return await sbFetch("subscribers?select=*&order=created_at.desc")||[];}catch{return[];}}
+function nextId(arr){return arr.length?Math.max(...arr.map(x=>x.id))+1:1;}
+function fmt(d){if(!d)return"";try{return new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});}catch{return d;}}
+
+// ══════════════════════════════════════
+//  DEFAULT DATA
+// ══════════════════════════════════════
+const DEFAULT_DATA = {
+  profile:{name:"Ahsan Foez Nahian",label:"Founder · PM · EdTech · Growth",tagline:"Building products that reach the next billion.",tags:["EdTech · Growth","Product Strategy","Emerging Markets","Bangladesh → USA"],statNum:"1,000,000+",statLabel:"students reached through products I built.",bio:"To founders, PMs, and the curious. I'm <strong>Ahsan Foez Nahian</strong> — a tech-enabled entrepreneur serving <strong>1M+ users</strong>.",about:"This site is for hiring managers, founders, and investors.",linkedin:"https://linkedin.com/in/ahsannahian",email:"ahsan@gettysburg.edu",resume:"#",photo:null,availability:"open"},
+  blogs:[{id:1,title:"Why Western GTM Playbooks Fail in Emerging Markets",date:"2026-03-15",read:"6 min read",excerpt:"CAC models built for credit-card economies collapse in mobile-money markets.",content:"Full content here...",img:null},{id:2,title:"The Week-2 Cliff",date:"2026-02-20",read:"4 min read",excerpt:"Students who return after their first-week cliff have 4x lifetime engagement.",content:"Full content here...",img:null},{id:3,title:"Referral Loops Only Work When the Reward Is the Product",date:"2026-01-10",read:"5 min read",excerpt:"At Privatune, discount referrals: 12%. Product-as-reward: 34%.",content:"Full content here...",img:null}],
+  cases:[{id:1,company:"Apar's Classroom · 800K+",title:"Growing organic reach 35% with ML-driven SEO",problem:"Platform growth had plateaued.",decision:"Built ML-assisted SEO architecture.",measured:"Organic traffic, new user acquisition rate.",result:"↑ 35% organic reach"},{id:2,company:"Privatune · EdTech",title:"Scaling 0 → 100K students/yr without paid marketing",problem:"New platform, near-zero budget.",decision:"Referral-first growth loop.",measured:"Weekly active students.",result:"→ 100,000+ students/year"},{id:3,company:"Connecting Goal",title:"Bangladesh's first digital group study platform",problem:"Students lacked peer collaboration tools.",decision:"Group study rooms with goals.",measured:"Completion rate, academic surveys.",result:"↑ 40% academic performance"},{id:4,company:"VisaCracked",title:"Solving the last mile — the visa interview",problem:"Qualified students failed US visa interviews.",decision:"Mock interview simulations.",measured:"Interview success rate vs control.",result:"→ Democratizing global access"}],
+  thinks:[{id:1,tag:"GTM · Emerging Markets",title:"Why Western GTM playbooks fail in Bangladesh",body:"CAC models collapse in mobile-money economies."},{id:2,tag:"Product · Retention",title:"The retention metric most EdTech PMs ignore",body:"Day-8 return rate = 4x lifetime engagement."},{id:3,tag:"Growth · Distribution",title:"Referral loops only work when the reward is the product",body:"Discount referrals: 12%. Product-as-reward: 34%."}],
+  ventures:[{id:1,name:"Privatune",logo:null,role:"Founder & CEO",url:"https://privatune.com",desc:"Bangladesh's fastest-growing edtech platform.",stats:["100,000+ students/yr","Organic growth"]},{id:2,name:"VisaCracked",logo:null,role:"Founder",url:"#",desc:"Solving the last-mile access barrier in education.",stats:["Global access","EdTech"]},{id:3,name:"Ezionic",logo:null,role:"Founder & CEO",url:"#",desc:"Social media management & web dev agency.",stats:["50+ websites","International revenue"]},{id:4,name:"Connecting Goal",logo:null,role:"Co-Founder",url:"#",desc:"Bangladesh's first digital group study platform.",stats:["50,000+ students","40% lift"]}],
+  experience:[{id:1,title:"Product Manager — Apar's Classroom",logo:null,logoText:"AC",url:"#",meta:"800,000+ students · Bangladesh's largest EdTech",desc:"Drove 35% organic reach growth using ML-powered SEO.",badge:"Key Role"},{id:2,title:"Marketing Team Lead — Apar's Classroom",logo:null,logoText:"AC",url:"#",meta:"1M+ student community",desc:"Led growth campaigns across Bangladesh's largest student network.",badge:""},{id:3,title:"Intern — HNVI Management, The City Bank Ltd",logo:null,logoText:"CB",url:"#",meta:"Financial Analysis · Market Research",desc:"Improved portfolio returns by 25%.",badge:""}],
+  numbers:[{id:1,val:"1M+",label:"Students reached"},{id:2,val:"100K+",label:"Privatune annual student base"},{id:3,val:"35%",label:"Organic reach growth via ML-SEO"},{id:4,val:"50K+",label:"Students on Connecting Goal"},{id:5,val:"$75K/yr",label:"Abraham Lincoln Scholarship"},{id:6,val:"50+",label:"School websites via Ezionic"}],
+  education:[{id:1,school:"Gettysburg College",logo:null,logoText:"GC",deg:"Business, Organizations & Management · Economics · Minor in Data Science",badge:"🏆 Abraham Lincoln Scholar — Full Ride (~$75K/yr)",certs:["Harvard — CS50","UC San Diego — DSA","Stanford — Machine Learning"]}],
+  forms:[{id:1,title:"Work With Me",desc:"PM, GTM, or growth opportunities",btnText:"Send →",thanks:"Thanks! I'll get back to you soon.",fields:[{type:"text",label:"Your Name"},{type:"email",label:"Email"},{type:"text",label:"Company / Role"},{type:"textarea",label:"What are you working on?"}]},{id:2,title:"Mentorship Request",desc:"Students and early founders",btnText:"Request →",thanks:"Got it! I'll be in touch.",fields:[{type:"text",label:"Your Name"},{type:"email",label:"Email"},{type:"textarea",label:"What would you like to discuss?"}]}],
+  newsletter:{title:"The Builder's Brief",desc:"Occasional essays on product, growth, and building in emerging markets."},
+  contact:{heading:"Let's build something together.",desc:"I'm actively looking for PM, GTM, and growth roles.",footerDesc:"Founder turned PM candidate. Gettysburg College, Abraham Lincoln Scholar."}
+};
+
+// ══════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════
 let D = JSON.parse(JSON.stringify(DEFAULT_DATA));
-let temps = { blogImgData:null, vLogoData:null, exLogoData:null, edLogoData:null, photoData:null, fbFields:[] };
+let temps = {blogImgData:null,vLogoData:null,exLogoData:null,edLogoData:null,photoData:null,fbFields:[]};
 let currentAvail = 'open';
+let editingKey = null;
+let editingId = null;
 let sbResponses = [];
 let sbSubscribers = [];
 
-// ═══════════ AUTH ═══════════
-function doLogin() {
-  const u = document.getElementById('loginUser').value.trim();
-  const p = document.getElementById('loginPass').value;
-  if (login(u, p)) {
-    document.getElementById('loginScreen').style.display = 'none';
+// ══════════════════════════════════════
+//  AUTH
+// ══════════════════════════════════════
+function doLogin(){
+  const u=document.getElementById('lu').value.trim();
+  const p=document.getElementById('lp').value;
+  if(login(u,p)){
+    document.getElementById('loginScreen').style.display='none';
     document.getElementById('adminShell').classList.add('visible');
     initAdmin();
   } else {
     document.getElementById('loginErr').classList.add('show');
-    document.getElementById('loginPass').value = '';
+    document.getElementById('lp').value='';
   }
 }
-document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin() });
-document.getElementById('loginUser').addEventListener('keydown', e => { if(e.key==='Enter') doLogin() });
+document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+document.getElementById('lu').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+function doLogout(){logout();location.reload();}
+if(isLoggedIn()){document.getElementById('loginScreen').style.display='none';document.getElementById('adminShell').classList.add('visible');initAdmin();}
 
-function doLogout() { logout(); location.reload(); }
-
-if (isLoggedIn()) {
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('adminShell').classList.add('visible');
-  initAdmin();
-}
-
-// ═══════════ INIT ═══════════
-async function initAdmin() {
-  toast('Loading data...', 'info');
+// ══════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════
+async function initAdmin(){
+  toast('Loading...','');
   await loadAllData();
   populateProfileFields();
   populateContactFields();
   populateNLFields();
   renderAll();
-  toast('✓ Loaded', 'success');
+  toast('✓ Ready','ok');
 }
 
-async function loadAllData() {
-  try {
-    // Load profile
-    const prof = await loadProfile();
-    if (prof && Object.keys(prof).length > 0) D.profile = { ...D.profile, ...prof };
+async function loadAllData(){
+  try{
+    const prof=await loadProfile();
+    if(prof&&Object.keys(prof).length>0)D.profile={...D.profile,...prof};
+    const sections=['blogs','cases','thinks','ventures','experience','numbers','education','forms','newsletter','contact'];
+    await Promise.all(sections.map(async key=>{const data=await loadContent(key);if(data)D[key]=data;}));
+    const photo=await loadMedia('profile_photo');
+    if(photo)D.profile.photo=photo;
+    sbResponses=await loadResponses();
+    sbSubscribers=await loadSubscribers();
+    currentAvail=D.profile.availability||'open';
+  }catch(e){console.error(e);toast('Load error','err');}
+}
 
-    // Load all content sections
-    const sections = ['blogs','cases','thinks','ventures','experience','numbers','education','forms','newsletter','contact'];
-    await Promise.all(sections.map(async key => {
-      const data = await loadContent(key);
-      if (data) D[key] = data;
-    }));
+// ══════════════════════════════════════
+//  PANELS
+// ══════════════════════════════════════
+function showPanel(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.si').forEach(s=>s.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  document.querySelector(`.si[onclick="showPanel('${name}')"]`)?.classList.add('active');
+  if(name==='responses')renderResponses();
+  if(name==='newsletter')renderSubs();
+  if(name==='availability')updateAvailUI();
+}
 
-    // Load photo
-    const photo = await loadMedia('profile_photo');
-    if (photo) D.profile.photo = photo;
+// ══════════════════════════════════════
+//  RENDER ALL LISTS
+// ══════════════════════════════════════
+function renderAll(){
+  renderDash();
+  renderListItems('blogList',D.blogs,renderBlogItem);
+  renderListItems('caseList',D.cases,renderCaseItem);
+  renderListItems('thinkList',D.thinks,renderThinkItem);
+  renderListItems('ventureList',D.ventures,renderVentureItem);
+  renderListItems('expList',D.experience,renderExpItem);
+  renderListItems('numList',D.numbers,renderNumItem);
+  renderListItems('eduList',D.education,renderEduItem);
+  renderListItems('formList',D.forms,renderFormItem);
+  document.getElementById('blogCountSub').textContent=`${D.blogs.length} post${D.blogs.length!==1?'s':''}`;
+}
 
-    // Load responses and subscribers
-    sbResponses = await loadResponses();
-    sbSubscribers = await loadSubscribers();
+function renderDash(){
+  document.getElementById('dashStats').innerHTML=`
+    <div class="sc"><div class="sc-val">${D.blogs.length}</div><div class="sc-lbl">Blog Posts</div></div>
+    <div class="sc"><div class="sc-val">${sbResponses.length}</div><div class="sc-lbl">Form Responses</div></div>
+    <div class="sc"><div class="sc-val">${sbSubscribers.length}</div><div class="sc-lbl">Subscribers</div></div>
+    <div class="sc"><div class="sc-val">${D.ventures.length}</div><div class="sc-lbl">Ventures</div></div>`;
+}
 
-    currentAvail = D.profile.availability || 'open';
-  } catch(e) {
-    console.error('Load error:', e);
-    toast('Error loading data', 'error');
+function renderListItems(elId,arr,renderFn){
+  const el=document.getElementById(elId);
+  if(!arr||!arr.length){el.innerHTML=`<div class="empty">Nothing yet. Add one above.</div>`;return;}
+  el.innerHTML=arr.map(item=>renderFn(item)).join('');
+}
+
+function actionBtns(key,id){
+  return `<button class="btn btn-e btn-sm" onclick="openEdit('${key}',${id})">✏️ Edit</button>
+          <button class="btn btn-d btn-sm" onclick="delItem('${key}',${id})">Delete</button>`;
+}
+
+function renderBlogItem(b){return `<div class="li"><div class="li-logo">${b.img?`<img src="${b.img}"/>`:'📝'}</div><div class="li-body"><div class="li-title">${b.title}</div><div class="li-sub">${fmt(b.date)} · ${b.read}</div></div><div class="li-actions">${actionBtns('blogs',b.id)}</div></div>`;}
+function renderCaseItem(c){return `<div class="li"><div class="li-logo">📋</div><div class="li-body"><div class="li-title">${c.title}</div><div class="li-sub">${c.company}</div></div><div class="li-actions">${actionBtns('cases',c.id)}</div></div>`;}
+function renderThinkItem(t){return `<div class="li"><div class="li-logo">💡</div><div class="li-body"><div class="li-title">${t.title}</div><div class="li-sub">${t.tag}</div></div><div class="li-actions">${actionBtns('thinks',t.id)}</div></div>`;}
+function renderVentureItem(v){return `<div class="li"><div class="li-logo">${v.logo?`<img src="${v.logo}"/>`:v.name[0]}</div><div class="li-body"><div class="li-title">${v.name}</div><div class="li-sub">${v.role}</div></div><div class="li-actions">${actionBtns('ventures',v.id)}</div></div>`;}
+function renderExpItem(e){return `<div class="li"><div class="li-logo">${e.logo?`<img src="${e.logo}"/>`:e.logoText}</div><div class="li-body"><div class="li-title">${e.title}</div><div class="li-sub">${e.meta}</div></div><div class="li-actions">${actionBtns('experience',e.id)}</div></div>`;}
+function renderNumItem(n){return `<div class="li"><div class="li-logo">📈</div><div class="li-body"><div class="li-title">${n.val}</div><div class="li-sub">${n.label}</div></div><div class="li-actions">${actionBtns('numbers',n.id)}</div></div>`;}
+function renderEduItem(e){return `<div class="li"><div class="li-logo">${e.logo?`<img src="${e.logo}"/>`:e.logoText}</div><div class="li-body"><div class="li-title">${e.school}</div><div class="li-sub">${e.deg}</div></div><div class="li-actions">${actionBtns('education',e.id)}</div></div>`;}
+function renderFormItem(f){return `<div class="li"><div class="li-logo">📝</div><div class="li-body"><div class="li-title">${f.title}</div><div class="li-sub">${f.fields.length} fields</div></div><div class="li-actions">${actionBtns('forms',f.id)}</div></div>`;}
+
+function renderResponses(){
+  const el=document.getElementById('responsesList');
+  if(!sbResponses.length){el.innerHTML=`<div class="empty">No responses yet.</div>`;return;}
+  el.innerHTML=sbResponses.map(r=>`<div class="rc"><div class="rc-meta"><span class="rc-fn">${r.form_title}</span><span class="rc-date">${new Date(r.created_at).toLocaleString()}</span></div>${Object.entries(r.data||{}).map(([k,val])=>`<div class="rc-f"><span class="rc-fk">${k}</span>${val}</div>`).join('')}</div>`).join('');
+}
+function renderSubs(){
+  const el=document.getElementById('subsList');
+  document.getElementById('subCountSub').textContent=`${sbSubscribers.length} subscriber${sbSubscribers.length!==1?'s':''}`;
+  if(!sbSubscribers.length){el.innerHTML=`<div class="empty">No subscribers yet.</div>`;return;}
+  el.innerHTML=sbSubscribers.map(s=>`<div class="sub-row"><span>${s.email}</span><span style="color:var(--muted)">${new Date(s.created_at).toLocaleDateString()}</span></div>`).join('');
+}
+function updateAvailUI(){['open','selective','closed'].forEach(s=>document.getElementById('av-'+s)?.classList.toggle('sel',s===currentAvail));}
+
+// ══════════════════════════════════════
+//  EDIT MODAL — THE KEY NEW FEATURE
+// ══════════════════════════════════════
+function openEdit(key,id){
+  editingKey=key;
+  editingId=id;
+  const item=D[key].find(x=>x.id===id);
+  if(!item)return;
+
+  document.getElementById('emTitle').textContent=editTitleFor(key);
+  document.getElementById('emBody').innerHTML=editFormFor(key,item);
+  document.getElementById('editModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function editTitleFor(key){
+  const map={blogs:'Edit Blog Post',cases:'Edit Case Study',thinks:'Edit Product Take',ventures:'Edit Venture',experience:'Edit Experience',numbers:'Edit Stat',education:'Edit Education',forms:'Edit Form'};
+  return map[key]||'Edit Item';
+}
+
+function editFormFor(key,item){
+  const f=(id,label,val,type='input',rows=3)=>`<div class="f"><label>${label}</label>${type==='textarea'?`<textarea id="em-${id}" style="min-height:${rows*28}px">${esc(val||'')}</textarea>`:`<input id="em-${id}" value="${esc(val||'')}"/>`}</div>`;
+  const g2=(...fields)=>`<div class="g2">${fields.join('')}</div>`;
+
+  if(key==='blogs') return g2(f('title','Title',item.title),f('date','Date',item.date,'input'))+g2(f('read','Read Time',item.read),f('excerpt','Excerpt',item.excerpt,'input'))+f('content','Full Content',item.content,'textarea',5);
+  if(key==='cases') return g2(f('company','Company / Context',item.company),f('title','Title',item.title))+f('problem','Problem',item.problem,'textarea')+f('decision','Decision',item.decision,'textarea')+f('measured','Measured By',item.measured,'textarea')+f('result','Result',item.result);
+  if(key==='thinks') return g2(f('tag','Tag',item.tag),f('title','Title',item.title))+f('body','Body',item.body,'textarea');
+  if(key==='ventures') return g2(f('name','Name',item.name),f('url','Website URL',item.url))+f('role','Role',item.role)+f('desc','Description',item.desc,'textarea')+f('stats','Stats (comma separated)',(item.stats||[]).join(', '));
+  if(key==='experience') return g2(f('title','Title & Company',item.title),f('url','Company URL',item.url))+f('meta','Meta',item.meta)+f('desc','Description',item.desc,'textarea')+g2(f('badge','Badge',item.badge),f('logoText','Logo Letters',item.logoText));
+  if(key==='numbers') return g2(f('val','Value',item.val),f('label','Label',item.label));
+  if(key==='education') return g2(f('school','School',item.school),f('logoText','Logo Letters',item.logoText))+f('deg','Degree / Program',item.deg)+f('badge','Scholarship Badge',item.badge)+f('certs','Certifications (comma separated)',(item.certs||[]).join(', '));
+  if(key==='forms') return g2(f('title','Form Title',item.title),f('desc','Description',item.desc))+g2(f('btnText','Button Text',item.btnText),f('thanks','Thank You Message',item.thanks));
+  return '';
+}
+
+function esc(str){return String(str).replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+async function saveEdit(){
+  const key=editingKey;
+  const id=editingId;
+  const item=D[key].find(x=>x.id===id);
+  if(!item)return;
+
+  const gv=(id)=>{const el=document.getElementById('em-'+id);return el?el.value.trim():'';}
+
+  if(key==='blogs'){item.title=gv('title');item.date=gv('date');item.read=gv('read');item.excerpt=gv('excerpt');item.content=gv('content');}
+  if(key==='cases'){item.company=gv('company');item.title=gv('title');item.problem=gv('problem');item.decision=gv('decision');item.measured=gv('measured');item.result=gv('result');}
+  if(key==='thinks'){item.tag=gv('tag');item.title=gv('title');item.body=gv('body');}
+  if(key==='ventures'){item.name=gv('name');item.url=gv('url');item.role=gv('role');item.desc=gv('desc');item.stats=gv('stats').split(',').map(s=>s.trim()).filter(Boolean);}
+  if(key==='experience'){item.title=gv('title');item.url=gv('url');item.meta=gv('meta');item.desc=gv('desc');item.badge=gv('badge');item.logoText=gv('logoText');}
+  if(key==='numbers'){item.val=gv('val');item.label=gv('label');}
+  if(key==='education'){item.school=gv('school');item.logoText=gv('logoText');item.deg=gv('deg');item.badge=gv('badge');item.certs=gv('certs').split(',').map(s=>s.trim()).filter(Boolean);}
+  if(key==='forms'){item.title=gv('title');item.desc=gv('desc');item.btnText=gv('btnText');item.thanks=gv('thanks');}
+
+  try{
+    await saveContent(key,D[key]);
+    closeEditModal();
+    renderAll();
+    toast('✓ Saved!','ok');
+  }catch(e){toast('Save failed','err');}
+}
+
+function closeEditModal(){
+  document.getElementById('editModal').classList.remove('open');
+  document.body.style.overflow='';
+  editingKey=null;editingId=null;
+}
+document.getElementById('editModal').addEventListener('click',e=>{if(e.target===document.getElementById('editModal'))closeEditModal();});
+
+// ══════════════════════════════════════
+//  ADD ITEMS
+// ══════════════════════════════════════
+async function addItem(key){
+  let newItem=null;
+  const gv=(id)=>{const el=document.getElementById(id);return el?el.value.trim():'';};
+
+  if(key==='blogs'){
+    if(!gv('b-title'))return toast('Title required','err');
+    newItem={id:nextId(D.blogs),title:gv('b-title'),date:gv('b-date')||new Date().toISOString().split('T')[0],read:gv('b-read')||'5 min read',excerpt:gv('b-excerpt'),content:gv('b-content'),img:temps.blogImgData};
+    D.blogs.unshift(newItem);temps.blogImgData=null;
+    ['b-title','b-date','b-read','b-excerpt','b-content'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('blogImgWrap').style.display='none';
+  }
+  else if(key==='cases'){
+    if(!gv('cs-title'))return toast('Title required','err');
+    newItem={id:nextId(D.cases),company:gv('cs-company'),title:gv('cs-title'),problem:gv('cs-problem'),decision:gv('cs-decision'),measured:gv('cs-measured'),result:gv('cs-result')};
+    D.cases.push(newItem);
+    ['cs-company','cs-title','cs-problem','cs-decision','cs-measured','cs-result'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  }
+  else if(key==='thinks'){
+    if(!gv('th-title'))return toast('Title required','err');
+    newItem={id:nextId(D.thinks),tag:gv('th-tag'),title:gv('th-title'),body:gv('th-body')};
+    D.thinks.push(newItem);
+    ['th-tag','th-title','th-body'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  }
+  else if(key==='ventures'){
+    if(!gv('v-name'))return toast('Name required','err');
+    newItem={id:nextId(D.ventures),name:gv('v-name'),logo:temps.vLogoData,role:gv('v-role'),url:gv('v-url')||'#',desc:gv('v-desc'),stats:(gv('v-stats')||'').split(',').map(s=>s.trim()).filter(Boolean)};
+    D.ventures.push(newItem);temps.vLogoData=null;
+    ['v-name','v-url','v-role','v-desc','v-stats'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('vLogoWrap').style.display='none';
+  }
+  else if(key==='experience'){
+    if(!gv('ex-title'))return toast('Title required','err');
+    newItem={id:nextId(D.experience),title:gv('ex-title'),logo:temps.exLogoData,logoText:gv('ex-title').slice(0,2).toUpperCase(),url:gv('ex-url')||'#',meta:gv('ex-meta'),desc:gv('ex-desc'),badge:gv('ex-badge')};
+    D.experience.push(newItem);temps.exLogoData=null;
+    ['ex-title','ex-url','ex-meta','ex-desc','ex-badge'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('exLogoWrap').style.display='none';
+  }
+  else if(key==='numbers'){
+    if(!gv('n-val'))return toast('Value required','err');
+    newItem={id:nextId(D.numbers),val:gv('n-val'),label:gv('n-label')};
+    D.numbers.push(newItem);
+    ['n-val','n-label'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  }
+  else if(key==='education'){
+    if(!gv('ed-school'))return toast('School required','err');
+    newItem={id:nextId(D.education),school:gv('ed-school'),logo:temps.edLogoData,logoText:gv('ed-school').slice(0,2).toUpperCase(),deg:gv('ed-deg'),badge:gv('ed-badge'),certs:(gv('ed-certs')||'').split(',').map(s=>s.trim()).filter(Boolean)};
+    D.education.push(newItem);temps.edLogoData=null;
+    ['ed-school','ed-deg','ed-badge','ed-certs'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    document.getElementById('edLogoWrap').style.display='none';
+  }
+  else if(key==='forms'){
+    if(!gv('fb-title'))return toast('Title required','err');
+    if(!temps.fbFields.length)return toast('Add at least one field','err');
+    newItem={id:nextId(D.forms),title:gv('fb-title'),desc:gv('fb-desc'),btnText:gv('fb-btn')||'Submit →',thanks:gv('fb-thanks')||'Thank you!',fields:JSON.parse(JSON.stringify(temps.fbFields))};
+    D.forms.push(newItem);temps.fbFields=[];
+    ['fb-title','fb-desc','fb-btn','fb-thanks'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    renderFBFields();
+  }
+
+  if(newItem){
+    try{await saveContent(key,D[key]);renderAll();toast('✓ Added!','ok');}
+    catch(e){toast('Save failed','err');}
   }
 }
 
-// ═══════════ PANELS ═══════════
-function showPanel(name) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
-  document.querySelector(`.sidebar-item[onclick="showPanel('${name}')"]`)?.classList.add('active');
-  if (name === 'responses') renderResponses();
-  if (name === 'newsletter') renderSubs();
-  if (name === 'availability') updateAvailUI();
+async function delItem(key,id){
+  if(!confirm('Delete this item?'))return;
+  D[key]=D[key].filter(x=>x.id!==id);
+  await saveContent(key,D[key]);
+  renderAll();toast('✓ Deleted','ok');
 }
 
-// ═══════════ RENDER ═══════════
-function renderAll() {
-  renderDash(); renderList('blogList', D.blogs, b => [b.img?`<img src="${b.img}"/>`:'📝', b.title, formatDate(b.date), 'blogs', b.id]);
-  renderList('caseList', D.cases, c => ['📋', c.title, c.company, 'cases', c.id]);
-  renderList('thinkList', D.thinks, t => ['💡', t.title, t.tag, 'thinks', t.id]);
-  renderList('ventureList', D.ventures, v => [v.logo?`<img src="${v.logo}"/>`:v.name[0], v.name, v.role, 'ventures', v.id]);
-  renderList('expList', D.experience, e => [e.logo?`<img src="${e.logo}"/>`:e.logoText, e.title, e.meta, 'experience', e.id]);
-  renderList('numList', D.numbers, n => ['📈', n.val, n.label, 'numbers', n.id]);
-  renderList('eduList', D.education, e => [e.logo?`<img src="${e.logo}"/>`:e.logoText, e.school, e.deg, 'education', e.id]);
-  renderList('formList', D.forms, f => ['📝', f.title, `${f.fields.length} fields`, 'forms', f.id]);
-  document.getElementById('blogCount').textContent = `${D.blogs.length} post${D.blogs.length!==1?'s':''}`;
+// ══════════════════════════════════════
+//  PROFILE SAVE/LOAD
+// ══════════════════════════════════════
+function gv(id){const el=document.getElementById(id);return el?el.value.trim():'';}
+function sv(id,val){const el=document.getElementById(id);if(el)el.value=val||'';}
+
+async function saveProfileData(){
+  D.profile={...D.profile,name:gv('p-name'),label:gv('p-label'),tagline:gv('p-tagline'),tags:gv('p-tags').split(',').map(t=>t.trim()),statNum:gv('p-statnum'),statLabel:gv('p-statlabel'),bio:gv('p-bio'),about:gv('p-about'),linkedin:gv('p-linkedin'),email:gv('p-email'),resume:gv('p-resume')};
+  try{await saveProfileSB(D.profile);toast('✓ Profile saved!','ok');}catch(e){toast('Save failed','err');}
+}
+function populateProfileFields(){
+  const p=D.profile;
+  sv('p-name',p.name);sv('p-label',p.label);sv('p-tagline',p.tagline);sv('p-tags',(p.tags||[]).join(', '));
+  sv('p-statnum',p.statNum);sv('p-statlabel',p.statLabel);sv('p-bio',p.bio);sv('p-about',p.about);
+  sv('p-linkedin',p.linkedin);sv('p-email',p.email);sv('p-resume',p.resume);
+}
+async function saveContactData(){D.contact={heading:gv('c-heading'),desc:gv('c-desc'),footerDesc:gv('c-footer')};await saveContent('contact',D.contact);toast('✓ Saved!','ok');}
+function populateContactFields(){sv('c-heading',D.contact?.heading||'');sv('c-desc',D.contact?.desc||'');sv('c-footer',D.contact?.footerDesc||'');}
+async function saveNL(){D.newsletter={title:gv('nl-title'),desc:gv('nl-desc')};await saveContent('newsletter',D.newsletter);toast('✓ Saved!','ok');}
+function populateNLFields(){sv('nl-title',D.newsletter?.title||'');sv('nl-desc',D.newsletter?.desc||'');}
+
+// ══════════════════════════════════════
+//  PHOTO
+// ══════════════════════════════════════
+function uploadPhoto(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{temps.photoData=ev.target.result;document.getElementById('photoPreview').src=ev.target.result;document.getElementById('photoPrevWrap').style.display='block';document.getElementById('photoStatus').textContent='Ready — click Save Photo';};
+  r.readAsDataURL(f);
+}
+async function savePhoto(){
+  if(!temps.photoData)return toast('No photo selected','err');
+  toast('Uploading...','');
+  await saveMedia('profile_photo',temps.photoData);
+  D.profile.photo=temps.photoData;
+  await saveProfileSB(D.profile);
+  document.getElementById('photoStatus').textContent='✓ Photo saved to database!';
+  toast('✓ Photo saved!','ok');
 }
 
-function renderDash() {
-  document.getElementById('dashStats').innerHTML = `
-    <div class="stat-card"><div class="stat-val">${D.blogs.length}</div><div class="stat-lbl">Blog Posts</div></div>
-    <div class="stat-card"><div class="stat-val">${sbResponses.length}</div><div class="stat-lbl">Form Responses</div></div>
-    <div class="stat-card"><div class="stat-val">${sbSubscribers.length}</div><div class="stat-lbl">Subscribers</div></div>
-    <div class="stat-card"><div class="stat-val">${D.ventures.length}</div><div class="stat-lbl">Ventures</div></div>`;
-}
+// ══════════════════════════════════════
+//  AVAILABILITY
+// ══════════════════════════════════════
+function setAvail(val){currentAvail=val;updateAvailUI();}
+async function saveAvailData(){D.profile.availability=currentAvail;await saveProfileSB(D.profile);toast('✓ Status saved!','ok');}
 
-function renderList(elId, arr, fn) {
-  const el = document.getElementById(elId);
-  if (!arr.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);padding:16px;font-family:var(--mono)">Nothing yet.</p>`; return; }
-  el.innerHTML = arr.map(item => {
-    const [icon, title, sub, key, id] = fn(item);
-    return `<div class="list-item">
-      <div class="list-item-logo">${icon}</div>
-      <div class="list-item-body"><div class="list-item-title">${title}</div><div class="list-item-sub">${sub}</div></div>
-      <div class="list-item-actions"><button class="btn btn-danger btn-sm" onclick="delItem('${key}',${id})">Delete</button></div>
-    </div>`;
-  }).join('');
-}
-
-function renderResponses() {
-  const el = document.getElementById('responsesList');
-  if (!sbResponses.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);padding:20px;font-family:var(--mono)">No responses yet.</p>`; return; }
-  el.innerHTML = sbResponses.map(r => `
-    <div class="resp-card">
-      <div class="resp-meta"><span class="resp-form-name">${r.form_title}</span><span class="resp-date">${new Date(r.created_at).toLocaleString()}</span></div>
-      ${Object.entries(r.data||{}).map(([k,val]) => `<div class="resp-field"><span class="resp-field-key">${k}</span>${val}</div>`).join('')}
+// ══════════════════════════════════════
+//  FORM BUILDER
+// ══════════════════════════════════════
+function addFBField(type){temps.fbFields.push({type,label:'',options:''});renderFBFields();}
+function renderFBFields(){
+  document.getElementById('fb-fields').innerHTML=temps.fbFields.map((f,i)=>`
+    <div class="fb-row">
+      <span class="fb-type">${f.type}</span>
+      <input class="fb-lbl" placeholder="Label" value="${f.label}" oninput="temps.fbFields[${i}].label=this.value"/>
+      ${f.type==='select'?`<input class="fb-lbl" placeholder="Options (comma sep)" oninput="temps.fbFields[${i}].options=this.value"/>`:''}
+      <button class="btn btn-d btn-sm" onclick="temps.fbFields.splice(${i},1);renderFBFields()">✕</button>
     </div>`).join('');
 }
 
-function renderSubs() {
-  const el = document.getElementById('subsList');
-  if (!sbSubscribers.length) { el.innerHTML = `<p style="font-size:13px;color:var(--muted);padding:20px;font-family:var(--mono)">No subscribers yet.</p>`; return; }
-  el.innerHTML = sbSubscribers.map(s => `
-    <div class="sub-row"><span class="sub-email">${s.email}</span><span class="sub-date">${new Date(s.created_at).toLocaleDateString()}</span></div>`).join('');
-}
-
-function updateAvailUI() {
-  ['open','selective','closed'].forEach(s => {
-    document.getElementById('av-'+s)?.classList.toggle('selected', s === currentAvail);
-  });
-}
-
-// ═══════════ SAVE ALL ═══════════
-async function saveAll() {
-  try {
-    toast('Saving...', 'info');
-    await Promise.all([
-      saveProfile(D.profile),
-      saveContent('blogs', D.blogs),
-      saveContent('cases', D.cases),
-      saveContent('thinks', D.thinks),
-      saveContent('ventures', D.ventures),
-      saveContent('experience', D.experience),
-      saveContent('numbers', D.numbers),
-      saveContent('education', D.education),
-      saveContent('forms', D.forms),
-      saveContent('newsletter', D.newsletter),
-      saveContent('contact', D.contact),
-    ]);
-    renderDash();
-    toast('✓ All saved to Supabase!', 'success');
-  } catch(e) {
-    toast('Save failed: ' + e.message, 'error');
-  }
-}
-
-// ═══════════ PHOTO ═══════════
-function uploadPhoto(e) {
-  const f = e.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = ev => {
-    temps.photoData = ev.target.result;
-    document.getElementById('photoPreview').src = ev.target.result;
-    document.getElementById('photoPrevWrap').style.display = 'block';
-    document.getElementById('photoStatus').textContent = 'Ready to save — click Save Photo';
-  };
+// ══════════════════════════════════════
+//  IMAGE TEMP HANDLER
+// ══════════════════════════════════════
+function handleImgTemp(e,dataKey,previewId,wrapId){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{temps[dataKey]=ev.target.result;const prev=document.getElementById(previewId);const wrap=document.getElementById(wrapId);if(prev){prev.src=ev.target.result;prev.style.display='block';}if(wrap){wrap.style.display='block';}};
   r.readAsDataURL(f);
 }
 
-async function savePhoto() {
-  if (!temps.photoData) return toast('No photo selected', 'error');
-  try {
-    toast('Uploading photo...', 'info');
-    await saveMedia('profile_photo', temps.photoData);
-    D.profile.photo = temps.photoData;
-    await saveProfile(D.profile);
-    document.getElementById('photoStatus').textContent = '✓ Photo saved to database!';
-    toast('✓ Photo saved!', 'success');
-  } catch(e) {
-    toast('Upload failed: ' + e.message, 'error');
-  }
-}
-
-// ═══════════ PROFILE ═══════════
-async function saveProfileData() {
-  D.profile = {
-    ...D.profile,
-    name: v('p-name'), label: v('p-label'), tagline: v('p-tagline'),
-    tags: v('p-tags').split(',').map(t=>t.trim()),
-    statNum: v('p-statnum'), statLabel: v('p-statlabel'),
-    bio: v('p-bio'), about: v('p-about'),
-    linkedin: v('p-linkedin'), email: v('p-email'), resume: v('p-resume'),
-  };
-  try {
-    await saveProfile(D.profile);
-    toast('✓ Profile saved!', 'success');
-  } catch(e) { toast('Error: ' + e.message, 'error'); }
-}
-
-function populateProfileFields() {
-  const p = D.profile;
-  setVal('p-name', p.name); setVal('p-label', p.label); setVal('p-tagline', p.tagline);
-  setVal('p-tags', (p.tags||[]).join(', ')); setVal('p-statnum', p.statNum); setVal('p-statlabel', p.statLabel);
-  setVal('p-bio', p.bio); setVal('p-about', p.about);
-  setVal('p-linkedin', p.linkedin); setVal('p-email', p.email); setVal('p-resume', p.resume);
-}
-
-// ═══════════ CONTACT / NL ═══════════
-async function saveContactData() {
-  D.contact = { heading: v('c-heading'), desc: v('c-desc'), footerDesc: v('c-footer') };
-  await saveContent('contact', D.contact);
-  toast('✓ Saved!', 'success');
-}
-function populateContactFields() {
-  setVal('c-heading', D.contact?.heading||''); setVal('c-desc', D.contact?.desc||''); setVal('c-footer', D.contact?.footerDesc||'');
-}
-async function saveNL() {
-  D.newsletter = { title: v('nl-title'), desc: v('nl-desc') };
-  await saveContent('newsletter', D.newsletter);
-  toast('✓ Saved!', 'success');
-}
-function populateNLFields() {
-  setVal('nl-title', D.newsletter?.title||''); setVal('nl-desc', D.newsletter?.desc||'');
-}
-
-// ═══════════ AVAILABILITY ═══════════
-function setAvail(val) { currentAvail = val; updateAvailUI(); }
-async function saveAvailData() {
-  D.profile.availability = currentAvail;
-  await saveProfile(D.profile);
-  toast('✓ Status saved!', 'success');
-}
-
-// ═══════════ ADD ITEMS ═══════════
-function nid(arr) { return arr.length ? Math.max(...arr.map(x=>x.id))+1 : 1; }
-
-async function addBlog() {
-  if (!v('b-title')) return toast('Title required', 'error');
-  D.blogs.unshift({ id:nid(D.blogs), title:v('b-title'), date:v('b-date')||new Date().toISOString().split('T')[0], read:v('b-read')||'5 min read', excerpt:v('b-excerpt'), content:v('b-content'), img:temps.blogImgData });
-  temps.blogImgData = null;
-  ['b-title','b-date','b-read','b-excerpt','b-content'].forEach(id => setVal(id,''));
-  document.getElementById('blogImgWrap').style.display = 'none';
-  await saveContent('blogs', D.blogs);
-  renderAll(); toast('✓ Post published!', 'success');
-}
-
-async function addCase() {
-  if (!v('cs-title')) return toast('Title required', 'error');
-  D.cases.push({ id:nid(D.cases), company:v('cs-company'), title:v('cs-title'), problem:v('cs-problem'), decision:v('cs-decision'), measured:v('cs-measured'), result:v('cs-result') });
-  ['cs-company','cs-title','cs-problem','cs-decision','cs-measured','cs-result'].forEach(id => setVal(id,''));
-  await saveContent('cases', D.cases);
-  renderAll(); toast('✓ Case study added!', 'success');
-}
-
-async function addThink() {
-  if (!v('th-title')) return toast('Title required', 'error');
-  D.thinks.push({ id:nid(D.thinks), tag:v('th-tag'), title:v('th-title'), body:v('th-body') });
-  ['th-tag','th-title','th-body'].forEach(id => setVal(id,''));
-  await saveContent('thinks', D.thinks);
-  renderAll(); toast('✓ Added!', 'success');
-}
-
-async function addVenture() {
-  if (!v('v-name')) return toast('Name required', 'error');
-  D.ventures.push({ id:nid(D.ventures), name:v('v-name'), logo:temps.vLogoData, role:v('v-role'), url:v('v-url')||'#', desc:v('v-desc'), stats:(v('v-stats')||'').split(',').map(s=>s.trim()).filter(Boolean) });
-  temps.vLogoData = null;
-  ['v-name','v-url','v-role','v-desc','v-stats'].forEach(id => setVal(id,''));
-  document.getElementById('vLogoWrap').style.display = 'none';
-  await saveContent('ventures', D.ventures);
-  renderAll(); toast('✓ Venture added!', 'success');
-}
-
-async function addExp() {
-  if (!v('ex-title')) return toast('Title required', 'error');
-  D.experience.push({ id:nid(D.experience), title:v('ex-title'), logo:temps.exLogoData, logoText:v('ex-title').slice(0,2).toUpperCase(), url:v('ex-url')||'#', meta:v('ex-meta'), desc:v('ex-desc'), badge:v('ex-badge') });
-  temps.exLogoData = null;
-  ['ex-title','ex-url','ex-meta','ex-desc','ex-badge'].forEach(id => setVal(id,''));
-  document.getElementById('exLogoWrap').style.display = 'none';
-  await saveContent('experience', D.experience);
-  renderAll(); toast('✓ Role added!', 'success');
-}
-
-async function addNum() {
-  if (!v('n-val')) return toast('Value required', 'error');
-  D.numbers.push({ id:nid(D.numbers), val:v('n-val'), label:v('n-label') });
-  ['n-val','n-label'].forEach(id => setVal(id,''));
-  await saveContent('numbers', D.numbers);
-  renderAll(); toast('✓ Added!', 'success');
-}
-
-async function addEdu() {
-  if (!v('ed-school')) return toast('School required', 'error');
-  D.education.push({ id:nid(D.education), school:v('ed-school'), logo:temps.edLogoData, logoText:v('ed-school').slice(0,2).toUpperCase(), deg:v('ed-deg'), badge:v('ed-badge'), certs:(v('ed-certs')||'').split(',').map(s=>s.trim()).filter(Boolean) });
-  temps.edLogoData = null;
-  ['ed-school','ed-deg','ed-badge','ed-certs'].forEach(id => setVal(id,''));
-  document.getElementById('edLogoWrap').style.display = 'none';
-  await saveContent('education', D.education);
-  renderAll(); toast('✓ Added!', 'success');
-}
-
-async function delItem(key, id) {
-  if (!confirm('Delete this item?')) return;
-  D[key] = D[key].filter(x => x.id !== id);
-  await saveContent(key, D[key]);
-  renderAll(); toast('✓ Deleted', 'success');
-}
-
-// ═══════════ FORM BUILDER ═══════════
-function addFBField(type) {
-  temps.fbFields.push({ type, label:'', options:'' });
-  renderFBFields();
-}
-function renderFBFields() {
-  document.getElementById('fb-fields').innerHTML = temps.fbFields.map((f,i) => `
-    <div class="fb-field-row">
-      <span class="fb-field-type">${f.type}</span>
-      <input class="fb-field-label" placeholder="Label" value="${f.label}" oninput="temps.fbFields[${i}].label=this.value"/>
-      ${f.type==='select'?`<input class="fb-field-label" placeholder="Options (comma sep)" oninput="temps.fbFields[${i}].options=this.value"/>`:''}
-      <button class="btn btn-danger btn-sm" onclick="temps.fbFields.splice(${i},1);renderFBFields()">✕</button>
-    </div>`).join('');
-}
-async function publishForm() {
-  if (!v('fb-title')) return toast('Title required','error');
-  if (!temps.fbFields.length) return toast('Add at least one field','error');
-  D.forms.push({ id:nid(D.forms), title:v('fb-title'), desc:v('fb-desc'), btnText:v('fb-btn')||'Submit →', thanks:v('fb-thanks')||'Thank you!', fields:JSON.parse(JSON.stringify(temps.fbFields)) });
-  temps.fbFields = [];
-  ['fb-title','fb-desc','fb-btn','fb-thanks'].forEach(id => setVal(id,''));
-  renderFBFields();
-  await saveContent('forms', D.forms);
-  renderAll(); toast('✓ Form published!', 'success');
-}
-
-// ═══════════ EXPORTS ═══════════
-async function exportCSV() {
-  const rows = await loadResponses();
-  if (!rows.length) return toast('No responses yet','error');
-  const headers = ['Form','Date',...new Set(rows.flatMap(r=>Object.keys(r.data||{})))];
-  const csv = [headers,...rows.map(r=>[r.form_title,new Date(r.created_at).toLocaleString(),...headers.slice(2).map(h=>(r.data||{})[h]||'')])].map(r=>r.map(c=>`"${(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+// ══════════════════════════════════════
+//  EXPORTS / SECURITY
+// ══════════════════════════════════════
+async function exportCSV(){
+  const rows=await loadResponses();if(!rows.length)return toast('No responses','err');
+  const headers=['Form','Date',...new Set(rows.flatMap(r=>Object.keys(r.data||{})))];
+  const csv=[headers,...rows.map(r=>[r.form_title,new Date(r.created_at).toLocaleString(),...headers.slice(2).map(h=>(r.data||{})[h]||'')])].map(r=>r.map(c=>`"${(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
   dlCSV(csv,'responses.csv');
 }
-async function exportSubs() {
-  const rows = await loadSubscribers();
-  if (!rows.length) return toast('No subscribers yet','error');
+async function exportSubs(){
+  const rows=await loadSubscribers();if(!rows.length)return toast('No subscribers','err');
   dlCSV([['Email','Date'],...rows.map(s=>[s.email,new Date(s.created_at).toLocaleDateString()])].map(r=>r.join(',')).join('\n'),'subscribers.csv');
 }
-function dlCSV(csv,name) {
-  const a = document.createElement('a'); a.href = 'data:text/csv;charset=utf-8,'+encodeURIComponent(csv); a.download = name; a.click();
+function dlCSV(csv,name){const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download=name;a.click();}
+function changePass(){
+  const cur=document.getElementById('sec-cur').value;
+  const nw=document.getElementById('sec-new').value;
+  const con=document.getElementById('sec-con').value;
+  if(cur!==ADMIN_PASSWORD)return toast('Current password wrong','err');
+  if(nw!==con)return toast('Passwords do not match','err');
+  if(nw.length<8)return toast('Min 8 characters','err');
+  toast('✓ Match! Update ADMIN_PASSWORD in assets/data.js and push.','ok');
 }
+async function resetAllData(){D=JSON.parse(JSON.stringify(DEFAULT_DATA));await Promise.all(Object.keys(D).map(k=>saveContent(k,D[k])));location.reload();}
 
-// ═══════════ SECURITY ═══════════
-function changePass() {
-  const cur = document.getElementById('sec-cur').value;
-  const nw = document.getElementById('sec-new').value;
-  const con = document.getElementById('sec-con').value;
-  if (cur !== ADMIN_PASSWORD) return toast('Current password wrong','error');
-  if (nw !== con) return toast('Passwords do not match','error');
-  if (nw.length < 8) return toast('Min 8 characters','error');
-  toast('✓ Passwords match! Update ADMIN_PASSWORD in assets/data.js and push.', 'success');
-}
-async function resetAllData() {
-  D = JSON.parse(JSON.stringify(DEFAULT_DATA));
-  await saveAll();
-  location.reload();
-}
-
-// ═══════════ IMAGE TEMP ═══════════
-function handleImgTemp(e, dataKey, previewId, wrapId) {
-  const f = e.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = ev => {
-    temps[dataKey] = ev.target.result;
-    const prev = document.getElementById(previewId);
-    const wrap = document.getElementById(wrapId);
-    if (prev) { prev.src = ev.target.result; prev.style.display = 'block'; }
-    if (wrap) { wrap.style.display = 'block'; }
-  };
-  r.readAsDataURL(f);
-}
-
-// ═══════════ HELPERS ═══════════
-function v(id) { const el=document.getElementById(id); return el?el.value.trim():''; }
-function setVal(id, val) { const el=document.getElementById(id); if(el) el.value=val||''; }
-function toast(msg='✓', type='') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast' + (type==='error'?' error':type==='success'?' success':'');
-  t.classList.add('show');
-  clearTimeout(t._timer);
-  t._timer = setTimeout(()=>t.classList.remove('show'), 2800);
+// ══════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════
+function toast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast'+(type==='err'?' err':type==='ok'?' ok':'');
+  t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2800);
 }
 </script>
 </body>
