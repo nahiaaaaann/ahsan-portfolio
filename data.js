@@ -8,7 +8,7 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 //  ADMIN AUTH
 // ═══════════════════════════════════════════
 const ADMIN_USERNAME = "ahsan";
-const ADMIN_PASSWORD = "changeme123"; // ← change this!
+const ADMIN_PASSWORD = "B@ngladesh1971"; // ← change this!
 const SESSION_KEY    = "admin_session";
 const SESSION_EXPIRY = 2 * 60 * 60 * 1000;
 
